@@ -2,6 +2,8 @@ import React, { useState } from "react";
 // import Logo from "../assets/react.png";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
+import logo from '../assets/edubin.png'
+
 
 function Navbar() {
   const [openLinks, setOpenLinks] = useState(false);
@@ -11,22 +13,16 @@ function Navbar() {
   };
   return (
     <div className="navbar">
-      <div className="leftSide" id={openLinks ? "open" : "close"}>
-       
-        <div className="hiddenLinks">
-          <Link to="/"> Home </Link>
-          <Link to="/menu"> Menu </Link>
-          <Link to="/about"> About </Link>
-          <Link to="/contact"> Contact </Link>
-        </div>
-      </div>
+     <div className="leftSide">
+     <img src={logo}  style={{ width: 140 , height: 60 }} ></img>
+     </div>
       <div className="rightSide">
         <Link to="/"> Home </Link>
-        <Link to="/menu"> Menu </Link>
         <Link to="/about"> About </Link>
+        <Link to="/"> Courses </Link>
+        <Link to="/news"> News </Link>
         <Link to="/contact"> Contact </Link>
-        <button onClick={toggleNavbar}>
-        </button>
+        
       </div>
     </div>
   );

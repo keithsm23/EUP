@@ -21,21 +21,21 @@ import {
 
 
 
-export default function News() {
+export default function SingleNews() {
   const[blogs, setBlogs] = useState([]);
   
 //fetch data
 const getAllData = async (offset=0,limit=10)=>{
 
-  // let getToken = localStorage.getItem('token');
+  let getToken = localStorage.getItem('token');
           
-  // const config={
-  //   headers:{
-  //       token: `${getToken}`,
-  //       "Content-Type":"application/json",
-  //   }
-  // };
-    const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=ss`)
+  const config={
+    headers:{
+        token: `${getToken}`,
+        "Content-Type":"application/json",
+    }
+  };
+    const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/getCommentData?contentId=11`,config)
     .then((res) => { 
     setBlogs(res.data.data.reverse());
     })
