@@ -1,0 +1,43 @@
+.container1{
+    height: 100vh;
+    width : 100vh;
+}
+
+.container2{
+    font-weight: bold;
+    width: 100%;
+    padding-left: 50px;
+}
+.container3{
+    padding-left: 50px;
+    width: 100%
+}
+.image{
+    height: 300px;
+    width: 100%;
+}
+.bg-img{
+    background-image: 
+    url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg");
+    background-size: cover;
+    height: 40vh;
+    margin-top: -68px;
+    font-size:50px;
+    width: 100%;
+    background-repeat:no-repeat; 
+  }
+  .md{
+    font-size: 35px;
+    padding-top: 50px;
+    font-weight: bold;
+    padding-left: 50px;
+    color: white;
+  }
+  .md-1{
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 50px;
+    padding-bottom: -90px;
+    color: white;
+  }
+  
