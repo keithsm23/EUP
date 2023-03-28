@@ -4,10 +4,10 @@ import ss from '../assets/ss.png'
 
 const Home = () => {
   return <div> 
-  <img src={ss} width="1348px" height="400px">
+  <img src={ss} width="1348px" height="470px"  alt="">
   </img>
   <div id="wrapper">
-   <div id="one" className="box">
+   <div id="one"  className="box">
     <h1>Welcome To Edubin</h1>
     <p>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. 

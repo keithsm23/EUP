@@ -71,7 +71,7 @@
   }
   #one{
     width:40%;
-    justify-content: left;
+    justify-content: left; 
     margin-right: 700px;position: absolute;
   }
   #two{

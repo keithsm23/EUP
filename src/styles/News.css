@@ -10,3 +10,217 @@
     background-size: cover;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+#u79 {
+    border-width: 0px;
+    position: absolute;
+    left: 431px;
+    top: 1352px;
+    width: 548px;
+    height: 30px;
+}
+.ax_default {
+    font-family: "Arial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: normal;
+    color: #333333;
+    vertical-align: none;
+    text-align: center;
+    line-height: normal;
+    text-transform: none;
+}
+#u86_img {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 430px;
+    height: 200px;
+}
+
+.img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+#u87 {
+    border-width: 0px;
+    position: absolute;
+    left: 498px;
+    top: 467px;
+    width: 300px;
+    height: 30px;
+    display: flex;
+    font-family: "Roboto Bold", "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+}
+.paragraph {
+    text-align: left;
+}
+.ax_default {
+    font-family: "Arial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: normal;
+    color: #333333;
+    vertical-align: none;
+    text-align: center;
+    line-height: normal;
+    text-transform: none;
+}
+.box1{
+    width:300px;
+    display: flex;
+    margin-left: 40px;
+    height:200px;
+  border-color: green;
+    display:inline-block;
+  }
+  #one1{
+    border: green;
+    width:32%;
+    justify-content: left;
+    margin-right: 700px;position: absolute;
+  }
+  #two1{
+    border: green;
+    width: 40%;
+   position: absolute;
+   margin-left: 400px;
+  }
+  #wrapper1{
+    display: flex;
+    max-width:1350px;
+    height: 400px;
+    margin:0 auto;
+    justify-content: center;
+    text-align: justify;
+    background:white;
+    padding: 30px;
+    margin-top: 50px;
+  }
+
+
+
+  .box2{
+    width:300px;
+    display: flex;
+    margin-left: 40px;
+    height:200px;
+  border-color: green;
+    display:inline-block;
+    margin-top: -190px;
+  }
+  #one2{
+    border: green;
+    width:32%;
+    justify-content: left;
+    margin-right: 700px;position: absolute;
+  }
+  #two2{
+    border: green;
+    width: 40%;
+   position: absolute;
+   margin-left: 400px;
+  }
+  #wrapper2{
+    display: flex;
+    max-width:1350px;
+    height: 400px;
+    margin:0 auto;
+    justify-content: center;
+    text-align: justify;
+    background: white;
+    padding: 30px;
+  }
+  .box3{
+    width:300px;
+    display: flex;
+    margin-left: 40px;
+    height:200px;
+  border-color: green;
+    display:inline-block;
+    margin-top: -380px;
+    margin-bottom: 30px;
+  }
+  #one3{
+    border: green;
+    width:32%;
+    justify-content: left;
+    margin-right: 700px;position: absolute;
+  }
+  #two3{
+    border: green;
+    width: 40%;
+   position: absolute;
+   margin-left: 400px;
+  }
+  #wrapper3{
+    display: flex;
+    max-width:1350px;
+    height: 5px;
+    margin:0 auto;
+    justify-content: center;
+    text-align: justify;
+    background:white;
+    padding: 30px;
+  }
+ 
+  .pic {
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../assets/books2.avif');
+    position: relative;
+    top: -15px;
+    width:1348px; 
+    height:250px;
+    text-align: left;
+
+}
+.text{
+    text-align: left;
+    margin-left: 45px;
+    position: relative;
+    top: 80px;
+}
+.pagination 
+{
+     display:flex;
+     margin-left: 550px;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.35rem;
+} 
+.previousClassName a {
+    text-decoration: none;
+    padding: 10px;
+    font-size: large;
+    font-family: "Arial", sans-serif;
+}
+.pageClassName {
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 0.5px solid grey;
+    border-right: 0.5px solid grey;
+    font-size: large;
+    font-family: "Arial", sans-serif;
+}
+
+.pagination {
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 0.5px solid grey;
+}
+.nextClassName a {
+    text-decoration: none;
+    padding: 10px;
+    font-size: large;
+    font-family: "Arial", sans-serif;
+}
+.activeClassName {
+    background-color: #169BD5;
+    color: #fff; 
+}

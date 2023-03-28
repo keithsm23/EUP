@@ -12,17 +12,18 @@ function Footer() {
 
     <div className="footer">
     <div className="icons">
-    <SocialIcon bgColor="blue" fgColor ="white" url="https://facebook.com" />
-    <SocialIcon url="https://twitter.com" />
-    <SocialIcon url="https://google.com" />
-    <SocialIcon url="https://instagram.com" />
+    <SocialIcon  style={{ height: 35, width: 35 }} bgColor="blue" fgColor ="white" url="https://facebook.com" />
+    <SocialIcon  style={{ height: 35, width: 35 }} url="https://twitter.com" />
+    <SocialIcon  style={{ height: 35, width: 35 }} url="https://google.com" />
+    <SocialIcon  style={{ height: 35, width: 35 }} url="https://instagram.com" />
     </div>
-      <Link  to="/" href="#top"> Home </Link>
-        <Link to="/about"> About </Link>
-        <Link to="/"> Courses </Link>
-        <Link to="/news"> News </Link>
-        <Link to="/contact"> Contact </Link>
-      <p> </p>
+    <div className="rightSide">
+        <Link to="/home"> HOME </Link>
+        <Link to="/aboutus"> ABOUT US </Link>
+        <Link to="/"> COURSES </Link>
+        <Link to="/news"> NEWS </Link>
+        <Link to="/contact"> CONTACT </Link>
+      </div>
     </div>
 
   );

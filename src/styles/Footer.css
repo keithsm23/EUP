@@ -1,7 +1,7 @@
 .footer {
     width: 10;
     height: 120px;
-    background-color: #0f5372;
+    background-color: rgba(7, 41, 77, 1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,13 +29,18 @@
   }
   
 .icons {
-    margin-left: 10px;
-    height: 100%;
+    margin-left: 10px; 
     display: flex;
     align-items: center;
     padding-right: 590px;
     color: azure;
-    position: relative;
+    position: absolute;
+    margin-left: -380px;
+  }
+  .footer .rightSide{
+    
+    margin-right: 10px;
+    align-items: center;
   }
   
  
