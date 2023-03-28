@@ -18,7 +18,7 @@ function Footer() {
     <SocialIcon  style={{ height: 35, width: 35 }} url="https://instagram.com" />
     </div>
     <div className="rightSide">
-        <Link to="/home"> HOME </Link>
+        <Link to="/"> HOME </Link>
         <Link to="/aboutus"> ABOUT US </Link>
         <Link to="/"> COURSES </Link>
         <Link to="/news"> NEWS </Link>

@@ -8,6 +8,7 @@ const Home = () => {
   </img>
   <div id="wrapper">
    <div id="one"  className="box">
+   <h3>About Us</h3>
     <h1>Welcome To Edubin</h1>
     <p>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
