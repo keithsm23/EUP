@@ -14,7 +14,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="leftSide">
-        <img src={logo}  style={{ width: 200 , height: 50 }} ></img>
+      <a href="/"> <img src={logo} alt=""  style={{ width: 200 , height: 50 }} ></img></a>
       </div>
       <div  className="rightSide">
         <Link to="/"> HOME </Link>

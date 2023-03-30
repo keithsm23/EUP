@@ -54,30 +54,51 @@
   #wrapper{
     display: flex;
     max-width:1350px;
-    height: 400px;
+    height: 550px;
     margin:0 auto;
+    margin-top:-5px;
     justify-content: center;
     text-align: justify;
     background:white;
     padding: 30px;
+    background-color: rgb(250, 245, 245);
   }
   .box{
     width:350px;
     display: flex;
     margin-left: 30px;
-    height:350px;
-  
+    height:400px;
+  position: absolute;
+  margin-top: -5px;
     display:inline-block;
   }
   #one{
     width:40%;
     justify-content: left; 
+    
     margin-right: 700px;position: absolute;
   }
   #two{
-    width: 40%;
+    width: 43%;
    position: absolute;
-   margin-left: 700px;
+   border: thin;
+  height:530px;
+   background-color: white;
+  opacity:0.91;
+   margin-left: 690px; z-index:3; 
+  
+   
+  }
+  #three{
+    width: 30%;
+   position: absolute;
+ 
+   margin-left: 932px;
+   height: 455px;
+   margin-top: -30px;
+   opacity:0.9;
+z-index: 0;
+  
   }
   .container{
     display : inline-block;
@@ -150,3 +171,79 @@
       color: #121619;
     }
   }
+  h3:before{
+    content: "";
+    position: absolute;
+    width: 7%;
+    height: 1px;
+    margin-top: 29px;
+    left: 0%;
+    border-bottom: 1px solid  rgb(255, 187, 0);
+    border-width: 3px;
+}
+/* h2:before{
+  content: "";
+  position: absolute;
+  width: 76%;
+  height: 1px;
+  margin-top: 50px;
+  left: 0%;
+  border-bottom: 1px solid  rgb(5, 5, 4);
+  border-width: 1px;
+  margin-left: 30px;
+} */
+
+.btn{
+  margin-left: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(7, 41, 77, 1);
+  height:43px;
+  width:140px;
+  background-color: rgb(247, 205, 18);
+}
+.text01{
+ margin-top: 40px;
+  position: relative;
+  text-align: left;
+ margin-left: 35px;
+}
+.text1{
+
+  text-align: left;
+  margin-left: 30px;
+  justify-content: justify;
+}
+.text02{
+  margin-top: 40px;
+  position: relative;
+  text-align: left;
+ margin-left: 35px;
+}
+.text2{
+  text-align: left;
+  margin-left: 30px;
+  justify-content: justify;
+}
+.text03{
+  margin-top: 40px;
+  position: relative;
+  text-align: left;
+ margin-left: 35px;
+}
+.text3{
+  text-align: left;
+  margin-left: 30px;
+  justify-content: justify;
+}
+.calendar{
+  margin-left: 35px;
+}
+h5{
+  text-align: left;
+  font-size: small;
+}
+.button1{
+  border-radius: 4px;
+  border-style: hidden;
+}
