@@ -14,28 +14,28 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
-  CFormSelect
+  CFormSelect,
 } from '@coreui/react'
 
 
-// const data = [
-//     {
-//         question: "What is Lorem Ipsum?",
-//         answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-//     },
-//     {
-//         question: "What is Lorem Ipsum?",
-//         answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-//     },
-//     {
-//         question: "What is Lorem Ipsum?",
-//         answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-//     },
-//     {
-//         question: "What is Lorem Ipsum?",
-//         answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-//     },
-//   ]
+const data = [
+    {
+        question: "What is Lorem Ipsum?",
+        answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    },
+    {
+        question: "What is Lorem Ipsum?",
+        answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    },
+    {
+        question: "What is Lorem Ipsum?",
+        answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    },
+    {
+        question: "What is Lorem Ipsum?",
+        answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    },
+  ]
 
   
 const AboutUs = () => {
@@ -67,7 +67,7 @@ const AboutUs = () => {
   //     //   }
   //     // };
 
-      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/view?slug=mklp`)
+     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=newPage`)
     .then((res) => { 
     setPages(res.data.data.reverse());
     })
@@ -104,18 +104,19 @@ const AboutUs = () => {
          <p className='md'>SAMPLE PAGE</p>
          <p className='md-1'>Home/Sample Page</p>
        </section>
-        <section >
-        {/* { data.map((news, i) => {
+       <br></br>
+       <section >
+        { data.map((news, i) => {
           return (
             <div >
               <p className="container2">{news.question}</p>
               <p className="container3">{news.answer}</p>
             </div>
           );
-        })} */}
+        })}
         { ( pages && pages.map((page,i)=>
            {
-              <div id="two1" className="box1">
+              <div id={i+"the"} >
               <p>
               {/* <Link style={{textDecoration:"none", fontWeight:"bold"}} to="/SingleNews"> {blog.title} </Link> */}
               <h6> {page.title}</h6></p>
