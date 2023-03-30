@@ -2,6 +2,10 @@ import React, {useEffect, useState, useMemo} from 'react';
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../styles/AboutUs.css';
+
+import { convertToRaw, EditorState } from "draft-js";
+import draftToHtmlPuri from "draftjs-to-html";
+
 import {
   CButton,
   CCard,
@@ -69,6 +73,7 @@ const AboutUs = () => {
 
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=newPage`)
     .then((res) => { 
+      console.log(res);
     setPages(res.data.data.reverse());
     })
     .catch((err) =>{
@@ -106,22 +111,30 @@ const AboutUs = () => {
        </section>
        <br></br>
        <section >
-        { data.map((news, i) => {
+        {/* { data.map((news, i) => {
           return (
             <div >
               <p className="container2">{news.question}</p>
               <p className="container3">{news.answer}</p>
             </div>
           );
-        })}
+        })} */}
         { ( pages && pages.map((page,i)=>
            {
-              <div id={i+"the"} >
+            let data=JSON.parse(page.content)
+           const htmlPuri = draftToHtmlPuri(data);
+            console.log(htmlPuri);
+            console.log(page);
+            return(
+
+           
+              <div className='container3' >
               <p>
               {/* <Link style={{textDecoration:"none", fontWeight:"bold"}} to="/SingleNews"> {blog.title} </Link> */}
               <h6> {page.title}</h6></p>
-              <p>{page.content}</p>
+              <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td>
               </div>
+              )
             }
            )
          )}
