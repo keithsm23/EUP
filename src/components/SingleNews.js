@@ -1,14 +1,19 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios';
-import "../styles/News.css";
-import books from '../assets/books2.avif'
-
+import "../styles/SingleNews.css";
+import u86 from '../assets/u86.png';
+import book from '../assets/book.jpg';
+import laptop from '../assets/laptop.png';
+import { FaCalendar,  FaUser  } from "react-icons/fa";
+import { SocialIcon } from 'react-social-icons';
+import books from '../assets/books2.avif';
 import {
   CButton,
   CCard,
   CCardHeader,
   CCol,
+  CFormTextarea,
   CRow,
   CTable,
   CTableBody,
@@ -16,8 +21,9 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
-  CFormSelect
+  CFormSelect,
 } from '@coreui/react'
+
 
 
 
@@ -59,32 +65,111 @@ const getAllData = async (offset=0,limit=10)=>{
   },[]);
 
   return(
-    <div className='container'>
-    <img src={books} alt="hello" width="1348px" height="200px">
-  </img>
-    <div className="name"><h3>Comments</h3>
-    </div>
-      <div className="news data">
-              {/* <CTableHeaderCell  width="160px" scope="col">#</CTableHeaderCell> */}
-              <h1> Author</h1>
-             <h1>Comment</h1>
-             <h1>Date</h1>       
-             
+    <div> 
+  <section className="bg-img2">
+         <p className='md'>NEWS</p>
+         <p className='md-1'>Home/Blog</p>
+       </section>
+  <div id="wrapper11">
+   <div id="onesn"  className="boxsn">
+   <img id="u86_img1" alt="" className="img1" src={u86}></img>
   
-         {
-            blogs && blogs.map((blog,i)=>{
-                return(
-                 
-                  <tr key={i}>
-                  {/* <td>{user.id}</td> */}
-                  <td>{blog.commentAuthorName}</td>
-                  <td>{blog.comments}</td>
-                  <td>{blog.commentDate}</td>
-                  </tr>           
-                );
-              })
-         }
-        </div>
-        </div>             
+   
+  </div> 
+   <div id="twosn" className="boxsn">
+    
+    <h1 style={{ color:"darkblue"}}   className="text1">Popular Posts </h1> 
+    
+    <img id="book" style={{float:"left"}} alt="" className="img3" src={book}></img>  
+    <h2 style={{float:"right"}}  className="text2">Introduction to <br></br>languages</h2> 
+    <h5 style={{float:"right"}}  className="text3">25 Dec 2018 </h5>  
+  
+    <img id="book2" style={{float:"left"}} alt="" className="img3" src={laptop}></img> 
+     <h2 style={{float:"right"}}  className="text4">How to build <br></br>a game with Java</h2> 
+     <h5 style={{float:"right"}}  className="text5">25 Dec 2018 </h5>  
+
+     <img id="book3" style={{float:"left"}} alt="" className="img3" src={book}></img> 
+     <h2 style={{float:"right"}}  className="text6">How to build <br></br>a game with Java</h2> 
+     <h5 style={{float:"right"}}  className="text7">25 Dec 2018 </h5>  
+
+  </div> 
+  <div id="threesn" className="boxsn">
+  <p> 
+     <h2 > Few tips to get better results in examination</h2>
+     <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;25 Dec 2018 &nbsp;&nbsp;&nbsp;<FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>  Mark Anthem</h5></p>
+     <p>
+      
+      Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci 
+     elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus 
+     a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus .
+      <br></br><br></br>
+     gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat
+      ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+       Morbi accumsan ipsum velit. Nam nec tellus .<br></br><br></br>
+  
+    gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis 
+    sem nibh id elit.Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
+    ipsum velit. Nam nec tellus .
+     </p>
+  <br>
+  </br>
+  <br></br>
+
+  <p style={{ fontWeight:"bold"}}>&nbsp;&nbsp;&nbsp;&nbsp;Share: &nbsp;
+  <SocialIcon bgColor="darkblue" fgColor ="white" style={{ height: 35, width: 35 }} url="https://facebook.com" />&nbsp;&nbsp;
+    <SocialIcon bgColor="#00CED1"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://twitter.com" />&nbsp;&nbsp;
+    <SocialIcon bgColor="red"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://google.com" />&nbsp;&nbsp;
+    <SocialIcon bgColor="#B94366 "  fgColor ="white" style={{ height: 35, width: 35 }} url="https://instagram.com" />&nbsp;&nbsp;
+    <SocialIcon bgColor="#0077B5"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://linkedin.com" />&nbsp;&nbsp;
+  </p>   
+
+  </div>  
+  <div id="comment" className="boxsn">
+  <hr width="98%" 
+        size="1" 
+        align="left"  color="grey"></hr>
+    <h2>Comment(3)</h2>
+    <h5>25 Dec 2018 &nbsp;&nbsp;&nbsp;  Bobby Aktar</h5>
+    
+    <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons
+     equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+      Morbi accumsan ipsum velit. Nam nec tellus .
+    </p>
+    <br></br>
+   
+    <h5>25 Dec 2018 &nbsp;&nbsp;&nbsp;  Bobby Aktar</h5>
+    <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons
+     equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+      Morbi accumsan ipsum velit. Nam nec tellus .
+      </p>
+      <hr width="80%" 
+        size="1" 
+        align="left"  color="grey"></hr>
+  </div> 
+  <div id="leaveacomment" className="boxsn">
+    <h2>Leave  a Comment:</h2>
+    <br></br>
+  
+    <input 
+      type="text" 
+      placeholder="Name">
+    </input>
+    &nbsp;
+    &nbsp;
+    <input 
+      type="text" 
+      placeholder='email'>
+      </input>
+    <br>
+    </br><br></br>
+    <CFormTextarea  width="200px"  className='commentfield' placeholder='comment'></CFormTextarea>
+    <br></br> 
+    <br></br>
+    <CButton className='button'>Submit</CButton>
+  </div>  
+  </div>
+ 
+</div>
+         
   );
 }

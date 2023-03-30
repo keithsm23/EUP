@@ -7,8 +7,7 @@
     align-items: center;
     flex-direction: row;
     padding-top: 10px; 
-    
-    
+   
   }
   
   .socialMedia svg {
@@ -19,13 +18,14 @@
   }
   
   .footer p {
-    color: white;
+    color: white;cursor: pointer;
   }
   .footer a {
     color: white;
     text-decoration: none;
     margin: 20px;
     margin-left: 10px;
+  cursor: pointer;
   }
   
 .icons {
@@ -35,12 +35,24 @@
     padding-right: 590px;
     color: azure;
     position: absolute;
-    margin-left: -380px;
+    background-color: transparent;
+    margin-left: -380px;cursor: pointer;
   }
-  .footer .rightSide{
-    
+  .footer .rightSide button{
+    background-color: transparent;
     margin-right: 10px;
     align-items: center;
+    cursor: pointer;
+   
+  }
+  .footer #open .hiddenLinks {
+    display: inherit;
+    margin-left: 30px;
+ 
   }
   
+  .footer #close .hiddenLinks {
+    display: none;
  
+  }
+  

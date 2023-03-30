@@ -1,0 +1,193 @@
+.image{
+    height: 300px;
+    width: 100%;
+  }
+  .bg-img2{
+    background-image: 
+    url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg");
+    background-size: cover;
+    height: 40vh;
+    margin-top: -43px;
+    font-size:50px;
+    width: 100%;
+    background-repeat:no-repeat; 
+  }
+  #wrapper11{
+    display: flex;
+    max-width:1300px;
+    height: 1800px;
+    margin:0 auto;
+    margin-top:-5px;
+    justify-content: center;
+    text-align: justify;
+    background:white;
+    padding: 50px;
+    background-color: white;
+  }
+  .boxsn{
+    width:350px;
+    display: flex;
+    margin-left: 30px;
+    height:400px;
+  position: absolute;
+  margin-top: -5px;
+    display:inline-block;
+  }
+  #onesn{
+    width:60%;
+    justify-content: left; 
+    margin-right: 480px;
+    height:350px;
+    position: absolute;
+  }
+  #twosn{
+    width: 29%;
+   position: absolute;
+   border: thin;
+  height:630px; 
+   background-color:  rgb(250, 245, 245);
+  opacity:0.91;
+   margin-left: 850px; z-index:3; 
+  
+   
+  }
+  #threesn{
+    width:60%;
+    justify-content: left;  
+    overflow: clip; 
+    margin-right: 480px;
+    height:422px;
+    position: absolute;
+    margin-top: 400px;
+  }
+  #comment{
+    width:50%;
+    justify-content: left; 
+    margin-right: 580px;
+    height:410px;
+    position: absolute;
+    margin-top: 835px;
+  }
+  #leaveacomment{
+    width:50%;
+    justify-content: left; 
+    margin-right: 580px;
+    height:450px;
+    position: absolute;
+    margin-top: 1200px;
+  }
+  #u86_img1 {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 809px;
+    height: 350px;
+}
+.img1 {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+input[type=text], select {
+  width: 40%;
+  height:60px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=text1], select {
+  width: 82%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  height:100px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.button{
+  border-radius: 4px;
+  border-style: hidden;
+}
+#book {
+  border-width: 0px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-top: 75px;
+  margin-left: 16px;
+  width: 110px;
+  height: 110px;
+}
+
+
+.commentfield{
+  width: 546px;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+}
+.text{
+  margin-top: -10px;
+}
+.text01{
+  margin-right: 160px;
+}
+.text1{
+  margin-top:20px;
+ margin-left: 16px;
+}
+.text2{
+  margin-right: 73px;
+  float: right;
+  margin-top: -15px;
+}
+.text3{
+  margin-right: 170px;
+  float: right;
+  margin-top:-5px;
+}
+#book2 {
+  border-width: 0px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-top: 240px;
+  margin-left: 16px;
+  width: 110px;
+  height: 110px;
+}
+.text4{
+  margin-right: 50px;
+  float: right;
+  margin-top: 45px;
+}
+.text5{
+  margin-right: 170px;
+  float: right;
+  margin-top:-5px;
+}
+#book3 {
+  border-width: 0px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin-top: 400px;
+  margin-left: 16px;
+  width: 110px;
+  height: 110px;
+}
+.text6{
+  margin-right: 50px;
+  float: right;
+  margin-top: 45px;
+}
+.text7{
+  margin-right: 170px;
+  float: right;
+  margin-top:-5px;
+}

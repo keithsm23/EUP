@@ -20,7 +20,7 @@ function Header() {
     <div className="navbar1">
      <div className="leftSide">
      <GoMail style={{ height: 35, width: 35, color: " #CDCDCD" }} />
-     <h3  style={{color:" #CDCDCD" }}>support@yourmail.com</h3>
+     <h4  style={{color:" #CDCDCD" }}>support@yourmail.com</h4>
      <div className="leftSide1">
      <FaPhoneAlt style={{ height: 24, width: 24, color:" #CDCDCD"}} />
   
@@ -30,10 +30,10 @@ function Header() {
      </div>
       <div className="rightSide">
       <h4 style={{color:" #CDCDCD" }}>Follow Us:</h4>
-      <SocialIcon bgColor="blue" fgColor ="white" style={{ height: 30, width: 30 }} url="https://facebook.com" />
-    <SocialIcon  fgColor ="white" style={{ height: 30, width: 30 }} url="https://twitter.com" />
-    <SocialIcon  fgColor ="white" style={{ height: 30, width: 30 }} url="https://google.com" />
-    <SocialIcon  fgColor ="white" style={{ height: 30, width: 30 }} url="https://instagram.com" />
+      <SocialIcon bgColor="transparent" fgColor ="white" style={{ height: 30, width: 30 }} url="https://facebook.com" />
+    <SocialIcon bgColor="transparent"  fgColor ="white" style={{ height: 30, width: 30 }} url="https://twitter.com" />
+    <SocialIcon bgColor="transparent"  fgColor ="white" style={{ height: 30, width: 30 }} url="https://google.com" />
+    <SocialIcon bgColor="transparent"  fgColor ="white" style={{ height: 30, width: 30 }} url="https://instagram.com" />
     <h4  style={{color:"rgb(221, 182, 10)" }}>Admission</h4>
         
       </div>

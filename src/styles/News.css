@@ -94,15 +94,16 @@
   #wrapper1{
     display: flex;
     max-width:1350px;
-    height: 400px;
+    /* height: 400px; */
     margin:0 auto;
+    margin-left: 60px;
+    margin-right: 60px;
     justify-content: center;
     text-align: justify;
     background:white;
     padding: 30px;
-    margin-top: 50px;
+    margin-top: 40px;
   }
-
 
 
   .box2{
@@ -130,6 +131,7 @@
     display: flex;
     max-width:1350px;
     height: 400px;
+    margin-bottom: 200px;
     margin:0 auto;
     justify-content: center;
     text-align: justify;
@@ -140,8 +142,8 @@
     width:300px;
     display: flex;
     margin-left: 40px;
-    height:200px;
-  border-color: green;
+    height:100px;
+    border-color: green;
     display:inline-block;
     margin-top: -380px;
     margin-bottom: 30px;
@@ -161,7 +163,8 @@
   #wrapper3{
     display: flex;
     max-width:1350px;
-    height: 5px;
+    height: 0px;
+    border-color: green;
     margin:0 auto;
     justify-content: center;
     text-align: justify;
@@ -189,10 +192,11 @@
 .pagination 
 {
      display:flex;
-     margin-left: 550px;
+     margin-left: 560px;
     padding-left: 0;
     list-style: none;
     border-radius: 0.35rem;
+    margin-bottom: 95px;
 } 
 .previousClassName a {
     text-decoration: none;
@@ -223,4 +227,21 @@
 .activeClassName {
     background-color: #169BD5;
     color: #fff; 
+}
+.image{
+  height: 300px;
+  width: 100%;
+}
+.bg-img1{
+  background-image: 
+  url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg");
+  background-size: cover;
+  height: 40vh;
+  margin-top: -35px;
+  font-size:50px;
+  width: 100%;
+  background-repeat:no-repeat; 
+}
+.wrappermain{
+  height: 1140px;
 }
