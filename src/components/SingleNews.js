@@ -5,6 +5,9 @@ import "../styles/SingleNews.css";
 import u86 from '../assets/u86.png';
 import book from '../assets/book.jpg';
 import laptop from '../assets/laptop.png';
+import useFullPageLoader from '../hooks/useFullPageLoader';
+import { convertToRaw, EditorState } from "draft-js";
+import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar,  FaUser  } from "react-icons/fa";
 import { SocialIcon } from 'react-social-icons';
 import books from '../assets/books2.avif';
@@ -16,10 +19,6 @@ import {
   CFormTextarea,
   CRow,
   CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
   CTableRow,
   CFormSelect,
 } from '@coreui/react'
@@ -28,21 +27,31 @@ import {
 
 
 export default function SingleNews() {
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
   const[blogs, setBlogs] = useState([]);
+  const[input,setInput] = useState({
+    title:"",
+    slug:"",
+    authorName:"",
+    publicationDate:"",
+    content:"",
+    status:"",
+    accessLevel:"",
+    seoTitle:"", 
+    seoDescription:"",
+    seoKeywords:"",
+    commentsEnabled:"",
+    commentsCount:"",
+    featuredImage:""
+  });
   
 //fetch data
-const getAllData = async (offset=0,limit=10)=>{
+const getAllData = async ()=>{
 
-  let getToken = localStorage.getItem('token');
-          
-  const config={
-    headers:{
-        token: `${getToken}`,
-        "Content-Type":"application/json",
-    }
-  };
-    const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/getCommentData?contentId=11`,config)
+  
+    const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=Audit/Failure`)
     .then((res) => { 
+      console.log(res)
     setBlogs(res.data.data.reverse());
     })
     .catch((err) =>{
@@ -51,30 +60,48 @@ const getAllData = async (offset=0,limit=10)=>{
 
 
 
-  //display user list
+  //display blogs and comments
   useEffect(()=>{
-    let getToken = localStorage.getItem('token');
-        
-    const config={
-    headers:{
-        token: `${getToken}`,
-        "Content-Type":"application/json",
-    }
-    }; 
+
     getAllData();
   },[]);
 
-  return(
-    <div> 
+  return ( <div> 
+
+
   <section className="bg-img2">
          <p className='md'>NEWS</p>
          <p className='md-1'>Home/Blog</p>
-       </section>
-  <div id="wrapper11">
+         </section>
+
+       {
+          blogs && blogs.map((blog,i)=>{
+          console.log(blog);
+          const htmlPuri = draftToHtmlPuri(blog);
+          console.log(htmlPuri);
+
+          return(
+            
+          <tr key={i}>
+          {/* <td>{user.id}</td> */}  
+
+          <img width="1348px" height="470px"   src={`data:image/png;base64,${blog.featuredImage}`} />
+         
+   
+
+          </tr>         
+          );
+        })
+   }
+
+
+{/* 
+   <div id="wrapper11">
    <div id="onesn"  className="boxsn">
-   <img id="u86_img1" alt="" className="img1" src={u86}></img>
+   <img id="u86_img1" alt="" className="img1" src={u86}></img> 
   
    
+ 
   </div> 
    <div id="twosn" className="boxsn">
     
@@ -168,7 +195,7 @@ const getAllData = async (offset=0,limit=10)=>{
     <CButton className='button'>Submit</CButton>
   </div>  
   </div>
- 
+  */}
 </div>
          
   );

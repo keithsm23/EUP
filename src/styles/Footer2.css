@@ -1,0 +1,12 @@
+.footer2 {
+    width: 5;
+    height: 70px;
+    background-color: rgb(4, 26, 48);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-top:-13px; 
+   
+  }
+  
