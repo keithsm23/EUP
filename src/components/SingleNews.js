@@ -54,8 +54,8 @@ const getAllData = async ()=>{
       `http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=Education/blog`
       )
     .then((res) => {
-      console.log(res); 
-    setBlogs(res.data);
+      console.log(res.data.data); 
+    setBlogs(res.data.data);
     })
     .catch((err) =>{} );      
   };
@@ -77,9 +77,10 @@ const getAllData = async ()=>{
          <p className='md'>NEWS</p>
          <p className='md-1'>Home/Blog</p>
          </section>
-
-      {
-          blogs && blogs.map((blog,i)=>{
+{/* 
+      {(
+          blogs && blogs.map((blog,i)=>
+        {
           console.log("blog", blog);
           const htmlPuri = draftToHtmlPuri(blog);
           console.log(htmlPuri);
@@ -87,11 +88,12 @@ const getAllData = async ()=>{
           return(
             
           <tr key={i}>
-       <td>{blog.title}</td>
+          <td>{blog.title}</td>
           </tr>         
           );
         })
-     }   
+        )
+     }     */}
 
 
 
