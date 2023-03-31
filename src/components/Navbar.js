@@ -19,7 +19,7 @@ function Navbar() {
       <div  className="rightSide">
         <Link to="/"> HOME </Link>
         <Link to="/about"> ABOUT US</Link>
-        <Link to="/services"> SERVICES </Link>
+        <Link to="/services"> COURSES </Link>
         <Link to="/news"> NEWS </Link>
         <Link to="/contact"> CONTACT </Link>    
       </div>

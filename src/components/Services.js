@@ -1,4 +1,11 @@
-import React from "react";
+import React, {useEffect, useState, useMemo} from 'react';
+import { Link,  useNavigate } from "react-router-dom";
+import axios from 'axios';
+import '../styles/AboutUs.css';
+
+import { convertToRaw, EditorState } from "draft-js";
+import draftToHtmlPuri from "draftjs-to-html";
+
 const data = [
   {
       question: "What is Lorem Ipsum?",
@@ -19,22 +26,75 @@ const data = [
 ]
 
 const Services = () => {
+  const[courses, setCourses] = useState([]);
+    const[input,setInput] = useState({
+      title:"",
+      slug:"",
+      author:"",
+      description:"",
+      content:"",
+      status:0,
+      accessLevel:"",
+      seoTitle:"",
+      seoDescription:"",
+      seoKeywords:"",
+      parentId:0,
+      publicationDate:""
+      });
+
+      const getAllData = async ()=>{
+        const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=newPage`)
+       .then((res) => { 
+        console.log(res.data.data);
+        setCourses([res.data.data]);
+})
+        .catch((err) =>{
+         } );      
+       };
+
+       useEffect(()=>{
+        getAllData();
+       },[]);
+
   return (
      <div>
-      <section className="bg-img">
+      {/* <section className="bg-img">
          <p className='md'>SAMPLE PAGE</p>
          <p className='md-1'>Home/Sample Page</p>
-       </section>
+       </section> */}
+      
        <br></br>
        <section >
-        { data.map((news, i) => {
-          return (
-            <div >
-              <p className="container2">{news.question}</p>
-              <p className="container3">{news.answer}</p>
-            </div>
-          );
-        })}
+       { ( courses && courses.map((course,i)=>
+           {
+            let data=JSON.parse(course.description)
+           const htmlPuri = draftToHtmlPuri(data);
+            console.log(htmlPuri);
+            console.log(course);
+            return(
+              
+           
+              <div>
+                 <div style={{
+                    backgroundImage: `url(data:image/png;base64,${course && course.image})`,
+                    height: "200px",
+                    width: "100%",
+                  }}
+                 >
+                 <p className="md">{course.title}</p> {" "}
+                 <p className="md-1">Home/{course.title}</p>
+               </div>
+               <br></br>
+               <br></br>
+              {/* <p> */}
+              {/* <Link style={{textDecoration:"none", fontWeight:"bold"}} to="/SingleNews"> {blog.title} </Link> */}
+              {/* <h2 className='container2'> {course.title}</h2></p> */}
+              <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td>
+              </div>
+              )
+            }
+           )
+         )}
         </section>
      </div>
   )

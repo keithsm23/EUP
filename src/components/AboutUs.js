@@ -2,9 +2,12 @@ import React, {useEffect, useState, useMemo} from 'react';
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../styles/AboutUs.css';
+// import useFullPageLoader from "src/hooks/useFullPageLoader";
 
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
+
+import Footer from './Footer';
 
 import {
   CButton,
@@ -44,6 +47,7 @@ const data = [
   
 const AboutUs = () => {
     // console.log("props", props);
+    // const [loader, showLoader, hideLoader] = useFullPageLoader();
     const[pages, setPages] = useState([]);
     const[input,setInput] = useState({
       title:"",
@@ -73,9 +77,9 @@ const AboutUs = () => {
 
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=newPage`)
     .then((res) => { 
-      console.log(res);
-    setPages(res.data.data.reverse());
-    })
+      console.log(res.data.data);
+    setPages([res.data.data]);
+})
     .catch((err) =>{
     } );      
   };
@@ -89,6 +93,7 @@ const AboutUs = () => {
   //       "Content-Type":"application/json",
   //   }
   //   }; 
+  // showLoader();
    getAllData();
   },[]);
   
@@ -105,11 +110,12 @@ const AboutUs = () => {
       
     
       <div>
-       <section className="bg-img">
+       {/* <section className="bg-img">
+        <img src={`data:image/png;base64,${page.image}`} />
          <p className='md'>SAMPLE PAGE</p>
          <p className='md-1'>Home/Sample Page</p>
        </section>
-       <br></br>
+       <br></br> */}
        <section >
         {/* { data.map((news, i) => {
           return (
@@ -121,17 +127,33 @@ const AboutUs = () => {
         })} */}
         { ( pages && pages.map((page,i)=>
            {
-            let data=JSON.parse(page.content)
+            let data=JSON.parse(page.description)
            const htmlPuri = draftToHtmlPuri(data);
             console.log(htmlPuri);
             console.log(page);
             return(
 
            
-              <div className='container3' >
-              <p>
-              {/* <Link style={{textDecoration:"none", fontWeight:"bold"}} to="/SingleNews"> {blog.title} </Link> */}
-              <h6> {page.title}</h6></p>
+              <div >
+                {/* <section>
+                <img className='bg-img' src={`data:image/png;base64,${page.image}`} />
+
+                <p className='md'>{page.title}</p>
+                </section> */}
+                <div style={{
+                   backgroundImage: `url(data:image/png;base64,${page && page.image})`,
+                   height: "200px",
+                   width: "100%",
+                  }}
+                  >
+                  <p className="md">{page.title}</p> {" "}
+                  <p className="md-1">Home/{page.title}</p>
+               </div>
+              {/* <p>
+              <Link style={{textDecoration:"none", fontWeight:"bold"}} to="/SingleNews"> {blog.title} </Link> 
+               <h2 className='container2'> {page.title}</h2></p> */}
+               <br></br>
+               <br></br>
               <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td>
               </div>
               )
@@ -140,6 +162,7 @@ const AboutUs = () => {
          )}
         </section>
       </div>
+      
     );
     
   };

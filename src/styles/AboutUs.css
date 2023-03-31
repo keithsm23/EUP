@@ -8,25 +8,21 @@
     width: 100%;
     padding-left: 50px;
 }
-
 .container3{
     padding-left: 50px;
     width: 100%;
-    height: 200px;
+    height: 100%;
 }
 .image{
     height: 300px;
     width: 100%;
 }
 .bg-img{
-    background-image: 
-    url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg");
-    background-size: cover;
-    height: 30vh;
-    margin-top: -40px;
-    font-size:50px;
+    /* background-image: 
+    url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg"); */
+    /* url:{`data:image/png;base64,${page.image}`}; */
     width: 100%;
-    background-repeat:no-repeat; 
+    height: 300px;
   }
   .md{
     font-size: 30px;
