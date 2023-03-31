@@ -1,5 +1,5 @@
 .navbar1 {
-    width: 100%;
+    width: 1348px;
     height: 70px;
     background-color: rgba(7, 41, 77, 1);
     display: flex;
@@ -12,7 +12,7 @@
     display: flex;
     margin-left: 10px;
     align-items: center;
-    padding-left: 10px;
+    padding-right: 10px;
   }
   
   .navbar1 .leftSide img {
@@ -20,18 +20,18 @@
   }
   
   .navbar1 .rightSide {
-    flex: 50%;
+    flex: 3000%;
     height: 100%;
     display: flex;
-    align-items: center;
-    margin-right: 15px;
-    justify-content: right;
+  align-items: center;
+    margin-left: 700px;
+    padding-left:-16px; 
   }
   
   .navbar1 a {
     color: white;
     text-decoration: none;
-    margin: 20px;
+    margin: 8px;
   }
   
   .navbar1 .rightSide button {
