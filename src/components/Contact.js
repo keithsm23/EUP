@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../styles/AboutUs.css';
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
+import useFullPageLoader from '../hooks/useFullPageLoader';
 import '../styles/contact.css';
 
 
@@ -57,21 +58,25 @@ import {
 
 const Contact = () => {
 const[contacts, setContacts] = useState([]);
+const [loader, showLoader, hideLoader] = useFullPageLoader();
 const[input,setInput] = useState({
 
 });
 
 const getAllData = async ()=>{
+
 const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=contact`)
 .then((res) => {
 console.log(res.data.data);
 setContacts([res.data.data]);
+hideLoader();
 })
 .catch((err) =>{
 }); 
 };
 
 useEffect(()=>{
+  showLoader();
 
 //   let getToken = localStorage.getItem('token');
 //   const config={
@@ -141,24 +146,23 @@ return (
 </p>
 <div
  style={{backgroundImage: `url(data:image/png;base64,${contact && contact.image})`,
- height: "200px",
- width: "200px",
+ height: "400px",
+ width: "400px",
   }} 
 >
-  <p className="md">Contact</p>{" "}
-  
-  <p className="md-1">Home/Contact</p>
+
   
   </div>
-  <td className="container3">
+ 
   
   <div dangerouslySetInnerHTML={{ __html: htmlPuri }} />
   {" "}
-  </td>
+
   </div>
   );
   })}
   </section>
+  {loader}
   </div>
 );
 };
