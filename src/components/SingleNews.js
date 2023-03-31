@@ -49,13 +49,15 @@ export default function SingleNews() {
 const getAllData = async ()=>{
 
   
-    const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=Audit/Failure`)
-    .then((res) => { 
-      console.log(res)
-    setBlogs(res.data.data.reverse());
+    const res=await axios
+    .get(
+      `http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=Education/blog`
+      )
+    .then((res) => {
+      console.log(res); 
+    setBlogs(res.data);
     })
-    .catch((err) =>{
-    } );      
+    .catch((err) =>{} );      
   };
 
 
@@ -66,36 +68,33 @@ const getAllData = async ()=>{
     getAllData();
   },[]);
 
-  return ( <div> 
+  return ( 
+  
+    <div> 
 
 
-  <section className="bg-img2">
+        <section className="bg-img2">
          <p className='md'>NEWS</p>
          <p className='md-1'>Home/Blog</p>
          </section>
 
-       {
+      {
           blogs && blogs.map((blog,i)=>{
-          console.log(blog);
+          console.log("blog", blog);
           const htmlPuri = draftToHtmlPuri(blog);
           console.log(htmlPuri);
 
           return(
             
           <tr key={i}>
-          {/* <td>{user.id}</td> */}  
-
-          <img width="1348px" height="470px"   src={`data:image/png;base64,${blog.featuredImage}`} />
-         
-   
-
+       <td>{blog.title}</td>
           </tr>         
           );
         })
-   }
+     }   
 
 
-{/* 
+
    <div id="wrapper11">
    <div id="onesn"  className="boxsn">
    <img id="u86_img1" alt="" className="img1" src={u86}></img> 
@@ -195,7 +194,7 @@ const getAllData = async ()=>{
     <CButton className='button'>Submit</CButton>
   </div>  
   </div>
-  */}
+ 
 </div>
          
   );
