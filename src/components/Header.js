@@ -58,25 +58,23 @@ function Header() {
         <tr key={i}>
         {/* <td>{user.id}</td> */}
         <div className="navbar1">
-          <div className="leftSide">
-              <GoMail style={{ height: 35, width: 35, color: " #CDCDCD" }} />
-              <h4  style={{color:" #CDCDCD" }}>{home.email}</h4>
-
-
-              <div className="leftSide1">
+          <div className="leftSide2">
+              <GoMail style={{ height: 35, width: 35, color: " #CDCDCD"}}/>
+              <h4 style={{color:" #CDCDCD",  }}>&nbsp;{home.email}</h4>
+             &nbsp;&nbsp;&nbsp;
               <FaPhoneAlt style={{ height: 24, width: 24, color:" #CDCDCD"}} />
-              <h4 style={{color:" #CDCDCD"}}> {home.phoneNumber}</h4>
-              </div>
+              <h4 style={{color:" #CDCDCD"}}> &nbsp;{home.phoneNumber}</h4>
+           
           </div>
 
 
-          <div className="rightSide">
+          <div className="rightSide1">
             <h4 style={{color:" #CDCDCD" }}>Follow Us:</h4>
             <SocialIcon bgColor="transparent" fgColor ="white" style={{ height: 30, width: 30 }} url={home.facebookLink}/>
             <SocialIcon bgColor="transparent"  fgColor ="white" style={{ height: 30, width: 30 }} url={home.twitterLink} />
             <SocialIcon bgColor="transparent"  fgColor ="white" style={{ height: 30, width: 30 }} url={home.youtubeLink}/>
             <SocialIcon bgColor="transparent"  fgColor ="white" style={{ height: 30, width: 30 }} url={home.linkedLink}/>
-            <h4  style={{color:"rgb(221, 182, 10)" }}>Admission</h4>   &nbsp;&nbsp;
+            <h4  style={{color:"rgb(221, 182, 10)" }}>&nbsp;&nbsp;&nbsp;&nbsp; Admission</h4>   &nbsp;&nbsp;
           </div>
         </div>
       </tr>          
