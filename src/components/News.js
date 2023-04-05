@@ -90,7 +90,7 @@ const getAllData = async (offset=0,limit=3)=>{
           <tr key={i}>
           {/* <td>{user.id}</td> */}   
           <div style={{
-                   backgroundImage: `url(data:image/png;base64,${page && page.image})`,
+                   backgroundImage: `url(${page && page.image})`,
                    height: "200px",
                    width: "100%",
                   }} className='bg-img1'
@@ -99,7 +99,7 @@ const getAllData = async (offset=0,limit=3)=>{
                   <p className="md-1">Home/{page.title}</p>
                </div>
 
-            <img  className='featuredImage' src={`data:image/png;base64,${blog.featuredImage}`} /> 
+            <img  className='featuredImage' src={blog.featuredImage} /> 
         
 
 

@@ -31,7 +31,7 @@ function Header() {
   //fetch data
   const getAllData = async ()=>{
    
-    const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=newPage`)
+    const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=EUBIN`)
       .then((res) => { 
         console.log(res)
       setSettings(res.data.data.reverse());

@@ -93,29 +93,19 @@ const Home = () => {
                 </div> 
                 {settings.latestNews.map((news, index) => { 
                     console.log("news", news);         
-                    return (  
-      
+                    return (    
+                      
                       <div id="two" className="box">
-                     <br></br><h1 className="newshead">Latest News</h1>
+                        <br></br><h1 className="newshead">Latest News</h1>
 
-                      <div className="textt">
+                        <div className="textt">
                         
                         <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;
                           {news.publicationDate}
                         </h5> 
                       
-                        <h2>{news.title}</h2>
-                               
-                      </div>
-                     
-                     {/* <hr
-                            className="line"
-                            width="70%"
-                            size="1"
-                            align="center"
-                            color="grey"
-                          >
-                       </hr>                     */}
+                        <h2>{news.title}</h2>                            
+                        </div>               
                       </div>                  
                     );
                   })} 

@@ -39,13 +39,13 @@
   #onesn{
     width:810px;
     justify-content: left; 
-    margin-right: 480px;border: solid;
+    margin-right: 480px;
     height:350px;
     position: absolute;
   }
   #twosn{
     width: 390px;
-   position: absolute;border: solid;border-color: green;
+   position: absolute;
    border: thin;
   height:630px; 
    background-color:  rgb(250, 245, 245);
@@ -56,7 +56,7 @@
   }
   #threesn{
     width:810px;
-    justify-content: left; border: solid; 
+    justify-content: left;
     overflow: clip; 
     margin-right: 480px;
     height:422px;
@@ -66,13 +66,13 @@
   #comment{
     width:675px;
     justify-content: left; 
-    margin-right: 580px;border:solid;
+    margin-right: 580px;
     height:410px;
     position: absolute;
     margin-top: 835px;
   }
   #leaveacomment{
-    width:675px;border:solid;
+    width:675px;
     justify-content: left; 
     margin-right: 580px;
     height:450px;
