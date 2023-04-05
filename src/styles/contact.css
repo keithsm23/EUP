@@ -1,16 +1,51 @@
 
-.container3{
+/* .container3{
     width: 80%;
     height: 100%;
  
 
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap');
+.container1{
+    height: 100vh;
+    width : 100vh;
 }
 
-.bg-img{
+.container2{
+    font-weight: bold;
+    width: 100%;
+    padding-left: 50px;
+}
+.container3{
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+}
+.image{
+    height: 300px;
+    width: 100%;
+}
+
+.md{
+    font-size: 30px;
+    padding-top: 50px;
+    font-weight: bold;
+    padding-left: 50px;
+    color: white;
+  }
+  .md-1{
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 50px;
+    margin-top: -20px;
+    color: white;
+  }
+
+/* .bg-img{
     background-image: 
     url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg"); 
    
     width: 100%;
     height: 300px;
-  }
+  } */

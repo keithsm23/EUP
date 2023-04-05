@@ -65,7 +65,7 @@ const[input,setInput] = useState({
 
 const getAllData = async ()=>{
 
-const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=contact`)
+const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=React/core/ui`)
 .then((res) => {
 console.log(res.data.data);
 setContacts([res.data.data]);
@@ -106,7 +106,7 @@ getAllData();
 // };
 return (
 <div>
-  <section className="bg-img">
+  <section>
   {/* <div
   
             style={{
@@ -124,8 +124,7 @@ return (
               <p className="md">Contact</p>  <p className="md-1">Home/Contact</p>
   
           </div> */}
-  <p className="md">Contact</p>{" "}
-  <p className="md-1">Home/Contact</p>
+  
   
   </section>
   <br></br>
@@ -136,26 +135,25 @@ return (
   // console.log(htmlPuri);
   console.log('contact', contact);
   return (
-  <div className="container3">
+  <div>
   <p>
   
 {/* <Link style={{textDecoration:"none", fontWeight:"bold"}} to="/SingleNews"> {blog.title} </Link> */}
   
-<h2>{contact.title}</h2>
+{/* <h2>{contact.title}</h2> */}
   
 </p>
 <div
  style={{backgroundImage: `url(data:image/png;base64,${contact && contact.image})`,
- height: "400px",
- width: "400px",
+ height: "200px",
+ width: "100%",
   }} 
 >
-
+                  <p className="md">{contact.title}</p> {" "}
+                  <p className="md-1">Home/{contact.title}</p>
+               </div>
   
-  </div>
- 
-  
-  <div dangerouslySetInnerHTML={{ __html: htmlPuri }} />
+ <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }} /></td>
   {" "}
 
   </div>
