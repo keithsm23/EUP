@@ -31,7 +31,7 @@ const Home = () => {
   const getAllData = async () => {
     const res = await axios
       .get(
-        `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=newPage`
+        `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=React/core/ui`
       )
       .then((res) => {
         setSettings(res.data);

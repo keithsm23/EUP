@@ -28,21 +28,19 @@ import {
 
 export default function SingleNews() {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
+  const navigate = useNavigate(); 
   const[blogs, setBlogs] = useState([]);
+  const[render,setRender]=useState(false);
   const[input,setInput] = useState({
-    title:"",
-    slug:"",
-    authorName:"",
-    publicationDate:"",
-    content:"",
-    status:"",
-    accessLevel:"",
-    seoTitle:"", 
-    seoDescription:"",
-    seoKeywords:"",
-    commentsEnabled:"",
-    commentsCount:"",
-    featuredImage:""
+    comments:"",
+    // content:"",
+    // status:"",
+    commentType: 1,
+    // commentsEnabled:"",
+    // commentsCount:"",
+    commentAuthorName:"",
+    commentAuthorEmail:"",
+    contentId:""
   });
   
 //fetch data
@@ -51,7 +49,7 @@ const getAllData = async ()=>{
   
     const res=await axios
     .get(
-      `http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=Education/blog`
+      `http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=React/core/ui`
       )
     .then((res) => {
       console.log(res.data.data); 
@@ -64,9 +62,38 @@ const getAllData = async ()=>{
 
   //display blogs and comments
   useEffect(()=>{
-
+    let getId = localStorage.getItem('ID');
+    setInput(JSON.parse(getId));
     getAllData();
   },[]);
+
+  let getId = localStorage.getItem('ID');
+  let id = JSON.parse(getId);
+
+    const config = {
+       headers: {
+        // "token": `${getId}`,
+         "Content-Type": "application/json", 
+        }
+      };
+
+      const handleSubmit= async(e)=>{ 
+        showLoader();
+        let allDetails = {...input, contentId:id, commentType: 1}
+      await axios.post(`http://api-cms-poc.iplatformsolutions.com/api/blog/addComment`,allDetails,config)
+      .then((res ) =>{
+        navigate("/SingleNews"); 
+        hideLoader();
+        console.log('res', res)
+      }) 
+      .catch((err) => {
+        console.log(err);
+        hideLoader();
+      })
+      // console.log('id', getToken);
+      setRender(true);  
+    };
+    
 
   return ( 
   
@@ -179,25 +206,42 @@ const getAllData = async ()=>{
     <br></br>
   
     <input 
+     name='commentAuthorName'
+     onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
       type="text" 
       placeholder="Name">
     </input>
     &nbsp;
     &nbsp;
-    <input 
+    <input
+    name='commentAuthorEmail' 
+    onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
       type="text" 
       placeholder='email'>
       </input>
+      {/* <input
+    name='contentId' 
+    onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
+      type="text" 
+      aria-describedby='disabled'>
+      </input>  */}
     <br>
     </br><br></br>
-    <CFormTextarea  width="200px"  className='commentfield' placeholder='comment'></CFormTextarea>
+    <CFormTextarea  
+    width="200px"  
+    className='commentfield' 
+    placeholder='comment'
+    name='comments'
+    onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
+    >
+    </CFormTextarea>
     <br></br> 
     <br></br>
-    <CButton className='button'>Submit</CButton>
+    <CButton onClick={handleSubmit} className='button'>Submit</CButton>
   </div>  
   </div>
  
 </div>
-         
-  );
-}
+
+);
+    }

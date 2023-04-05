@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios';
+import useFullPageLoader from '../hooks/useFullPageLoader';
 import '../styles/AboutUs.css';
 
 import { convertToRaw, EditorState } from "draft-js";
@@ -26,6 +27,7 @@ const data = [
 ]
 
 const Services = () => {
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
   const[courses, setCourses] = useState([]);
     const[input,setInput] = useState({
       title:"",
@@ -47,12 +49,14 @@ const Services = () => {
        .then((res) => { 
         console.log(res.data.data);
         setCourses([res.data.data]);
+        hideLoader();
 })
         .catch((err) =>{
          } );      
        };
 
        useEffect(()=>{
+        showLoader();
         getAllData();
        },[]);
 
@@ -96,6 +100,7 @@ const Services = () => {
            )
          )}
         </section>
+        {loader}
      </div>
   )
 };

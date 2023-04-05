@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios';
+import useFullPageLoader from '../hooks/useFullPageLoader';
 import '../styles/AboutUs.css';
 // import useFullPageLoader from "src/hooks/useFullPageLoader";
 
@@ -47,7 +48,7 @@ const data = [
   
 const AboutUs = () => {
     // console.log("props", props);
-    // const [loader, showLoader, hideLoader] = useFullPageLoader();
+    const [loader, showLoader, hideLoader] = useFullPageLoader();
     const[pages, setPages] = useState([]);
     const[input,setInput] = useState({
       title:"",
@@ -75,10 +76,11 @@ const AboutUs = () => {
   //     //   }
   //     // };
 
-     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=newPage`)
+     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=React/core/ui`)
     .then((res) => { 
       console.log(res.data.data);
     setPages([res.data.data]);
+    hideLoader();
 })
     .catch((err) =>{
     } );      
@@ -93,7 +95,7 @@ const AboutUs = () => {
   //       "Content-Type":"application/json",
   //   }
   //   }; 
-  // showLoader();
+   showLoader();
    getAllData();
   },[]);
   
@@ -161,6 +163,7 @@ const AboutUs = () => {
            )
          )}
         </section>
+        {loader}
       </div>
       
     );

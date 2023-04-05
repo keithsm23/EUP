@@ -90,7 +90,7 @@ const getAllData = async (offset=0,limit=3)=>{
         
 
 
-          <div className='title'><h2><td><Link style={{"text-decoration":"none"}} to="/SingleNews">{blog.title}</Link></td></h2> </div>  
+          <div className='title'><h2><td><Link onClick={()=>localStorage.setItem('ID', JSON.stringify(blog.id))} style={{"text-decoration":"none"}} to="/SingleNews">{blog.title}</Link></td></h2> </div>  
     
        <div className='author'><h5> <td> <FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp; 
        {blog.authorName} &nbsp;<FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;
