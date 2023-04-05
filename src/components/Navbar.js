@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import logo from '../assets/edubin.png'
+import { fontSize, fontStyle } from "@mui/system";
 
 
 function Navbar() {
@@ -13,11 +14,11 @@ function Navbar() {
   // };
   return (
     <div className="navbar">
-      <div className="leftSide">
-      <a href="/"> <img src={logo} alt=""  style={{ width: 200 , height: 50 }} ></img></a>
+      <div className="leftSide1">
+      <a href="/"  rel="stylesheet"> <img src={logo} alt=""  style={{ width: 200 , height: 50 }} ></img></a>
       </div>
-      <div  className="rightSide">
-        <Link to="/"> HOME </Link>
+      <div className="rightSide1">
+        <Link style={{color:"#FFAC00", fontWeight:700 }} to="/"> HOME </Link>
         <Link to="/about"> ABOUT US</Link>
         <Link to="/services"> COURSES </Link>
         <Link to="/news"> NEWS </Link>

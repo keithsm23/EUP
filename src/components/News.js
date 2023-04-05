@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "../styles/News.css";
+import ss from "../assets/ss.png";
 import books from '../assets/books2.avif';
 import u86 from '../assets/u86.png';
 import useFullPageLoader from '../hooks/useFullPageLoader';
@@ -35,14 +36,14 @@ export default function News() {
 //fetch data
 const getAllData = async (offset=0,limit=3)=>{
 
-  const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/blog/allBlog?offset=${0}&limit=${3}`)
+  const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/blog/allBlog?offset=${offset}&limit=${limit}`)
     .then((res) => { 
-      console.log(res)
+     
     setBlogs(res.data.data.reverse());
     hideLoader();
     if(res && res.data && res.data.totalCount)
     {
-      setTotalCount(Math.ceil(res.data.totalCount/10));
+      setTotalCount(Math.ceil(res.data.totalCount/3));
     }
     console.log(res);
     })
@@ -68,10 +69,11 @@ const getAllData = async (offset=0,limit=3)=>{
   return(
     <>
     <div> 
-     <section className="bg-img1">
+
+      {/* <img className="bg-img1" src={ss}>
          <p className='md'>NEWS</p>
-         <p className='md-1'>Home/Blog</p>
-       </section>
+         <p className='md-1'>Home/Blog</p> 
+       </img> */}
     <div className='wrappermain'>
 
 
@@ -84,9 +86,20 @@ const getAllData = async (offset=0,limit=3)=>{
 
           return(
             
+            
           <tr key={i}>
           {/* <td>{user.id}</td> */}   
-            <img  className='featuredImage' src={`data:image/png;base64,${blog.featuredImage}`} /> 
+          <div style={{
+                   backgroundImage: `url(${page && page.image})`,
+                   height: "200px",
+                   width: "100%",
+                  }} className='bg-img1'
+                  >
+                  <p className="md">{page.title}</p> {" "}
+                  <p className="md-1">Home/{page.title}</p>
+               </div>
+
+            <img  className='featuredImage' src={blog.featuredImage} /> 
         
 
 
@@ -95,8 +108,8 @@ const getAllData = async (offset=0,limit=3)=>{
        <div className='author'><h5> <td> <FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp; 
        {blog.authorName} &nbsp;<FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;
        {blog.publicationDate}</td> </h5>
-       </div> <br></br>
-   
+       </div> 
+   <br></br>
            <div className='newscontent'><tr><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></tr></div>
         
 
@@ -112,7 +125,7 @@ const getAllData = async (offset=0,limit=3)=>{
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={3}
         pageCount={totalCount}
         previousLabel="<"
         previousClassName={"previousClassName"}

@@ -34,6 +34,7 @@ const Home = () => {
         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=React/core/ui`
       )
       .then((res) => {
+        console.log(res.data);
         setSettings(res.data);
         hideLoader();
       })
@@ -52,7 +53,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="home">
       { settings &&
         settings.pageData &&
         settings.pageData.map((home, i) => {
@@ -62,14 +63,14 @@ const Home = () => {
           return (
             <tr key={i}>
               {/* <td>{user.id}</td> */}
-
-              <img
-                style={{ width: "1350px", height: "500px" }}
+              <div className="body">
+           <img
+                style={{ width: "1359px", height: "550px", position:"absolute"}}
                 src={`data:image/png;base64,${home.image}`}
-              />
+              />  
 
-              <div id="wrapper">
-                <div id="one" className="box">
+              
+             <div id="one" className="box">
                   <h3>About Us</h3>
                   <h1>{home.slug}</h1>
                   <tr>
@@ -89,36 +90,33 @@ const Home = () => {
                       Learn More
                     </CButton>
                   </div>
-                </div>
+                </div> 
                 {settings.latestNews.map((news, index) => { 
                     console.log("news", news);         
-                    return (
+                    return (    
+                      
                       <div id="two" className="box">
-                    <br></br>
-                    <br></br>
-                   <div className="text1">
-                      <h1 className="text1">Latest News</h1>
-                      <h5 className="text1">  <FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;{news.publicationDate}</h5>
-                      <h2 className="text1">{news.title}</h2>
-                      </div>
-                    <div id="three" className="box">
+                        <br></br><h1 className="newshead">Latest News</h1>
+
+                        <div className="textt">
+                        
+                        <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;
+                          {news.publicationDate}
+                        </h5> 
+                      
+                        <h2>{news.title}</h2>                            
+                        </div>               
+                      </div>                  
+                    );
+                  })} 
+                  <div id="three" className="box">
                         <img
                         src={student}
-                        width="410px"
-                        height="609px"
+                        width="400px"
+                        height="509px"
                         alt=""
                         ></img>
-                        </div>
-                        <hr
-                            width="90%"
-                            size="1"
-                            align="center"
-                            color="grey"
-                          >
-                      </hr>
-                      </div>
-                    );
-                  })}
+                  </div>                      
               </div>
             </tr>
           );

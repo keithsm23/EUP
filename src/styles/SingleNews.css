@@ -7,15 +7,18 @@
     url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg");
     background-size: cover;
     height: 40vh;
-    margin-top: -43px;
+    margin-top: 20px;
     font-size:50px;
-    width: 100%;
+    width: 1359px;
     background-repeat:no-repeat; 
+  }
+  .singlenews{
+    width: 1359px;
   }
   #wrapper11{
     display: flex;
-    max-width:1300px;
-    height: 1800px;
+    max-width:1359px;
+    height: 1400px;
     margin:0 auto;
     margin-top:-5px;
     justify-content: center;
@@ -34,14 +37,14 @@
     display:inline-block;
   }
   #onesn{
-    width:60%;
+    width:810px;
     justify-content: left; 
     margin-right: 480px;
     height:350px;
     position: absolute;
   }
   #twosn{
-    width: 29%;
+    width: 390px;
    position: absolute;
    border: thin;
   height:630px; 
@@ -52,8 +55,8 @@
    
   }
   #threesn{
-    width:60%;
-    justify-content: left;  
+    width:810px;
+    justify-content: left;
     overflow: clip; 
     margin-right: 480px;
     height:422px;
@@ -61,7 +64,7 @@
     margin-top: 400px;
   }
   #comment{
-    width:50%;
+    width:675px;
     justify-content: left; 
     margin-right: 580px;
     height:410px;
@@ -69,7 +72,7 @@
     margin-top: 835px;
   }
   #leaveacomment{
-    width:50%;
+    width:675px;
     justify-content: left; 
     margin-right: 580px;
     height:450px;
