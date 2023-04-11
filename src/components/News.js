@@ -44,7 +44,7 @@ const getAllData = async (offset=0,limit=3)=>{
   const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/blog/allBlog?offset=${offset}&limit=${limit}`)
     .then((res) => { 
      
-    setBlogs(res.data.data.reverse());
+    setBlogs(res.data.data);
     hideLoader();
     if(res && res.data && res.data.totalCount)
     {
@@ -60,7 +60,7 @@ const getAllData = async (offset=0,limit=3)=>{
    const handlePageClick = (event) => {
     setPage(event.selected);
     let count = event.selected*3;
-    getAllData(count, count+3);     
+    getAllData(count);     
   };
 
 
@@ -74,35 +74,43 @@ const getAllData = async (offset=0,limit=3)=>{
   return(
     <>
     <div> 
-
-      {/* <img className="bg-img1" src={ss}>
+  {/* <section className="bg-img1">
          <p className='md'>NEWS</p>
-         <p className='md-1'>Home/Blog</p> 
-       </img> */}
+         <p className='md-1'>Home/Blog</p>
+         </section>   */}
     <div className='wrappermain'>
-
-
-    {
-          blogs && blogs.map((blog,i)=>{
-          let data=JSON.parse(blog.content)
-          console.log(blog);
-          const htmlPuri = draftToHtmlPuri(data);
-          console.log(htmlPuri);
-
-          return(
-            
-            
-          <tr key={i}>
-          {/* <td>{user.id}</td> */}   
-          <div style={{
-                   backgroundImage: `url(${page && page.image})`,
+      <div className='bg-img1'>
+      {
+        blogs && blogs.map((blog,i)=>{
+        return( 
+        <div style={{
+                   backgroundImage: `url(${blog && blog.featuredImage})`,
                    height: "200px",
                    width: "100%",
-                  }} className='bg-img1'
+                   backgroundRepeat:"no-repeat",
+                  }} className='bg-img1' 
                   >
-                  <p className="md">{page.title}</p> {" "}
-                  <p className="md-1">Home/{page.title}</p>
-               </div>
+                  <p className="mdd">NEWS</p>{" "}
+                  <p className="mdd-1">Home/News</p>
+        </div>
+        );
+        })
+      }  
+      </div>
+    {
+        blogs && blogs.map((blog,i)=>{
+        let data=JSON.parse(blog.content)
+        console.log(blog);
+        const htmlPuri = draftToHtmlPuri(data);
+        console.log(htmlPuri);
+
+       
+
+        return(       
+          <tr key={i}>
+          {/* <td>{user.id}</td> */}   
+          
+       
 
             <img  className='featuredImage' src={blog.featuredImage} /> 
         
@@ -110,13 +118,14 @@ const getAllData = async (offset=0,limit=3)=>{
 
           <div className='title'><h2><td><Link onClick={()=>getSlug(blog.id, blog.slug)} style={{"text-decoration":"none"}} to="/SingleNews">{blog.title}</Link></td></h2> </div>  
     
-       <div className='author'><h5> <td> <FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp; 
-       {blog.authorName} &nbsp;<FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;
-       {blog.publicationDate}</td> </h5>
-       </div> 
-   <br></br>
-           <div className='newscontent'><tr><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></tr></div>
-        
+            <div className='author'><h5> <td> <FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp; 
+            {blog.authorName} &nbsp;<FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;
+            {blog.publicationDate}</td> </h5>
+            </div> 
+           
+            <br></br>
+            <div className='newscontent'><tr><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></tr></div>
+           <br></br>
 
           </tr>         
           );
@@ -124,13 +133,12 @@ const getAllData = async (offset=0,limit=3)=>{
    }
    
   
-<br></br><br></br><br></br>
     <div style={{display: 'flex', marginTop:"96px"}}>
       <ReactPaginate
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
+        pageRangeDisplayed={9}
         pageCount={totalCount}
         previousLabel="<"
         previousClassName={"previousClassName"}

@@ -3,10 +3,10 @@
     height: 81px;
     background: inherit;
     background-color: rgba(7, 41, 77, 1);
-    display: flex;
-    
+    display: flex;  
     position: absolute;
     box-shadow: none;
+    overflow: hidden;
   }
   
   .navbar1 .leftSide2 {
@@ -33,14 +33,27 @@
     position: absolute;
     display: flex;
    flex-direction: row;
-    display: flex;
+  margin-top: 6px;
     justify-content: center;
     align-items: center;
-    margin-left: 950px;
-    position: relative;   box-shadow: none;
-    padding-left:-16px; 
+    box-shadow: none;
+    margin-right: -600px;
+    margin-left: 840px;
+   
   }
-  
+  .menutitlee{
+    width: 85px;
+   height: 45px;
+  overflow: hidden;
+    display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   
+  }
+  .menut{
+   
+  }
   .navbar1 a {
     color: white;
     text-decoration: none;
@@ -115,4 +128,47 @@
       display: none;
     }
   }
- 
+  .navbar {
+    width: 1359px;
+    height: 90px;
+    background-color: #fdfeff;
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
+    
+  }
+  
+  .navbar .leftSide3 {
+  
+    display: flex;
+    margin-left: -30px;
+    align-items: center;
+    padding-left: 90px;
+    margin-top:10px;
+  
+  }
+  
+  .navbar .leftSide img {
+    width: 70px;
+  }
+  
+  .navbar .rightSide3 {
+  
+    display: flex;
+    align-items: center;
+    margin-top:15px;
+    margin-left: 539px;
+    font-size: 14px;
+    font-family: "Roboto Bold", "Roboto", sans-serif;
+    font-weight: 430;
+    font-style: normal;
+    
+  }
+  
+  .navbar a {
+    color: rgb(20, 12, 12);
+    text-decoration: none;
+    margin: 20px;
+    cursor: pointer;
+  }
+  
