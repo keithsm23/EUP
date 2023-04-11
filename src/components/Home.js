@@ -11,6 +11,7 @@ import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar } from "react-icons/fa";
 
 const Home = () => {
+  const [menus, setMenus] = useState([]);
   const [settings, setSettings] = useState([]);
   const [pageData, setpageData] = useState([]);
   const navigate = useNavigate();
@@ -27,13 +28,16 @@ const Home = () => {
     description: "",
   });
 
+
+
   //fetch data
   const getAllData = async () => {
     const res = await axios
       .get(
-        `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=React/core/ui`
+        `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
       )
       .then((res) => {
+        
         console.log(res.data);
         setSettings(res.data);
         hideLoader();
@@ -47,13 +51,16 @@ const Home = () => {
     getAllData();
   }, []);
 
+
+ 
+
   const AboutUs = async (e) => {
     e.preventDefault();
     navigate("/about");
   };
 
   return (
-    <div className="home">
+    <div>
       { settings &&
         settings.pageData &&
         settings.pageData.map((home, i) => {
@@ -62,26 +69,39 @@ const Home = () => {
           const htmlPuri = draftToHtmlPuri(data);
           return (
             <tr key={i}>
+            
               {/* <td>{user.id}</td> */}
               <div className="body">
+              
+              {settings.data.map((data, index) => { 
+                      console.log("data", data);         
+                      return (     
+                        document.title = data.siteTitle,                          
            <img
                 style={{ width: "1359px", height: "550px", position:"absolute"}}
-                src={`data:image/png;base64,${home.image}`}
-              />  
-
+                src={data.heroBanner}
+              />   
+               
+            );
+            })}   
+               
               
              <div id="one" className="box">
                   <h3>About Us</h3>
-                  <h1>{home.slug}</h1>
+                  <h1 className="abouttitle">{home.title}</h1>
                   <tr>
+                  
                     <div
-                      style={{ maxHeight: "400px", overflow: "scroll", marginTop:"-14px"}}
+                    
+                      style={{ maxHeight: "400px", marginTop:"-14px"}}
                       dangerouslySetInnerHTML={{ __html: htmlPuri }}
                     />
                   </tr>
 
                   <br></br>
-                  <div className="btn">
+                 
+                </div> 
+                <div className="btn3">
                     <CButton
                       type="button"
                       onClick={AboutUs}
@@ -90,25 +110,32 @@ const Home = () => {
                       Learn More
                     </CButton>
                   </div>
-                </div> 
+                <div className="latestnews">
+                <br></br>
+                <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
                 {settings.latestNews.map((news, index) => { 
-                    console.log("news", news);         
-                    return (    
-                      
-                      <div id="two" className="box">
-                        <br></br><h1 className="newshead">Latest News</h1>
-
-                        <div className="textt">
+                      console.log("news", news);         
+                      return (
+                        <div>                     
+                          <div className="t">
+                          <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;
+                            {news.publicationDate}
+                          </h5> 
                         
-                        <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;
-                          {news.publicationDate}
-                        </h5> 
-                      
-                        <h2>{news.title}</h2>                            
-                        </div>               
-                      </div>                  
-                    );
-                  })} 
+                          <h2>{news.title}</h2>  
+                          <hr
+                            className="line"
+                            width="80%"
+                            size="1"
+                            align="center"
+                            color="lightgrey"
+                          ></hr>                          
+                         </div>
+                        </div>                  
+                      );
+                    })}     
+                </div>
+               
                   <div id="three" className="box">
                         <img
                         src={student}
@@ -116,8 +143,11 @@ const Home = () => {
                         height="509px"
                         alt=""
                         ></img>
-                  </div>                      
+                  </div> 
+                     
               </div>
+             
+                
             </tr>
           );
         })}

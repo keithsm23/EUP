@@ -76,7 +76,7 @@ const AboutUs = () => {
   //     //   }
   //     // };
 
-     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=React/core/ui`)
+     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=page2`)
     .then((res) => { 
       console.log(res.data.data);
     setPages([res.data.data]);
@@ -129,26 +129,26 @@ const AboutUs = () => {
         })} */}
         { ( pages && pages.map((page,i)=>
            {
-            let data=JSON.parse(page.description)
+          let data=JSON.parse(page.description)
            const htmlPuri = draftToHtmlPuri(data);
-            console.log(htmlPuri);
+            console.log(htmlPuri); 
             console.log(page);
             return(
 
            
-              <div >
+              <div className='about'>
                 {/* <section>
                 <img className='bg-img' src={`data:image/png;base64,${page.image}`} />
 
                 <p className='md'>{page.title}</p>
                 </section> */}
                 <div style={{
-                   backgroundImage: `url(data:image/png;base64,${page && page.image})`,
+                   backgroundImage: `url(${page && page.image})`,
                    height: "200px",
-                   width: "100%",
+                   width: "1359px",
                   }}
                   >
-                  <p className="md">{page.title}</p> {" "}
+                  <p className="md">{page.title}</p>{" "}
                   <p className="md-1">Home/{page.title}</p>
                </div>
               {/* <p>
@@ -156,7 +156,13 @@ const AboutUs = () => {
                <h2 className='container2'> {page.title}</h2></p> */}
                <br></br>
                <br></br>
-              <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td>
+              <div className='aboutcontent'>
+              <tr>
+        
+              <div className='ac' dangerouslySetInnerHTML={{ __html: htmlPuri }}/> 
+              </tr>
+              </div>
+
               </div>
               )
             }

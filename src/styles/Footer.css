@@ -7,8 +7,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    padding-top: 10px; 
-   
   }
   
   .socialMedia svg {
@@ -18,18 +16,24 @@
     cursor: pointer;
   }
   
-  .footer p {
-    color: white;cursor: pointer;
-  }
-  .footer a {
+   /* .footer p {
+    color: white;display: flex;
+  } */
+  /* .footer a {
     color: white;
     text-decoration: none;
     margin: 20px;
     margin-left: 10px;
-  cursor: pointer;
-  }
+
+  position: absolute;
   
-.icons {
+  */
+.footer a{
+    text-decoration: none;
+    color:  #B8B8B8; 
+    margin: 21px;  
+  }
+.icons{
     margin-left: 10px; 
     display: flex;
     align-items: center;
@@ -37,16 +41,23 @@
     color: azure;
     position: absolute;
     background-color: transparent;
-    margin-left: -380px;cursor: pointer;
+    margin-left: -380px;
   }
-  .footer .rightSide button{
-    background-color: transparent;
-    margin-right: 10px;
-    align-items: center;
-    cursor: pointer;
-   
-  }
-  .footer #open .hiddenLinks {
+.footer .rightSide {
+  color:#B8B8B8;
+  background-color: transparent;
+position: absolute;
+  align-items: center;
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 14px;
+  font-family: "Roboto Bold", "Roboto", sans-serif;
+  font-weight: 430;
+  font-style: normal;
+}
+  /* .footer #open .hiddenLinks {
     display: inherit;
     margin-left: 30px;
  
@@ -56,4 +67,27 @@
     display: none;
  
   }
-  
+   */
+.footer2 {
+    display: block;
+   width: 1359px;
+   height: 75px;
+   position: absolute;
+   background: inherit;
+   background-color: rgba(2, 29, 58, 1); 
+   border: none;
+   border-radius: 0px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-width: 0px;
+   flex-direction: row;
+   padding-top:-13px; 
+   font-family: "Roboto", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+   font-size: 18px;
+ }
+ .apifooter{
+  margin: 10px;
+ }
