@@ -6,6 +6,7 @@ import u86 from '../assets/u86.png';
 import book from '../assets/book.jpg';
 import laptop from '../assets/laptop.png';
 import useFullPageLoader from '../hooks/useFullPageLoader';
+
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar,  FaUser  } from "react-icons/fa";
@@ -30,30 +31,70 @@ export default function SingleNews() {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const navigate = useNavigate(); 
   const[blogs, setBlogs] = useState([]);
+  const[posts, setPosts] = useState(null);
+  const[news, setNews] = useState([]);
+  const[comment, setComment] = useState([]);
   const[render,setRender]=useState(false);
   const[input,setInput] = useState({
     comments:"",
-    // content:"",
+    content:"",
     // status:"",
     commentType: 1,
     // commentsEnabled:"",
     // commentsCount:"",
+    commentDate:"",
     commentAuthorName:"",
     commentAuthorEmail:"",
-    contentId:""
+    contentId: "",
+    featuredImage: "",
+    title: "",
+    publicationDate: "",
+    authorName: "",
+    image: "",
+    slug: ""
   });
-  
-//fetch data
-const getAllData = async ()=>{
+
+  const getCommentData = async ()=>{
 
   
     const res=await axios
     .get(
-      `http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=React/core/ui`
+      `http://api-cms-poc.iplatformsolutions.com/api/blog/getCommentData?contentId=36 `
       )
     .then((res) => {
       console.log(res.data.data); 
-    setBlogs(res.data.data);
+    setComment(res.data.data.reverse());
+    })
+    .catch((err) =>{} );      
+  }; 
+
+  const getNewsData = async ()=>{
+
+  
+    const res=await axios
+    .get(
+      `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=EUBIN `
+      )
+    .then((res) => {
+      console.log(res.data.data); 
+    setNews(res.data.data);
+    })
+    .catch((err) =>{} );  
+  };
+
+//fetch data
+const getAllData = async ()=>{
+    let getId = localStorage.getItem('SLUG');
+    let id = getId;
+    console.log("slug id", id);
+    const res=await axios
+    .get(
+      `http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=${id}`
+      )
+    .then((res) => {
+      console.log(res.data.data); 
+    setBlogs([res.data.data]);
+    setPosts(res.data.popularNews);
     })
     .catch((err) =>{} );      
   };
@@ -65,6 +106,8 @@ const getAllData = async ()=>{
     let getId = localStorage.getItem('ID');
     setInput(JSON.parse(getId));
     getAllData();
+    getCommentData();
+    getNewsData();
   },[]);
 
   let getId = localStorage.getItem('ID');
@@ -82,9 +125,11 @@ const getAllData = async ()=>{
         let allDetails = {...input, contentId:id, commentType: 1}
       await axios.post(`http://api-cms-poc.iplatformsolutions.com/api/blog/addComment`,allDetails,config)
       .then((res ) =>{
-        navigate("/SingleNews"); 
+        // navigate("/SingleNews"); 
         hideLoader();
         console.log('res', res)
+        getCommentData();
+        // setcomment(res.data.data);
       }) 
       .catch((err) => {
         console.log(err);
@@ -92,18 +137,29 @@ const getAllData = async ()=>{
       })
       // console.log('id', getToken);
       setRender(true);  
-    };
+     };
     
 
   return ( 
   
-    <div> 
+    <div className='main'> 
 
 
-        <section className="bg-img2">
+        {/* <section className="bg-img2">
          <p className='md'>NEWS</p>
          <p className='md-1'>Home/Blog</p>
-         </section>
+         </section> */}
+         {( news && news.map((newss, i) => 
+            {
+              console.log("newss", newss);
+              return(
+                <div>
+                  <img className='image3' src={newss.image} />
+                  <p className="md">{newss.title}</p>
+                  <p className="md-1">Home/{newss.title}</p>
+                </div>
+              )
+            }))}
 {/* 
       {(
           blogs && blogs.map((blog,i)=>
@@ -122,16 +178,62 @@ const getAllData = async ()=>{
         )
      }     */}
 
-
+  {/* {( blogs && blogs.map((blog,i) =>
+  {
+    let data=JSON.parse(blog.content)
+    const htmlPuri = draftToHtmlPuri(data);
+     console.log(htmlPuri);
+     console.log(blog);
+     return(
+      <div>
+      <img  className='featuredImage' src={blog.featuredImage} /> 
+      <br></br>
+      <div>
+        <p>{blog.title}</p>
+        <br></br>
+        <div>
+          <p>{blog.publicationDate}</p>
+          <p>{blog.authorName}</p>
+          </div>
+          <div>
+            <td><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td>
+            </div>
+      </div>
+      </div>
+    )
+  }
+ )
+)} */}
 
    <div id="wrapper11">
-   <div id="onesn"  className="boxsn">
+    <section className='posts'>
+    <h2 className='heading'>Popular Posts</h2>
+   {( posts && posts.map((post,i) =>
+      {
+        console.log("popular",post);
+        return(
+          <div className='main1'>
+            <section>
+          <img className='image2' src={post.featuredImage} />
+          </section>
+          <section className='title2'>
+          <p className='title1'>{post.title}</p>
+          <p className='date'>{post.publicationDate}</p>
+          </section>
+            </div>
+          );
+        }
+       )
+      )}
+      </section>
+
+   {/* <div id="onesn"  className="boxsn">
    <img id="u86_img1" alt="" className="img1" src={u86}></img> 
   
    
- 
-  </div> 
-   <div id="twosn" className="boxsn">
+   
+  </div>  */}
+   {/* <div id="twosn" className="boxsn">
     
     <h1 style={{ color:"darkblue"}}   className="text1">Popular Posts </h1> 
     
@@ -147,9 +249,9 @@ const getAllData = async ()=>{
      <h2 style={{float:"right"}}  className="text6">How to build <br></br>a game with Java</h2> 
      <h5 style={{float:"right"}}  className="text7">25 Dec 2018 </h5>  
 
-  </div> 
-  <div id="threesn" className="boxsn">
-  <p> 
+  </div>  */}
+  <div className='blogs'>
+  {/* <p> 
      <h2 > Few tips to get better results in examination</h2>
      <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;25 Dec 2018 &nbsp;&nbsp;&nbsp;<FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>  Mark Anthem</h5></p>
      <p>
@@ -165,12 +267,43 @@ const getAllData = async ()=>{
     gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis 
     sem nibh id elit.Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
     ipsum velit. Nam nec tellus .
-     </p>
+     </p> */}
+     {( blogs && blogs.map((blog,i) =>
+   {
+    console.log(blog);
+    let data=JSON.parse(blog.content)
+    const htmlPuri = draftToHtmlPuri(data);
+     console.log(htmlPuri);
+     
+     return(
+       <div>
+      <img className='image1' src={blog.featuredImage} /> 
+      <br></br>
+      <div>
+        <p className='title'>{blog.title}</p>
+        <div>
+          <p className='author'><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;{blog.publicationDate}
+          &nbsp;&nbsp;&nbsp;&nbsp;<FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp;{blog.authorName}</p>
+         
+          </div>
+          <div>
+            <td><div className='comments' dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td>
+            </div>
+            
+      </div>
+      </div>
+     
+      
+    )
+  }
+ )
+)}
+
   <br>
   </br>
   <br></br>
 
-  <p style={{ fontWeight:"bold"}}>&nbsp;&nbsp;&nbsp;&nbsp;Share: &nbsp;
+  <p className='share'>Share: &nbsp;
   <SocialIcon bgColor="darkblue" fgColor ="white" style={{ height: 35, width: 35 }} url="https://facebook.com" />&nbsp;&nbsp;
     <SocialIcon bgColor="#00CED1"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://twitter.com" />&nbsp;&nbsp;
     <SocialIcon bgColor="red"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://google.com" />&nbsp;&nbsp;
@@ -179,12 +312,12 @@ const getAllData = async ()=>{
   </p>   
 
   </div>  
-  <div id="comment" className="boxsn">
-  <hr width="98%" 
+  <div>
+  &nbsp;&nbsp;<hr width="50%" 
         size="1" 
-        align="left"  color="grey"></hr>
-    <h2>Comment(3)</h2>
-    <h5>25 Dec 2018 &nbsp;&nbsp;&nbsp;  Bobby Aktar</h5>
+        align="left"  color="grey"  ></hr>
+    <h2>Comments</h2>
+    {/* <h5>25 Dec 2018 &nbsp;&nbsp;&nbsp;  Bobby Aktar</h5>
     
     <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons
      equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
@@ -196,12 +329,35 @@ const getAllData = async ()=>{
     <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons
      equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
       Morbi accumsan ipsum velit. Nam nec tellus .
-      </p>
-      <hr width="80%" 
-        size="1" 
-        align="left"  color="grey"></hr>
-  </div> 
-  <div id="leaveacomment" className="boxsn">
+      </p> */}
+      { ( comment && comment.map((page,i)=>
+           {
+          //   let data=JSON.parse(page.comments)
+          //  const htmlPuri = draftToHtmlPuri(data);
+          //   console.log(htmlPuri);
+            console.log(page);
+            return(
+              <div className='comments' >
+                <div>
+                <p id="u133" className='boxsn1'>{page.commentAuthorName}</p>
+                <p id="u134" className='boxsn2'>{page.commentDate}</p>
+                </div>
+                <br></br>
+                <div>
+                {/* <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td> */}
+                <p >{page.comments}</p>
+                </div>
+              </div>
+            )
+           }
+      )
+      )}
+      <br></br>
+      
+     <hr className='line'></hr>
+     
+     </div>  
+  <div >
     <h2>Leave  a Comment:</h2>
     <br></br>
   
