@@ -80,7 +80,7 @@ function Header() {
      const getPrimaryLinkGroups = async () => {
       const res = await axios
         .get(
-          `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=PRIMARY LINK`
+           `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=PRIMARY LINK`
         )
         .then((res) => {
           
@@ -98,26 +98,26 @@ function Header() {
 
 
 
-  //fetch menu groups
-  const getMenuGroups = async () => {
-    const res = await axios
-      .get(
-        `http://api-cms-poc.iplatformsolutions.com/api/menuGroup/fetch`
-      )
-      .then((res) => {
+  // //fetch menu groups
+  // const getMenuGroups = async () => {
+  //   const res = await axios
+  //     .get(
+  //       `http://api-cms-poc.iplatformsolutions.com/api/menuGroup/fetch`
+  //     )
+  //     .then((res) => {
         
-        console.log(res.data);
-        setMenuGroups(res.data);
-        hideLoader();
-      })
-      .catch((err) => {});
-  };
+  //       console.log(res.data);
+  //       setMenuGroups(res.data);
+  //       hideLoader();
+  //     })
+  //     .catch((err) => {});
+  // };
 
-  //display user list
-  useEffect(() => {
-    showLoader();
-    getMenuGroups();
-  }, []);
+  // //display user list
+  // useEffect(() => {
+  //   showLoader();
+  //   getMenuGroups();
+  // }, []);
 
 
 
@@ -127,7 +127,8 @@ function Header() {
   const getAllData = async ()=>{
    
      const res=await axios
-    .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`)
+    .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+    )
       .then((res) => { 
         console.log(res)
       setSettings(res.data.data.reverse());
@@ -142,7 +143,6 @@ function Header() {
     
     getAllData();
   },[]);
-
 
 
 
@@ -185,7 +185,7 @@ function Header() {
               return (    
                                        
               <div className="menutitlee">
-                  <h4  style={{color:"rgb(221, 182, 10)" }}>{data.menuTitle}&nbsp;&nbsp;&nbsp;&nbsp; </h4>
+                  <h4  style={{color:"rgb(221, 182, 10)" }}>{data.menuTitle} </h4>
                </div>  
           
             );
@@ -193,14 +193,12 @@ function Header() {
           </div>  
         </div>
 
-
-
         
-        <div className="navbar">
+      <div className="navbar">
       <div className="leftSide3">
-      <a href="/"  rel="stylesheet">
-       <img src={home.logo} alt=""  style={{ width: 180 , height: 80 }} ></img>
-      </a>
+        <a href="/"  rel="stylesheet">
+        <img src={home.logo} alt=""  style={{ width: 180 , height: 80 }} ></img>
+        </a>
       </div>
       <div className="rightSide3">
           
@@ -218,15 +216,17 @@ function Header() {
           primarylinkgroups.data.map((data, index) => { 
                       console.log("data", data);         
                       return (                                    
-            <div> 
-            {data.menuTitle}
-              </div>  
-                         
+            <div className="toplinkc1"> 
+              {data.menuTitle}
+            </div>                        
           );
           })
         }   
+           
       </div>
-      </div>
+   
+          </div>    
+     
     </tr>               
   );
   })

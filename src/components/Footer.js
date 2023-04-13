@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-// import InstagramIcon from "@material-ui/icons/Instagram";
-// import TwitterIcon from "@material-ui/icons/Twitter";
-// import FacebookIcon from "@material-ui/icons/Facebook";
-// import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import { SocialIcon } from 'react-social-icons';
 import "../styles/Footer.css";
 import { Link } from "react-router-dom";
@@ -14,12 +10,14 @@ import draftToHtmlPuri from "draftjs-to-html";
 function Footer() {
 
   const[footer, setFooter] = useState([]);
-  const [linkgroups, setLinkGroups] = useState([]);
+  const[linkgroups, setLinkGroups] = useState([]);
 
   //fetch data
   const getAllData = async ()=>{
     const res=await axios
-    .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`)
+    .get(
+       `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+    )
     .then((res) => { 
       console.log(res)
     setFooter(res.data.data.reverse());
@@ -41,7 +39,7 @@ function Footer() {
    const getLinkGroups = async () => {
     const res = await axios
       .get(
-        `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=FOOTER LINK`
+         `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=FOOTER LINK`
       )
       .then((res) => {
         
@@ -77,7 +75,7 @@ function Footer() {
     </div>
     <div className="rightSide">
    
-        <Link to="/" style={{color:"#FFAC00", fontWeight:700 }}> HOME </Link>
+        <Link to="/"  style={{color:"#FFAC00", fontWeight:700 }}> HOME </Link>
         <Link to="/about"> ABOUT US </Link>
         <Link to="/services"> COURSES </Link>
         <Link to="/news"> NEWS </Link>

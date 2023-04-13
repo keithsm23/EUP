@@ -75,6 +75,7 @@
     margin-top: 480px; 
     display:inline-block;
     margin-left: 10px;
+    
   }
  
   #one{
@@ -85,7 +86,7 @@
     position: absolute;
     overflow: hidden;
     height: 390px;
-     font-family: "Roboto", sans-serif;
+     font-family: "Roboto";
   }
   #two{
     width: 540px;
@@ -103,8 +104,7 @@
   .textt{
     width:350px;
     margin-left:30px;
-    width: 170px;
-  
+    width: 170px; 
     height: 100px;
     }
   #three{
@@ -123,13 +123,26 @@
     background-color: white;
     opacity:0.8;
     z-index:1;
-    margin-top: 630px;
+    margin-top: 640px;
     overflow: hidden;
     margin-bottom: -320px;
+    font-family: 'Roboto';
   }
   .t{
     margin-left: 75px;
     height: 120px;
+    margin-top: 32px;
+    margin-bottom: -20px;
+  }
+  .ti1{
+    margin-top: -10px;
+  }
+  .ti2{
+    font-size: 40px;
+  }
+  .line{
+    margin-right: 140px;
+  
   }
   .container{
     display : inline-block;
@@ -260,9 +273,7 @@ max-width: 70px;
   border: solid;
   height:100px;
 }
-.line{
-  margin-right: 140px;
-}
+
 
 .newshead{
   margin-left: 80px;

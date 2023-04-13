@@ -240,8 +240,8 @@
   width: 50px;
 }
 .bg-img1{
-  background-image: 
-  url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg");
+  /* background-image: 
+  url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg"); */
   background-size: cover;
   height: 200px;
   margin-top: 10px;
@@ -265,40 +265,46 @@
   color:white;
 }
 .wrappermain{
-  height: 1100px;
+
+  
   margin-top: 0px;
  width:1359px;
- margin-bottom: -320px;
+ margin-bottom: -230px;
+ border-color: yellow;
+ /* overflow: hidden; */
+}
 
- overflow: hidden;
-  
+
+.title11{
+  margin-top: 55px;
+ margin-left: 500px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-style: normal;   
+
+}
+.author1{
+ 
+  margin-left: 500px;
+  margin-top: -5px;
+  font-family: "Roboto";
+  font-style: normal;
 }
 .newscontent{
   margin-top: -42px;
-  margin-left: 490px;
+  margin-left: 500px;
   margin-right: 140px;
   text-align: justify;
   justify-content: justify;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
   height: 64px;
   overflow: hidden;
 }
-.title{
-  margin-top: -200px;
-  margin-left: 490px;
-  font-family: "Roboto Bold", "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: normal;
- 
-}
-.author{
 
-  margin-left: 490px;
 
-}
 .date{
 float: right;
   margin-left: 10px;
@@ -308,7 +314,7 @@ float: right;
   margin-left: 65px;
   margin-top: 60px;
   height:180px;
-
+  float: left;
 } 
 
 

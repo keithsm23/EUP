@@ -65,7 +65,7 @@ const[input,setInput] = useState({
 
 const getAllData = async ()=>{
 
-const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=React/core/ui`)
+const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=contacts`)
 .then((res) => {
 console.log(res.data.data);
 setContacts([res.data.data]);
