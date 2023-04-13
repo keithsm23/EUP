@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    position: absolute;
   }
   
   .socialMedia svg {
@@ -48,15 +49,19 @@
   background-color: transparent;
 position: absolute;
   align-items: center;
-  
+  width: 870px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-direction: row;
   font-size: 14px;
+  margin-left: 350px;
   font-family: "Roboto Bold", "Roboto", sans-serif;
   font-weight: 430;
   font-style: normal;
 }
+.apifooter{
+  padding: 20px;
+  }
   /* .footer #open .hiddenLinks {
     display: inherit;
     margin-left: 30px;
@@ -87,7 +92,5 @@ position: absolute;
    font-weight: 400;
    font-style: normal;
    font-size: 18px;
- }
- .apifooter{
-  margin: 10px;
+   margin-top: 490px;
  }
