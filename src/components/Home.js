@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import axios from "axios";
-import ss from "../assets/ss.png";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 import student from "../assets/student.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -34,7 +33,7 @@ const Home = () => {
   const getAllData = async () => {
     const res = await axios
       .get(
-        `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
       )
       .then((res) => {
         
@@ -78,10 +77,9 @@ const Home = () => {
                       return (     
                         document.title = data.siteTitle,                          
            <img
-                style={{ width: "1359px", height: "550px", position:"absolute"}}
+                alt="" style={{ width: "1359px", height: "550px", position:"absolute"}}
                 src={data.heroBanner}
-              />   
-               
+              />             
             );
             })}   
                
@@ -112,24 +110,24 @@ const Home = () => {
                   </div>
                 <div className="latestnews">
                 <br></br>
-                <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
+                <h1 style={{fontSize:"40px", marginLeft:"-15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
                 {settings.latestNews.map((news, index) => { 
                       console.log("news", news);         
                       return (
                         <div>                     
                           <div className="t">
-                          <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;
+                          <h5 style={{color:"#909090"}}><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;
                             {news.publicationDate}
                           </h5> 
                         
-                          <h2>{news.title}</h2>  
+                           <h2 className="ti1">{news.title}</h2>  
                           <hr
                             className="line"
                             width="80%"
                             size="1"
                             align="center"
                             color="lightgrey"
-                          ></hr>                          
+                          ></hr>                           
                          </div>
                         </div>                  
                       );

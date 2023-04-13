@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link,  useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import "../styles/News.css";
-import ss from "../assets/ss.png";
-import books from '../assets/books2.avif';
-import u86 from '../assets/u86.png';
 import useFullPageLoader from '../hooks/useFullPageLoader';
 import ReactPaginate from 'react-paginate';
 import { FaCalendar, FaUser } from "react-icons/fa";
@@ -34,14 +31,20 @@ export default function News() {
   });
 
   const getSlug = (id, slug) => {
+    
     localStorage.setItem('ID', JSON.stringify(id))
+    showLoader();
     localStorage.setItem('SLUG', slug)
+    hideLoader();
   }
   
 //fetch data
 const getAllData = async (offset=0,limit=3)=>{
 
-  const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/blog/allBlog?offset=${offset}&limit=${limit}`)
+  const res=await axios
+  .get(
+     `http://api-cms-poc.iplatformsolutions.com/api/blog/allBlog?offset=${offset}&limit=${limit}`
+    )
     .then((res) => { 
      
     setBlogs(res.data.data);
@@ -58,9 +61,10 @@ const getAllData = async (offset=0,limit=3)=>{
 
    //pagination
    const handlePageClick = (event) => {
+    showLoader();
     setPage(event.selected);
     let count = event.selected*3;
-    getAllData(count);     
+    getAllData(count);   
   };
 
 
@@ -73,12 +77,12 @@ const getAllData = async (offset=0,limit=3)=>{
 
   return(
     <>
-    <div> 
+    
   {/* <section className="bg-img1">
          <p className='md'>NEWS</p>
          <p className='md-1'>Home/Blog</p>
          </section>   */}
-    <div className='wrappermain'>
+    <div className='wrappermain' >
       <div className='bg-img1'>
       {
         blogs && blogs.map((blog,i)=>{
@@ -110,19 +114,17 @@ const getAllData = async (offset=0,limit=3)=>{
           <tr key={i}>
           {/* <td>{user.id}</td> */}   
           
-       
-
-            <img  className='featuredImage' src={blog.featuredImage} /> 
+   
+            <div><img  className='featuredImage' src={blog.featuredImage} /> </div>  
         
 
 
-          <div className='title'><h2><td><Link onClick={()=>getSlug(blog.id, blog.slug)} style={{"text-decoration":"none"}} to="/SingleNews">{blog.title}</Link></td></h2> </div>  
+            <div className='title11'><h2><td><Link onClick={()=>getSlug(blog.id, blog.slug)} style={{"text-decoration":"none"}} to="/SingleNews">{blog.title}</Link></td></h2> </div>  
     
-            <div className='author'><h5> <td> <FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp; 
+             <div className='author1'><h5> <td> <FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp; 
             {blog.authorName} &nbsp;<FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;
             {blog.publicationDate}</td> </h5>
-            </div> 
-           
+            </div>       
             <br></br>
             <div className='newscontent'><tr><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></tr></div>
            <br></br>
@@ -134,9 +136,10 @@ const getAllData = async (offset=0,limit=3)=>{
    
   
     <div style={{display: 'flex', marginTop:"96px"}}>
+    
       <ReactPaginate
         breakLabel="..."
-        nextLabel=">"
+        nextLabel=">"    
         onPageChange={handlePageClick}
         pageRangeDisplayed={9}
         pageCount={totalCount}
@@ -153,7 +156,6 @@ const getAllData = async (offset=0,limit=3)=>{
     
       </div>
       {loader}
-  </div> 
    </>       
   );
 }

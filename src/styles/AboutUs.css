@@ -33,8 +33,11 @@
   height: 600px;
   overflow: hidden;
   margin-right: 120px;
-  
-  
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: normal; 
 }
 
 .bg-img{
