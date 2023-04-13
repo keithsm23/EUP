@@ -18,7 +18,7 @@
   #wrapper11{
     /* display: flex; */
     width: 1359px;
-    height: 1400px;
+    height: 1700px;
     margin-top: 40px;
     justify-content: center;
     text-align: justify;
@@ -74,8 +74,9 @@
     justify-content: left; 
     margin-right: 580px;
     height:450px;
-    position: absolute;
-    margin-top: 1250px;
+    /* position: absolute; */
+    /* margin-top: 700px; */
+    margin-left: 80px;
   }
   #u86_img1 {
     border-width: 0px;
@@ -109,12 +110,15 @@ input[type=text1], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-.button{
+.button01{
   border-radius: 4px;
   border-style: hidden;
+  color: #333333;
+  background-color: yellow;
   height: 45px;
   width: 120px;
   font-weight: 20px;
+  margin-bottom: 100px;
 }
 #book {
   border-width: 0px;
@@ -238,10 +242,10 @@ input[type=text1], select {
   overflow: hidden;
 }
 .line{
-  width: 80%;
+  width: 50%;
   size: 1;
-  align-content: left;
-  margin-left: 0px;
+  /* align-content: left; */
+  margin-left: 80px;
   color: grey ;
   margin-top: 10px;
 }
@@ -265,7 +269,7 @@ input[type=text1], select {
   margin-left: 80px;
 }
 .share{
-  margin-top: 250px;
+  margin-top: 20px;
   font-weight: bold;
   margin-left: 80px;
 }
@@ -322,4 +326,24 @@ input[type=text1], select {
 .blogs{
   width:1000px;
   margin-top: -850px;
+}
+.author1{
+  font-weight: bold;
+  margin-left: 80px;
+}
+.date1{
+  margin-left: 80px;
+  margin-top: -10px;
+}
+.comments1{
+  margin-left: 80px;
+  margin-top: -20px;
+}
+.author2{
+  padding-left: 20px;
+}
+.comments2{
+  
+  /* height: 600px; */
+  /* position:absolute; */
 }

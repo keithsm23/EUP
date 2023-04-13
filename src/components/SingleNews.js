@@ -55,15 +55,18 @@ export default function SingleNews() {
   });
 
   const getCommentData = async ()=>{
-
+    let getId = localStorage.getItem('ID');
+    let id = getId;
+    console.log("slug id", id);
   
     const res=await axios
     .get(
-      `http://api-cms-poc.iplatformsolutions.com/api/blog/getCommentData?contentId=36 `
+      `http://api-cms-poc.iplatformsolutions.com/api/blog/getCommentData?contentId=${id} `
       )
     .then((res) => {
       console.log(res.data.data); 
     setComment(res.data.data.reverse());
+    hideLoader();
     })
     .catch((err) =>{} );      
   }; 
@@ -95,6 +98,7 @@ const getAllData = async ()=>{
       console.log(res.data.data); 
     setBlogs([res.data.data]);
     setPosts(res.data.popularNews);
+    hideLoader();
     })
     .catch((err) =>{} );      
   };
@@ -105,6 +109,7 @@ const getAllData = async ()=>{
   useEffect(()=>{
     let getId = localStorage.getItem('ID');
     setInput(JSON.parse(getId));
+    showLoader();
     getAllData();
     getCommentData();
     getNewsData();
@@ -125,10 +130,11 @@ const getAllData = async ()=>{
         let allDetails = {...input, contentId:id, commentType: 1}
       await axios.post(`http://api-cms-poc.iplatformsolutions.com/api/blog/addComment`,allDetails,config)
       .then((res ) =>{
-        // navigate("/SingleNews"); 
+        navigate("/SingleNews"); 
         hideLoader();
         console.log('res', res)
         getCommentData();
+        // handleShow();
         // setcomment(res.data.data);
       }) 
       .catch((err) => {
@@ -139,16 +145,16 @@ const getAllData = async ()=>{
       setRender(true);  
      };
     
-
+     
   return ( 
   
     <div className='main'> 
 
 
-        {/* <section className="bg-img2">
+         {/* <section className="bg-img2">
          <p className='md'>NEWS</p>
          <p className='md-1'>Home/Blog</p>
-         </section> */}
+         </section>  */}
          {( news && news.map((newss, i) => 
             {
               console.log("newss", newss);
@@ -210,21 +216,23 @@ const getAllData = async ()=>{
     <h2 className='heading'>Popular Posts</h2>
    {( posts && posts.map((post,i) =>
       {
-        console.log("popular",post);
-        return(
+        console.log("popular",post); 
+       return(
           <div className='main1'>
             <section>
           <img className='image2' src={post.featuredImage} />
+           
           </section>
           <section className='title2'>
           <p className='title1'>{post.title}</p>
           <p className='date'>{post.publicationDate}</p>
+          
           </section>
             </div>
-          );
+           );
         }
        )
-      )}
+      )} 
       </section>
 
    {/* <div id="onesn"  className="boxsn">
@@ -232,8 +240,8 @@ const getAllData = async ()=>{
   
    
    
-  </div>  */}
-   {/* <div id="twosn" className="boxsn">
+  </div> 
+   <div id="twosn" className="boxsn">
     
     <h1 style={{ color:"darkblue"}}   className="text1">Popular Posts </h1> 
     
@@ -249,9 +257,9 @@ const getAllData = async ()=>{
      <h2 style={{float:"right"}}  className="text6">How to build <br></br>a game with Java</h2> 
      <h5 style={{float:"right"}}  className="text7">25 Dec 2018 </h5>  
 
-  </div>  */}
+  </div>   */}
   <div className='blogs'>
-  {/* <p> 
+   {/* <p> 
      <h2 > Few tips to get better results in examination</h2>
      <h5><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;25 Dec 2018 &nbsp;&nbsp;&nbsp;<FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>  Mark Anthem</h5></p>
      <p>
@@ -267,7 +275,7 @@ const getAllData = async ()=>{
     gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis 
     sem nibh id elit.Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
     ipsum velit. Nam nec tellus .
-     </p> */}
+     </p>  */}
      {( blogs && blogs.map((blog,i) =>
    {
     console.log(blog);
@@ -312,11 +320,9 @@ const getAllData = async ()=>{
   </p>   
 
   </div>  
-  <div>
-  &nbsp;&nbsp;<hr width="50%" 
-        size="1" 
-        align="left"  color="grey"  ></hr>
-    <h2>Comments</h2>
+  <div className='comments2'>
+  <hr className='line' ></hr>
+    <h2 className='comments'>Comments</h2>
     {/* <h5>25 Dec 2018 &nbsp;&nbsp;&nbsp;  Bobby Aktar</h5>
     
     <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons
@@ -329,39 +335,43 @@ const getAllData = async ()=>{
     <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons
      equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
       Morbi accumsan ipsum velit. Nam nec tellus .
-      </p> */}
-      { ( comment && comment.map((page,i)=>
-           {
+      </p>  */}
+     { ( comment && comment.map((page,i)=>
+           { 
           //   let data=JSON.parse(page.comments)
           //  const htmlPuri = draftToHtmlPuri(data);
           //   console.log(htmlPuri);
-            console.log(page);
+            console.log(page); 
             return(
-              <div className='comments' >
+              <div >
                 <div>
-                <p id="u133" className='boxsn1'>{page.commentAuthorName}</p>
-                <p id="u134" className='boxsn2'>{page.commentDate}</p>
+                
+                <p className='author1'>{page.commentAuthorName}</p>
+                <p className='date1'>{page.commentDate}</p>
                 </div>
                 <br></br>
-                <div>
+                <div> 
                 {/* <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td> */}
-                <p >{page.comments}</p>
+                <p className='comments1'>{page.comments}</p>
                 </div>
               </div>
+             
             )
            }
       )
       )}
+      <hr className='line'></hr>
       <br></br>
       
-     <hr className='line'></hr>
-     
+     {/* <hr className='line'></hr>
+      */}
      </div>  
-  <div >
+  <div id='leaveacomment'>
     <h2>Leave  a Comment:</h2>
     <br></br>
   
-    <input 
+    <input
+    className='author2' 
      name='commentAuthorName'
      onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
       type="text" 
@@ -393,10 +403,10 @@ const getAllData = async ()=>{
     </CFormTextarea>
     <br></br> 
     <br></br>
-    <CButton onClick={handleSubmit} className='button'>Submit</CButton>
-  </div>  
+    <CButton onClick={handleSubmit} className='button01'>Submit</CButton>
   </div>
- 
+  </div>
+  {loader}
 </div>
 
 );
