@@ -8,9 +8,9 @@ import draftToHtmlPuri from "draftjs-to-html";
 
 
 function Footer() {
-
   const[footer, setFooter] = useState([]);
   const[linkgroups, setLinkGroups] = useState([]);
+  const[settings, setSettings] = useState([]);
 
   //fetch data
   const getAllData = async ()=>{
@@ -53,10 +53,18 @@ function Footer() {
   useEffect(() => {
     getLinkGroups();
   }, []);
+
+
+  const ScrollUp=()=>{
+    window.scrollTo({
+      top: 0
+    })
+  }
+
   return (   
    
-<div>
-{
+  <div>
+  {
     footer && footer.map((footer,i)=>{
     console.log(footer);
     const htmlPuri = draftToHtmlPuri(footer);
@@ -75,20 +83,35 @@ function Footer() {
     </div>
     <div className="rightSide">
    
-        <Link to="/"  style={{color:"#FFAC00", fontWeight:700 }}> HOME </Link>
-        <Link to="/about"> ABOUT US </Link>
-        <Link to="/services"> COURSES </Link>
-        <Link to="/news"> NEWS </Link>
-        <Link to="/contact"> CONTACT </Link>
+        <Link to="/" onClick={ScrollUp} style={{color:"#FFAC00", fontWeight:700 }}> HOME </Link>
+     
+       <Link to="/about" onClick={ScrollUp}>ABOUT US </Link>
+        <Link to="/services" onClick={ScrollUp}> COURSES </Link>
+        <Link to="/news" onClick={ScrollUp}> NEWS </Link>
+        <Link to="/contact" onClick={ScrollUp}> CONTACT </Link> 
         {linkgroups &&
       linkgroups.data &&
       linkgroups.data.map((data, index) => { 
-                      console.log("data", data);         
-                      return (                                    
-          <div className="apifooter">{data.menuTitle}</div>
-               
+        console.log("data", data);         
+        return (                                   
+          <div className="apifooter">
+            <Link>{data.menuTitle}</Link>      
+          </div>        
+        );
+      })}   
+
+            {/* {
+            settings &&
+            settings.pageData &&
+            settings.pageData.map((data, index) => {
+          console.log("data", data);
+          return (
+             <div className="apifooter">
+            <Link>{data.menuTitle}</Link>      
+          </div> 
+           
             );
-            })}   
+            })} */}
       </div>
       
     </div>

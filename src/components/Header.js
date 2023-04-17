@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
-// import Logo from "../assets/react.png";
 import { Link } from "react-router-dom";
 import "../styles/Header.css";
-import axios from 'axios';
+import axios, { all } from 'axios';
 import { SocialIcon } from 'react-social-icons';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { GoMail } from 'react-icons/go';
-import { blue } from "@mui/material/colors";
 import draftToHtmlPuri from "draftjs-to-html";
-import logo from '../assets/edubin.png';
 import useFullPageLoader from "../hooks/useFullPageLoader";
+import { useSyncExternalStore } from "react";
 
 function Header() {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [menus, setMenus] = useState([]);
-  const [menugroups, setMenuGroups] = useState([]);
+  const [selectedButton, setSelectedButton] = useState("");
+  // const [menugroups, setMenuGroups] = useState([]);
   const [linkgroups, setLinkGroups] = useState([]);
   const [primarylinkgroups, setPrimaryLinkGroups] = useState([]);
   const [openLinks, setOpenLinks] = useState(false);
@@ -140,15 +139,41 @@ function Header() {
 
   //display user list
   useEffect(()=>{
-    
     getAllData();
   },[]);
 
+  // var btnToggle = true;
+  // var upVoteBtn = document.getElementById("upVote");
+
+  // const colour=()=>{
+  //   if(btnToggle){
+  //     upVoteBtn.style.color = "red";
+  //     btnToggle = true;
+  //   // document.getElementById("demo").style.color = "yellow";
+  //   }
+  //   if(!btnToggle){
+  //     upVoteBtn.style.color = null;
+  //     btnToggle = false;
+  //   }
+  // }
+  // const colour2=()=>{
+  //   document.getElementById("demo2").style.color = "yellow";
+  // }
+
+
+  const getPageSlug = (id, slug) => {
+    
+    localStorage.setItem('PageID', JSON.stringify(id))
+    showLoader();
+    localStorage.setItem('PAGESLUG', slug)
+    hideLoader();
+  }
 
 
   return ( <div>
      {
-        settings && settings.map((home,i)=>{
+        settings && 
+        settings.map((home,i)=>{
         console.log(home);
         const htmlPuri = draftToHtmlPuri(home);
         console.log(htmlPuri);
@@ -163,9 +188,9 @@ function Header() {
               <h4 style={{color:" #CDCDCD",  }}>&nbsp;{home.email}</h4>
              &nbsp;&nbsp;&nbsp;
               <FaPhoneAlt style={{ height: 24, width: 24, color:" #CDCDCD"}} />
-              <h4 style={{color:" #CDCDCD"}}> &nbsp;{home.phoneNumber}</h4>
-           
+              <h4 style={{color:" #CDCDCD"}}> &nbsp;{home.phoneNumber}</h4>       
           </div>
+         
 
 
           <div className="rightSide1">
@@ -182,14 +207,14 @@ function Header() {
             linkgroups.data &&
             linkgroups.data.map((data, index) => { 
               console.log("data", data);         
-              return (    
-                                       
+              return ( 
+                                     
               <div className="menutitlee">
-                  <h4  style={{color:"rgb(221, 182, 10)" }}>{data.menuTitle} </h4>
+                  <h4><Link style={{color:"rgb(221, 182, 10)" }} to={data.urlSelected}>{data.menuTitle}</Link> </h4>
                </div>  
-          
+         
             );
-            })}    
+            })}       
           </div>  
         </div>
 
@@ -197,19 +222,17 @@ function Header() {
       <div className="navbar">
       <div className="leftSide3">
         <a href="/"  rel="stylesheet">
-        <img src={home.logo} alt=""  style={{ width: 180 , height: 80 }} ></img>
+        <img src={home.logo} alt=""  style={{ width: 170 , height: 50 }} ></img>
         </a>
-      </div>
+      </div>  
       <div className="rightSide3">
           
       
         {/* <Link style={{color:"#FFAC00", fontWeight:700 }} to="/"> HOME </Link> */}
-     
-       <Link style={{color:"#FFAC00", fontWeight:700 }} to="/"> HOME </Link>
-            <Link to="/about">ABOUT</Link>
-            <Link to="/services"> COURSES </Link>
-            <Link to="/news"> NEWS </Link>
-            <Link to="/contact"> CONTACT </Link>  
+            {/* <Link  className="mystyle" id="btn1" onClick={myFunction(1)} to="/about">ABOUT</Link> */}
+            {/* <Link to="/services" > COURSES </Link> */}
+            {/* <Link  onClick={myFunction(-1)} className="mystyle1" id="btn2"  to="/news"> NEWS </Link> */}
+            {/* <Link to="/contact"> CONTACT </Link>   */}
             {
           primarylinkgroups &&
           primarylinkgroups.data &&
@@ -217,7 +240,8 @@ function Header() {
                       console.log("data", data);         
                       return (                                    
             <div className="toplinkc1"> 
-              {data.menuTitle}
+             <Link  className="lin" id="success" to={data.urlSelected}>
+              {data.menuTitle}</Link>
             </div>                        
           );
           })

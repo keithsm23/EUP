@@ -10,7 +10,6 @@
   }
   
   .navbar1 .leftSide2 {
-    
     height: 80px;
     text-align: center;
     display: flex;
@@ -45,7 +44,7 @@
    
   }
   .menutitlee{
- padding:23px;
+ padding:10px;
    
    
   }
@@ -147,10 +146,9 @@
   }
   
   .navbar .rightSide3 {
-  
     display: flex;
     align-items: center;
-    margin-top:15px;
+    margin-top:35px;
     font-size: 14px;
     font-family: "Roboto Bold", "Roboto", sans-serif;
     font-weight: 430;
@@ -169,5 +167,29 @@
     cursor: pointer;
   }
   .toplinkc1{
-    padding: 23px;
+    padding: 5px;
   }
+  .toplinkc2{
+    padding: 5px;
+  }
+  .colorlink{
+    color: grey;
+  }
+
+  .mystyle {
+
+    color: red;
+}
+.mystyle1 { 
+    
+    color: yellow;
+}
+.butttn{
+  border: solid;
+  color: gold;
+}
+
+.lin:focus{
+  color: #FFAC00;
+ 
+}

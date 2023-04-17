@@ -103,7 +103,15 @@
 
     margin-top: 40px;
   }
+  .wrappermain{
 
+  
+    margin-top: -10px;
+   width:1359px;
+   margin-bottom: -230px;
+   border-color: yellow;
+   /* overflow: hidden; */
+  }
 
   /* .box2{
     width:300px;
@@ -264,17 +272,6 @@
   margin-top: -20px;
   color:white;
 }
-.wrappermain{
-
-  
-  margin-top: 0px;
- width:1359px;
- margin-bottom: -230px;
- border-color: yellow;
- /* overflow: hidden; */
-}
-
-
 .title11{
   margin-top: 55px;
  margin-left: 500px;
@@ -284,7 +281,7 @@
 
 }
 .author11{
- 
+  
   margin-left: 500px;
   margin-top: -5px;
   font-family: "Roboto";

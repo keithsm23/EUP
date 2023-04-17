@@ -41,7 +41,6 @@ function App() {
   //   getAllData();
   // }, []);
 
-
   
   return (  
     <div className='app'>
