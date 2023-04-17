@@ -29,8 +29,9 @@ import {
 
 export default function SingleNews() {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const[blogs, setBlogs] = useState([]);
+  const [settings, setSettings] = useState([]);
   const[posts, setPosts] = useState(null);
   const[news, setNews] = useState([]);
   const[comment, setComment] = useState([]);
@@ -38,10 +39,11 @@ export default function SingleNews() {
   const[input,setInput] = useState({
     comments:"",
     content:"",
-    // status:"",
+    facebookLink:"",
+    twitterLink:"",
+    youtubeLink:"",
+    linkedLink:"",
     commentType: 1,
-    // commentsEnabled:"",
-    // commentsCount:"",
     commentDate:"",
     commentAuthorName:"",
     commentAuthorEmail:"",
@@ -71,16 +73,17 @@ export default function SingleNews() {
     .catch((err) =>{} );      
   }; 
 
-  const getNewsData = async ()=>{
+  const getNewsData = async (offset=0,limit=1)=>{
 
   
     const res=await axios
     .get(
-      `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?id=1&slug=EUBIN `
+      `http://api-cms-poc.iplatformsolutions.com/api/blog/allBlog?offset=${offset}&limit=${limit} `
       )
     .then((res) => {
       console.log(res.data.data); 
     setNews(res.data.data);
+    hideLoader();
     })
     .catch((err) =>{} );  
   };
@@ -103,6 +106,17 @@ const getAllData = async ()=>{
     .catch((err) =>{} );      
   };
 
+  const getSettingsData = async () =>{
+    const res=await axios
+    .get(
+      `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+    )
+    .then((res) => {
+      console.log(res);
+      setSettings(res.data.data.reverse());
+    })
+    .catch((err) => {});
+   };
 
 
   //display blogs and comments
@@ -113,6 +127,7 @@ const getAllData = async ()=>{
     getAllData();
     getCommentData();
     getNewsData();
+    getSettingsData();
   },[]);
 
   let getId = localStorage.getItem('ID');
@@ -126,6 +141,11 @@ const getAllData = async ()=>{
       };
 
       const handleSubmit= async(e)=>{ 
+        if(input.commentAuthorName==='' || input.commentAuthorEmail==='' || input.comments === '')
+        {
+          alert('Please enter all the details');
+        }
+        else{
         showLoader();
         let allDetails = {...input, contentId:id, commentType: 1}
       await axios.post(`http://api-cms-poc.iplatformsolutions.com/api/blog/addComment`,allDetails,config)
@@ -134,7 +154,6 @@ const getAllData = async ()=>{
         hideLoader();
         console.log('res', res)
         getCommentData();
-        // handleShow();
         // setcomment(res.data.data);
       }) 
       .catch((err) => {
@@ -142,7 +161,8 @@ const getAllData = async ()=>{
         hideLoader();
       })
       // console.log('id', getToken);
-      setRender(true);  
+      setRender(true); 
+    } 
      };
     
      
@@ -159,11 +179,16 @@ const getAllData = async ()=>{
             {
               console.log("newss", newss);
               return(
-                <div>
-                  <img className='image3' src={newss.image} />
-                  <p className="md">{newss.title}</p>
-                  <p className="md-1">Home/{newss.title}</p>
-                </div>
+                <div style={{
+                  backgroundImage: `url(${newss && newss.featuredImage})`,
+                  height: "200px",
+                  width: "100%",
+                  backgroundRepeat:"no-repeat",
+                 }} className='bg-img1' 
+                 >
+                 <p className="mdd">NEWS</p>{" "}
+                 <p className="mdd-1">Home/News</p>
+       </div>
               )
             }))}
 {/* 
@@ -310,14 +335,22 @@ const getAllData = async ()=>{
   <br>
   </br>
   <br></br>
-
+  {( settings && settings.map((icon,i) =>
+   {
+    console.log(icon);
+    
+    return(
   <p className='share'>Share: &nbsp;
-  <SocialIcon bgColor="darkblue" fgColor ="white" style={{ height: 35, width: 35 }} url="https://facebook.com" />&nbsp;&nbsp;
-    <SocialIcon bgColor="#00CED1"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://twitter.com" />&nbsp;&nbsp;
-    <SocialIcon bgColor="red"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://google.com" />&nbsp;&nbsp;
-    <SocialIcon bgColor="#B94366 "  fgColor ="white" style={{ height: 35, width: 35 }} url="https://instagram.com" />&nbsp;&nbsp;
-    <SocialIcon bgColor="#0077B5"  fgColor ="white" style={{ height: 35, width: 35 }} url="https://linkedin.com" />&nbsp;&nbsp;
-  </p>   
+  <SocialIcon bgColor="darkblue" fgColor ="white" style={{ height: 35, width: 35 }} url={icon.facebookLink} />&nbsp;&nbsp;
+    <SocialIcon bgColor="#00CED1"  fgColor ="white" style={{ height: 35, width: 35 }} url={icon.twitterLink} />&nbsp;&nbsp;
+    <SocialIcon bgColor="red "  fgColor ="white" style={{ height: 35, width: 35 }} url={icon.youtubeLink} />&nbsp;&nbsp;
+    <SocialIcon bgColor="#0077B5"  fgColor ="white" style={{ height: 35, width: 35 }} url={icon.linkedLink} />&nbsp;&nbsp;
+  </p>  
+   )
+  }
+ )
+)}
+ 
 
   </div>  
   <div className='comments2'>
@@ -343,6 +376,7 @@ const getAllData = async ()=>{
           //   console.log(htmlPuri);
             console.log(page); 
             return(
+            page.status === 2?
               <div >
                 <div>
                 
@@ -355,7 +389,7 @@ const getAllData = async ()=>{
                 <p className='comments1'>{page.comments}</p>
                 </div>
               </div>
-             
+             :null
             )
            }
       )
