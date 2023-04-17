@@ -49,6 +49,7 @@ const data = [
 const AboutUs = () => {
     // console.log("props", props);
     const [loader, showLoader, hideLoader] = useFullPageLoader();
+    const[settings, setSettings]=useState([]);
     const[pages, setPages] = useState([]);
     const[input,setInput] = useState({
       title:"",
@@ -107,6 +108,30 @@ const AboutUs = () => {
 //     backgroundSize: 'cover',
 //     backgroundRepeat: 'no-repeat',
 // };
+//  //fetch data
+//  const getPageData = async () => {
+//   let getId = localStorage.getItem('PAGESLUG');
+//  let id = getId;
+//   console.log("slug id", id);
+//  const res = await axios
+ 
+//    .get(
+//       `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug={id}`
+//    )
+//    .then((res) => {     
+//      console.log(res.data);
+//      setSettings(res.data);
+//      hideLoader();
+//    })
+//    .catch((err) => {});
+// };
+
+// //display user list
+// useEffect(() => {
+//  showLoader();
+//  getPageData();
+// }, []);
+
 
     return (
       

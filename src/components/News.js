@@ -71,7 +71,6 @@ const getAllData = async (offset=0,limit=3)=>{
   //display user list
   useEffect(()=>{
     showLoader();
-    
     getAllData();
   },[]);
 

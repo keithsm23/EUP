@@ -31,12 +31,15 @@ const Home = () => {
 
   //fetch data
   const getAllData = async () => {
+     let getId = localStorage.getItem('PAGESLUG');
+    let id = getId;
+     console.log("slug id", id);
     const res = await axios
+    
       .get(
          `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
       )
-      .then((res) => {
-        
+      .then((res) => {     
         console.log(res.data);
         setSettings(res.data);
         hideLoader();
@@ -51,11 +54,42 @@ const Home = () => {
   }, []);
 
 
+
+
+//   //fetch data
+//   const getPageData = async () => {
+//     let getId = localStorage.getItem('PAGESLUG');
+//    let id = getId;
+//     console.log("slug id", id);
+//    const res = await axios
+   
+//      .get(
+//         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug={id}`
+//      )
+//      .then((res) => {     
+//        console.log(res.data);
+//        setSettings(res.data);
+//        hideLoader();
+//      })
+//      .catch((err) => {});
+//  };
+
+//  //display user list
+//  useEffect(() => {
+//    showLoader();
+//    getPageData();
+//  }, []);
+
+
  
 
   const AboutUs = async (e) => {
     e.preventDefault();
     navigate("/about");
+    // localStorage.setItem('PageID', JSON.stringify(id))
+    // showLoader();
+    // localStorage.setItem('PAGESLUG', slug)
+    // hideLoader();
   };
 
   return (
@@ -99,6 +133,7 @@ const Home = () => {
                   <br></br>
                  
                 </div> 
+               
                 <div className="btn3">
                     <CButton
                       type="button"
@@ -108,6 +143,7 @@ const Home = () => {
                       Learn More
                     </CButton>
                   </div>
+
                 <div className="latestnews">
                 <br></br>
                 <h1 style={{fontSize:"40px", marginLeft:"-15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
@@ -122,7 +158,7 @@ const Home = () => {
                         
                            <h2 className="ti1">{news.title}</h2>  
                           <hr
-                            className="line"
+                            className="line11"
                             width="80%"
                             size="1"
                             align="center"
@@ -141,11 +177,8 @@ const Home = () => {
                         height="509px"
                         alt=""
                         ></img>
-                  </div> 
-                     
-              </div>
-             
-                
+                  </div>                     
+              </div>             
             </tr>
           );
         })}
