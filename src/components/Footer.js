@@ -83,19 +83,19 @@ function Footer() {
     </div>
     <div className="rightSide">
    
-        <Link to="/" onClick={ScrollUp} style={{color:"#FFAC00", fontWeight:700 }}> HOME </Link>
+        <Link to="/" onClick={ScrollUp} > HOME </Link>
      
-       <Link to="/about" onClick={ScrollUp}>ABOUT US </Link>
+       {/* <Link to="/about" onClick={ScrollUp}>ABOUT US </Link>
         <Link to="/services" onClick={ScrollUp}> COURSES </Link>
         <Link to="/news" onClick={ScrollUp}> NEWS </Link>
-        <Link to="/contact" onClick={ScrollUp}> CONTACT </Link> 
+        <Link to="/contact" onClick={ScrollUp}> CONTACT </Link>  */}
         {linkgroups &&
       linkgroups.data &&
       linkgroups.data.map((data, index) => { 
         console.log("data", data);         
         return (                                   
           <div className="apifooter">
-            <Link>{data.menuTitle}</Link>      
+            <Link className="aaa" to={data.urlSelected}>{data.menuTitle}</Link>      
           </div>        
         );
       })}   
