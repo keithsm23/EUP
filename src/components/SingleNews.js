@@ -6,6 +6,7 @@ import u86 from '../assets/u86.png';
 import book from '../assets/book.jpg';
 import laptop from '../assets/laptop.png';
 import useFullPageLoader from '../hooks/useFullPageLoader';
+import swal from 'sweetalert';
 
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
@@ -30,6 +31,9 @@ import {
 export default function SingleNews() {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
   const[blogs, setBlogs] = useState([]);
   const [settings, setSettings] = useState([]);
   const[posts, setPosts] = useState(null);
@@ -67,7 +71,7 @@ export default function SingleNews() {
       )
     .then((res) => {
       console.log(res.data.data); 
-    setComment(res.data.data.reverse());
+    setComment(res.data.data);
     hideLoader();
     })
     .catch((err) =>{} );      
@@ -136,28 +140,37 @@ const getAllData = async ()=>{
     const config = {
        headers: {
         // "token": `${getId}`,
-         "Content-Type": "application/json", 
+         "Content-Type": "application/json",
         }
       };
 
       const handleSubmit= async(e)=>{ 
-        if(input.commentAuthorName==='' || input.commentAuthorEmail==='' || input.comments === '')
-        {
-          alert('Please enter all the details');
-        }
+       if(input.commentAuthorName === '' || input.commentAuthorEmail === '' || input.comments === '')
+       {
+        swal('Please enter all the fields');
+       }
         else{
         showLoader();
         let allDetails = {...input, contentId:id, commentType: 1}
       await axios.post(`http://api-cms-poc.iplatformsolutions.com/api/blog/addComment`,allDetails,config)
       .then((res ) =>{
-        navigate("/SingleNews"); 
+        // navigate("/SingleNews"); 
         hideLoader();
         console.log('res', res)
-        getCommentData();
+        setInput({ ...input,
+          commentAuthorName: "",
+          commentAuthorEmail: "",
+          comments: ""
+         })
+       getCommentData();
+       swal('Comment is added Successfully');
         // setcomment(res.data.data);
       }) 
       .catch((err) => {
-        console.log(err);
+        if(err.response.data.error)
+              {
+                swal(err.response.data.error[0])
+              }
         hideLoader();
       })
       // console.log('id', getToken);
@@ -236,7 +249,7 @@ const getAllData = async ()=>{
  )
 )} */}
 
-   <div id="wrapper11">
+   <div className='wrapper12'>
     <section className='posts'>
     <h2 className='heading'>Popular Posts</h2>
    {( posts && posts.map((post,i) =>
@@ -245,7 +258,7 @@ const getAllData = async ()=>{
        return(
           <div className='main1'>
             <section>
-          <img className='image2' src={post.featuredImage} />
+          <img id='image2' src={post.featuredImage} />
            
           </section>
           <section className='title2'>
@@ -408,6 +421,7 @@ const getAllData = async ()=>{
     className='author2' 
      name='commentAuthorName'
      onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
+     value={input.commentAuthorName}
       type="text" 
       placeholder="Name">
     </input>
@@ -416,6 +430,7 @@ const getAllData = async ()=>{
     <input
     name='commentAuthorEmail' 
     onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
+    value={input.commentAuthorEmail}
       type="text" 
       placeholder='email'>
       </input>
@@ -432,6 +447,7 @@ const getAllData = async ()=>{
     className='commentfield' 
     placeholder='comment'
     name='comments'
+    value={input.comments}
     onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
     >
     </CFormTextarea>
