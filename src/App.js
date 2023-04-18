@@ -1,61 +1,42 @@
 import './App.css';
-import React, { useEffect, useState } from  'react';
-// import AboutUs from './components/AboutUs';
-import Services from './components/Services';
-import Home from "./components/Home";
-import News from './components/News';
+import React, { useEffect, useState,  Suspense } from  'react';
+import { CSpinner } from '@coreui/react'
 import Header from './components/Header';
-import SingleNews from './components/SingleNews'
-import Contact from './components/Contact';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-import AboutUs from './components/AboutUs';
+import PublicRoutes from './components/PublicRoutes';
 import { Link, useNavigate } from "react-router-dom";
 
 
-
-import axios from 'axios';
+const Home = React.lazy(() => import('./components/Home'))
+const AboutUs = React.lazy(() => import('./components/AboutUs'))
+const Services = React.lazy(() => import('./components/Services'))
+const News = React.lazy(() => import('./components/News'))
+const SingleNews = React.lazy(() => import('./components/SingleNews'))
+const Contact = React.lazy(() => import('./components/Contact'))
+const Page = React.lazy(() => import('./components/Page'))
 
 function App() {
-  const [menus, setMenus] = useState([]);
-
-
-  //fetch link
-  // const getAllData = async () => {
-  //   const res = await axios
-  //     .get(
-  //       `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetch`
-  //     )
-  //     .then((res) => {
-        
-  //       console.log(res.data);
-  //       setMenus(res.data);
-       
-  //     })
-  //     .catch((err) => {});
-  // };
-
-  // //display user list
-  // useEffect(() => {
-    
-  //   getAllData();
-  // }, []);
 
   
   return (  
     <div className='app'>
      
     <BrowserRouter>
+    <Suspense fallback={<CSpinner color="primary"/>}>
     <Header />    
     <Routes>
-        <Route exact path="/" element={<Home />} />    
-        <Route path="/services" element={<Services/>} />
+        <Route path="/" element={<Home />}  />               
+        <Route path="/services" element={<Services />} />
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<AboutUs/>} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/singlenews" element={<SingleNews />} />
+        <Route path="/page" element={<Page />} /> 
       </Routes>
+     
       <Footer />
+      </Suspense>
     </BrowserRouter>
     </div>
  );

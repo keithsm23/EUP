@@ -49,19 +49,23 @@
   background-color: transparent;
 position: absolute;
   align-items: center;
-  width: 870px;
+  width: 900px;
   display: flex;
   justify-content: left;
   flex-direction: row;
   font-size: 14px;
-  margin-left: 350px;
+  margin-left: 370px;
   font-family: "Roboto Bold", "Roboto", sans-serif;
   font-weight: 430;
   font-style: normal;
 }
+
 .apifooter{
   padding: 10px;
   }
+.aaa:focus{
+  color: #FFAC00;
+}
   /* .footer #open .hiddenLinks {
     display: inherit;
     margin-left: 30px;

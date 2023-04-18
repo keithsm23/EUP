@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import axios, { all } from 'axios';
 import { SocialIcon } from 'react-social-icons';
@@ -10,6 +10,7 @@ import useFullPageLoader from "../hooks/useFullPageLoader";
 import { useSyncExternalStore } from "react";
 
 function Header() {
+  const navigate = useNavigate()
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [menus, setMenus] = useState([]);
   const [selectedButton, setSelectedButton] = useState("");
@@ -81,10 +82,9 @@ function Header() {
         .get(
            `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=PRIMARY LINK`
         )
-        .then((res) => {
-          
-          console.log(res.data);
-          setPrimaryLinkGroups(res.data);
+        .then((res) => {     
+            console.log(res.data);
+            setPrimaryLinkGroups(res.data);       
         })
         .catch((err) => {});
     };
@@ -142,31 +142,30 @@ function Header() {
     getAllData();
   },[]);
 
-  // var btnToggle = true;
-  // var upVoteBtn = document.getElementById("upVote");
 
-  // const colour=()=>{
-  //   if(btnToggle){
-  //     upVoteBtn.style.color = "red";
-  //     btnToggle = true;
-  //   // document.getElementById("demo").style.color = "yellow";
-  //   }
-  //   if(!btnToggle){
-  //     upVoteBtn.style.color = null;
-  //     btnToggle = false;
-  //   }
-  // }
-  // const colour2=()=>{
-  //   document.getElementById("demo2").style.color = "yellow";
-  // }
+  
+  var btnToggle = true;
+  var upVoteBtn = document.getElementById("upVote");
 
 
-  const getPageSlug = (id, slug) => {
-    
-    localStorage.setItem('PageID', JSON.stringify(id))
+  const NewPage=async(pageSelect)=>{
     showLoader();
-    localStorage.setItem('PAGESLUG', slug)
+    localStorage.setItem('Page', pageSelect)
     hideLoader();
+  }
+
+    
+  const urlSelected=async()=>{
+    primarylinkgroups &&
+    primarylinkgroups.data &&
+    primarylinkgroups.data.map((data, index) => { 
+                console.log("data", data);         
+                return (  
+                  <div>     {data.urlSelected}</div>                                  
+
+                        
+    );
+    })
   }
 
 
@@ -240,7 +239,7 @@ function Header() {
                       console.log("data", data);         
                       return (                                    
             <div className="toplinkc1"> 
-             <Link  className="lin" id="success" to={data.urlSelected}>
+             <Link  className="lin"  to={data.urlSelected}  onClick={()=>{NewPage(data.pageSelect)}} >
               {data.menuTitle}</Link>
             </div>                        
           );
