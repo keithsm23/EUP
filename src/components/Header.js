@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
-import axios, { all } from 'axios';
+import axios from 'axios';
 import { SocialIcon } from 'react-social-icons';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { GoMail } from 'react-icons/go';
 import draftToHtmlPuri from "draftjs-to-html";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 import { useSyncExternalStore } from "react";
+import swal from 'sweetalert';
 
 function Header() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const[page, setPage] = useState([]);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [menus, setMenus] = useState([]);
   const [selectedButton, setSelectedButton] = useState("");
-  // const [menugroups, setMenuGroups] = useState([]);
   const [linkgroups, setLinkGroups] = useState([]);
   const [primarylinkgroups, setPrimaryLinkGroups] = useState([]);
   const [openLinks, setOpenLinks] = useState(false);
@@ -31,30 +32,6 @@ function Header() {
     email:"",
     logo:""
   });
-
-
-  //Fetch menus
-  const getMenus = async () => {
-    const res = await axios
-      .get(
-        `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetch`
-      )
-      .then((res) => {
-        
-        console.log(res.data);
-        setMenus(res.data);
-        hideLoader();
-      })
-      .catch((err) => {});
-  };
-
-  //display user list
-  useEffect(() => {
-    showLoader();
-    getMenus();
-  }, []);
-
-
 
     //fetch top link
     const getLinkGroups = async () => {
@@ -82,9 +59,9 @@ function Header() {
         .get(
            `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=PRIMARY LINK`
         )
-        .then((res) => {     
+        .then((res) => {           
             console.log(res.data);
-            setPrimaryLinkGroups(res.data);       
+            setPrimaryLinkGroups(res.data);                
         })
         .catch((err) => {});
     };
@@ -96,37 +73,13 @@ function Header() {
 
 
 
-
-  // //fetch menu groups
-  // const getMenuGroups = async () => {
-  //   const res = await axios
-  //     .get(
-  //       `http://api-cms-poc.iplatformsolutions.com/api/menuGroup/fetch`
-  //     )
-  //     .then((res) => {
-        
-  //       console.log(res.data);
-  //       setMenuGroups(res.data);
-  //       hideLoader();
-  //     })
-  //     .catch((err) => {});
-  // };
-
-  // //display user list
-  // useEffect(() => {
-  //   showLoader();
-  //   getMenuGroups();
-  // }, []);
-
-
-
-
-
   //fetch data
   const getAllData = async ()=>{
-   
+    let getId = localStorage.getItem('PAGESLUG');
+    let id = getId;
+    console.log("slug id",id);
      const res=await axios
-    .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+    .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=${id}`
     )
       .then((res) => { 
         console.log(res)
@@ -144,29 +97,44 @@ function Header() {
 
 
   
-  var btnToggle = true;
-  var upVoteBtn = document.getElementById("upVote");
-
-
+ 
   const NewPage=async(pageSelect)=>{
+    
+    // primarylinkgroups &&
+    // primarylinkgroups.data &&
+    // primarylinkgroups.data.map((data, index) => { 
+    //             console.log("data", data);         
+    //             return (  
+    //               <div>  if(data.urlSelected===null){
+    //                 navigate('/page')
+    //               }  <Link to={data.urlSelected}></Link> </div>                                  
+
+                        
+    // );
+    // })
+    navigate('/page');
     showLoader();
     localStorage.setItem('Page', pageSelect)
     hideLoader();
   }
 
     
-  const urlSelected=async()=>{
-    primarylinkgroups &&
-    primarylinkgroups.data &&
-    primarylinkgroups.data.map((data, index) => { 
-                console.log("data", data);         
-                return (  
-                  <div>     {data.urlSelected}</div>                                  
+  // const urlSelected=async()=>{
+  //   primarylinkgroups &&
+  //   primarylinkgroups.data &&
+  //   primarylinkgroups.data.map((data, index) => { 
+  //   console.log("data", data);         
+  //     return (  
+  //       <div> navigate({data.urlSelected}) </div>                                                  
+  //   );
+  //   })
+  // }
+  // const buttonClick=()=>{
+   
+  //     navigate('/page')
+   
+  // }
 
-                        
-    );
-    })
-  }
 
 
   return ( <div>
@@ -179,16 +147,16 @@ function Header() {
 
         return(
             
-        <tr key={i}>
-        {/* <td>{user.id}</td> */}
-        <div className="navbar1">
-          <div className="leftSide2">
+          <tr key={i}>
+          {/* <td>{user.id}</td> */}
+          <div className="navbar1">
+            <div className="leftSide2">
               <GoMail style={{ height: 35, width: 35, color: " #CDCDCD"}}/>
               <h4 style={{color:" #CDCDCD",  }}>&nbsp;{home.email}</h4>
-             &nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
               <FaPhoneAlt style={{ height: 24, width: 24, color:" #CDCDCD"}} />
               <h4 style={{color:" #CDCDCD"}}> &nbsp;{home.phoneNumber}</h4>       
-          </div>
+            </div>
          
 
 
@@ -198,10 +166,7 @@ function Header() {
             <SocialIcon bgColor="transparent"  fgColor ="#CDCDCD" style={{ height: 30, width: 30 }} url={home.twitterLink} />
             <SocialIcon bgColor="transparent"  fgColor ="#CDCDCD" style={{ height: 30, width: 30 }} url={home.youtubeLink}/>
             <SocialIcon bgColor="transparent"  fgColor ="#CDCDCD" style={{ height: 30, width: 30 }} url={home.linkedLink}/>
-            {/* <h4  style={{color:"rgb(221, 182, 10)" }}>&nbsp;&nbsp;&nbsp;&nbsp;  
-              Admission
-            </h4> &nbsp;&nbsp; */}
-            
+           
           {linkgroups &&
             linkgroups.data &&
             linkgroups.data.map((data, index) => { 
@@ -217,39 +182,32 @@ function Header() {
           </div>  
         </div>
 
-        
-      <div className="navbar">
-      <div className="leftSide3">
+
+    
+        <div className="navbar">
+        <div className="leftSide3">
         <a href="/"  rel="stylesheet">
         <img src={home.logo} alt=""  style={{ width: 170 , height: 50 }} ></img>
         </a>
-      </div>  
-      <div className="rightSide3">
-          
-      
-        {/* <Link style={{color:"#FFAC00", fontWeight:700 }} to="/"> HOME </Link> */}
-            {/* <Link  className="mystyle" id="btn1" onClick={myFunction(1)} to="/about">ABOUT</Link> */}
-            {/* <Link to="/services" > COURSES </Link> */}
-            {/* <Link  onClick={myFunction(-1)} className="mystyle1" id="btn2"  to="/news"> NEWS </Link> */}
-            {/* <Link to="/contact"> CONTACT </Link>   */}
+        </div>  
+        <div className="rightSide3">  
             {
-          primarylinkgroups &&
-          primarylinkgroups.data &&
-          primarylinkgroups.data.map((data, index) => { 
-                      console.log("data", data);         
-                      return (                                    
-            <div className="toplinkc1"> 
-             <Link  className="lin"  to={data.urlSelected}  onClick={()=>{NewPage(data.pageSelect)}} >
-              {data.menuTitle}</Link>
-            </div>                        
+            primarylinkgroups &&
+            primarylinkgroups.data &&
+            primarylinkgroups.data.map((data, index) => { 
+            console.log("data", data);         
+            return (                                       
+              <div className="toplinkc1"> 
+        
+             <Link  className="lin"  to={data.urlSelected===null ? '/page' :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}} >
+                {data.menuTitle} </Link>  
+              </div>   
+                           
           );
           })
-        }   
-           
+        }          
       </div>
-   
-          </div>    
-     
+    </div>     
     </tr>               
   );
   })
