@@ -177,11 +177,64 @@ const getAllData = async ()=>{
       setRender(true); 
     } 
      };
+
+     const convertTime = (time) =>{
+      time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+      if(time.length > 1) {
+        time = time.slice (1);
+        time[5] = +time[0] < 12 ? 'AM' : 'PM';
+        time[0] = +time[0] % 12 || 12;
+      }
+      return time.join ('');
+      };
+      const formateHour = (blog) =>{
+        var d = blog;
+        let Date = d.split(' ')[0];
+        d = d.split(' ')[1];
+        let time = convertTime (d)
+        return Date+' '+ time.split(':')[0]+ ':'+time.split(':')[1]+time.split(':')[2].substring(2, 4);
+      };
+
+      const formateData = (blog) =>{ 
+        var d = blog;
+        let Date = d.split(' ')[0];
+        let year = Date.split('-')[0];
+        let month = Date.split('-')[1];
+        let day = Date.split('-')[2];
+        let month_names_short =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        let getMonth = month_names_short.filter((mon, i) =>{
+        if(month == i+1){
+        return mon;
+        }
+        });
+        
+        let convertedData = day+" "+getMonth[0]+" "+year;
+        return convertedData;
+        
+        };
+
+        const formatInfo = (blog) =>{ 
+          var d = blog;
+          let Date = d.split(' ')[0];
+          let year = Date.split('-')[0];
+          let month = Date.split('-')[1];
+          let day = Date.split('-')[2];
+          let month_names =['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+          let getMonth = month_names.filter((mon, i) =>{
+          if(month == i+1){
+          return mon;
+          }
+          });
+          
+          let convertedData = getMonth[0]+""+day+", "+year;
+          return convertedData;
+          
+          };
     
      
   return ( 
   
-    <div className='main'> 
+    <div> 
 
 
          {/* <section className="bg-img2">
@@ -193,14 +246,14 @@ const getAllData = async ()=>{
               console.log("newss", newss);
               return(
                 <div style={{
-                  backgroundImage: `url(${newss && newss.featuredImage})`,
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${newss && newss.featuredImage})`,
                   height: "200px",
                   width: "100%",
                   backgroundRepeat:"no-repeat",
-                 }} className='bg-img1' 
+                 }} className='bg-img2' 
                  >
-                 <p className="mdd">NEWS</p>{" "}
-                 <p className="mdd-1">Home/News</p>
+                 <p className='heading1'>News</p>{" "}
+                 <p className="heading2">Home/News</p>
        </div>
               )
             }))}
@@ -252,25 +305,27 @@ const getAllData = async ()=>{
    <div className='wrapper12'>
     <section className='posts'>
     <h2 className='heading'>Popular Posts</h2>
-   {( posts && posts.map((post,i) =>
+   { ( posts && posts.map((post,i) =>
       {
         console.log("popular",post); 
+        let publishTime = formateData(post.publicationDate);
        return(
-          <div className='main1'>
-            <section>
+          <div>
+            <section className='image3' >
           <img id='image2' src={post.featuredImage} />
            
           </section>
           <section className='title2'>
           <p className='title1'>{post.title}</p>
-          <p className='date'>{post.publicationDate}</p>
+          <p className='pdate'>{publishTime}</p>
           
           </section>
             </div>
-           );
+           )
         }
        )
-      )} 
+      )
+   } 
       </section>
 
    {/* <div id="onesn"  className="boxsn">
@@ -314,9 +369,10 @@ const getAllData = async ()=>{
     sem nibh id elit.Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
     ipsum velit. Nam nec tellus .
      </p>  */}
-     {( blogs && blogs.map((blog,i) =>
+     {blogs.length > 0 ?( blogs && blogs.map((blog,i) =>
    {
     console.log(blog);
+    let publishTime = formateData(blog.publicationDate);
     let data=JSON.parse(blog.content)
     const htmlPuri = draftToHtmlPuri(data);
      console.log(htmlPuri);
@@ -328,7 +384,7 @@ const getAllData = async ()=>{
       <div>
         <p className='title'>{blog.title}</p>
         <div>
-          <p className='author'><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;{blog.publicationDate}
+          <p className='author'><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;{publishTime}
           &nbsp;&nbsp;&nbsp;&nbsp;<FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp;{blog.authorName}</p>
          
           </div>
@@ -338,12 +394,10 @@ const getAllData = async ()=>{
             
       </div>
       </div>
-     
-      
     )
   }
  )
-)}
+):null }
 
   <br>
   </br>
@@ -366,9 +420,9 @@ const getAllData = async ()=>{
  
 
   </div>  
-  <div className='comments2'>
+  <div>
   <hr className='line' ></hr>
-    <h2 className='comments'>Comments</h2>
+    <h2 className='comments1'>Comments</h2>
     {/* <h5>25 Dec 2018 &nbsp;&nbsp;&nbsp;  Bobby Aktar</h5>
     
     <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons
@@ -382,31 +436,32 @@ const getAllData = async ()=>{
      equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
       Morbi accumsan ipsum velit. Nam nec tellus .
       </p>  */}
-     { ( comment && comment.map((page,i)=>
+     {comment.length > 0 ? ( comment && comment.map((page,i)=>
            { 
           //   let data=JSON.parse(page.comments)
           //  const htmlPuri = draftToHtmlPuri(data);
           //   console.log(htmlPuri);
             console.log(page); 
+            let publishTime = formatInfo(page.commentDate);
             return(
             page.status === 2?
               <div >
                 <div>
                 
                 <p className='author1'>{page.commentAuthorName}</p>
-                <p className='date1'>{page.commentDate}</p>
+                <p className='date1'>{publishTime}</p>
                 </div>
                 <br></br>
                 <div> 
                 {/* <td className='container3'><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></td> */}
-                <p className='comments1'>{page.comments}</p>
+                <p className='comments2'>{page.comments}</p>
                 </div>
               </div>
              :null
             )
            }
       )
-      )}
+      ):null}
       <hr className='line'></hr>
       <br></br>
       
