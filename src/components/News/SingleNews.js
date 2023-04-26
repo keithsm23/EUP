@@ -1,18 +1,18 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import { Link,  useNavigate } from "react-router-dom";
 import axios from 'axios';
-import "../styles/SingleNews.css";
-import u86 from '../assets/u86.png';
-import book from '../assets/book.jpg';
-import laptop from '../assets/laptop.png';
-import useFullPageLoader from '../hooks/useFullPageLoader';
+import "../../styles/SingleNews.css";
+import u86 from '../../assets/u86.png';
+import book from '../../assets/book.jpg';
+import laptop from '../../assets/laptop.png';
+import useFullPageLoader from '../../hooks/useFullPageLoader';
 import swal from 'sweetalert';
 
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar,  FaUser  } from "react-icons/fa";
 import { SocialIcon } from 'react-social-icons';
-import books from '../assets/books2.avif';
+import books from '../../assets/books2.avif';
 import {
   CButton,
   CCard,

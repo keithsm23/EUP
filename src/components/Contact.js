@@ -24,37 +24,6 @@ import {
 } from '@coreui/react'
 
 
-// const data = [
-
-// {
-
-//         question: "What is Lorem Ipsum?",
-
-//         answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-
-//     },
-
-//     {
-
-//         question: "What is Lorem Ipsum?",
-
-//         answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-
-//     },
-
-//     {
-
-//         question: "What is Lorem Ipsum?",
-
-//         answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-
-//     },
-// {
-// question: "What is Lorem Ipsum?",
-// answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-// },
-// ]
-
 
 const Contact = () => {
 const[contacts, setContacts] = useState([]);
@@ -76,55 +45,14 @@ hideLoader();
 };
 
 useEffect(()=>{
-  showLoader();
-
-//   let getToken = localStorage.getItem('token');
-//   const config={
-//   headers:{
-//       token: `${getToken}`,
-//       "Content-Type":"application/json",
-//   }
-//   };
-
+showLoader();
 getAllData();
 },[]);
 
-//   const myStyle={
 
-//     backgroundImage: "https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg",
-
-//     height:'100vh',
-
-//     marginTop:'-70px',
-
-//     fontSize:'50px',
-
-//     backgroundSize: 'cover',
-
-//     backgroundRepeat: 'no-repeat',
-
-// };
 return (
 <div>
   <section>
-  {/* <div
-  
-            style={{
-  
-              backgroundImage: `url(data:image/png;base64,${
-  
-                contacts && contacts[0].image
-  
-              })`,
-  
-            }}
-  
-          >
-  
-              <p className="md">Contact</p>  <p className="md-1">Home/Contact</p>
-  
-          </div> */}
-  
   
   </section>
   <br></br>

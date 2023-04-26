@@ -2,21 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { SocialIcon } from 'react-social-icons';
 import "../styles/Footer.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import draftToHtmlPuri from "draftjs-to-html";
-
+import useFullPageLoader from "../hooks/useFullPageLoader";
 
 
 function Footer() {
+  const navigate = useNavigate();
   const[footer, setFooter] = useState([]);
   const[linkgroups, setLinkGroups] = useState([]);
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
   const[settings, setSettings] = useState([]);
-
+  const [primarylinkgroups, setPrimaryLinkGroups] = useState([]);
   //fetch data
   const getAllData = async ()=>{
+    let getId = localStorage.getItem('PAGESLUG');
+    let id = getId;
+    console.log("slug id",id);
     const res=await axios
     .get(
-       `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+       `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=${id}`
     )
     .then((res) => { 
       console.log(res)
@@ -61,6 +66,26 @@ function Footer() {
     })
   }
 
+  const NewPage=async(pageSelect)=>{
+    
+    // primarylinkgroups &&
+    // primarylinkgroups.data &&
+    // primarylinkgroups.data.map((data, index) => { 
+    //             console.log("data", data);         
+    //             return (  
+    //               <div>  if(data.urlSelected===null){
+    //                 navigate('/page')
+    //               }  <Link to={data.urlSelected}></Link> </div>                                  
+
+                        
+    // );
+    // })
+    navigate('/page');
+    showLoader();
+    localStorage.setItem('Page', pageSelect)
+    hideLoader();
+  }
+
   return (   
    
   <div>
@@ -83,37 +108,19 @@ function Footer() {
     </div>
     <div className="rightSide">
    
-        <Link to="/" onClick={ScrollUp} > HOME </Link>
-     
-       {/* <Link to="/about" onClick={ScrollUp}>ABOUT US </Link>
-        <Link to="/services" onClick={ScrollUp}> COURSES </Link>
-        <Link to="/news" onClick={ScrollUp}> NEWS </Link>
-        <Link to="/contact" onClick={ScrollUp}> CONTACT </Link>  */}
+        {/* <Link to="/" onClick={ScrollUp} > HOME </Link> */}
         {linkgroups &&
       linkgroups.data &&
       linkgroups.data.map((data, index) => { 
         console.log("data", data);         
         return (                                   
           <div className="apifooter">
-            <Link className="aaa" to={data.urlSelected}>{data.menuTitle}</Link>      
+            <Link className="aaa" to={data.pageSelect===null ? data.urlSelected: '/page'}  onClick={()=>{NewPage(data.pageSelect)}}>
+            {data.menuTitle}</Link>      
           </div>        
         );
       })}   
-
-            {/* {
-            settings &&
-            settings.pageData &&
-            settings.pageData.map((data, index) => {
-          console.log("data", data);
-          return (
-             <div className="apifooter">
-            <Link>{data.menuTitle}</Link>      
-          </div> 
-           
-            );
-            })} */}
-      </div>
-      
+      </div>     
     </div>
     <div className="footer2">
       <h4 style={{color:"white", justifyContent:"center"}}>{footer.copyrightText}</h4>

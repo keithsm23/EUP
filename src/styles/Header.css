@@ -33,7 +33,7 @@
     display: flex;
     float: right;
    flex-direction: row;
-  margin-top: 6px;
+    margin-top: 6px;
     justify-content: right;
     align-items: center;
     box-shadow: none;
@@ -132,7 +132,6 @@
   }
   
   .navbar .leftSide3 {
-  
     display: flex;
     margin-left: -30px;
     align-items: center;
@@ -159,12 +158,14 @@
     justify-content: right;
     position: absolute;
   }
-  
   .navbar a {
     color: rgb(20, 12, 12);
     text-decoration: none;
     margin: 20px;
-    cursor: pointer;
+  }
+  .navbar a:focus,
+  .navbar a.toplinkc1{
+    color: #FFAC00 !important;
   }
   .toplinkc1{
     padding: 5px;
@@ -176,19 +177,11 @@
     color: grey;
   }
 
-  .mystyle {
 
-    color: red;
+/* .lin:focus{
+  color: #FFAC00 !important;
 }
-.mystyle1 { 
-    
-    color: yellow;
-}
-.butttn{
-  border: solid;
-  color: gold;
-}
-
-.lin:focus{
+  
+.lin:active{
   color: #FFAC00;
-}
+}  */

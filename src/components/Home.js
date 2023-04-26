@@ -8,6 +8,7 @@ import { CButton } from "@coreui/react";
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar } from "react-icons/fa";
+import swal from 'sweetalert';
 
 const Home = () => {
   const [menus, setMenus] = useState([]);
@@ -31,20 +32,22 @@ const Home = () => {
 
   //fetch data
   const getAllData = async () => {
-     let getId = localStorage.getItem('PAGESLUG');
+    let getId = localStorage.getItem('PAGESLUG');
     let id = getId;
-     console.log("slug id", id);
-    const res = await axios
-    
+    console.log("slug id",id);
+    const res = await axios  
       .get(
-         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=${id}`
       )
       .then((res) => {     
         console.log(res.data);
         setSettings(res.data);
         hideLoader();
       })
-      .catch((err) => {});
+      .catch((err) => {
+        swal('Page not found');
+        navigate("/");
+      });
   };
 
   //display user list
@@ -56,34 +59,12 @@ const Home = () => {
 
 
 
-//   //fetch data
-//   const getPageData = async () => {
-//     let getId = localStorage.getItem('PAGESLUG');
-//    let id = getId;
-//     console.log("slug id", id);
-//    const res = await axios
-   
-//      .get(
-//         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug={id}`
-//      )
-//      .then((res) => {     
-//        console.log(res.data);
-//        setSettings(res.data);
-//        hideLoader();
-//      })
-//      .catch((err) => {});
-//  };
-
-//  //display user list
-//  useEffect(() => {
-//    showLoader();
-//    getPageData();
-//  }, []);
-
-
  
 
   const AboutUs = async (e) => {
+    window.scrollTo({
+      top: 0
+    })
     e.preventDefault();
     navigate("/about");
     // localStorage.setItem('PageID', JSON.stringify(id))
@@ -91,6 +72,26 @@ const Home = () => {
     // localStorage.setItem('PAGESLUG', slug)
     // hideLoader();
   };
+
+  //time format
+  const formateData = (blog) =>{
+    var d = blog;
+    let Date = d.split(' ')[0];
+    let year = Date.split('-')[0];   
+    let month = Date.split('-')[1]; 
+    let day = Date.split('-')[2];
+    let month_names_short =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    let getMonth = month_names_short.filter((mon, i) => {
+    if(month == i+1){ 
+      return mon;
+    } 
+   });
+    let convertedData = day+" "+getMonth[0]+" "+year;
+    return convertedData; 
+  };
+
+
+
 
   return (
     <div>
@@ -119,7 +120,7 @@ const Home = () => {
                
               
              <div id="one" className="box">
-                  <h3>About Us</h3>
+                  <h3 style={{color:"rgba(7, 41, 77, 1)"}}>About Us</h3>
                   <h1 className="abouttitle">{home.title}</h1>
                   <tr>
                   
@@ -147,13 +148,14 @@ const Home = () => {
                 <div className="latestnews">
                 <br></br>
                 <h1 style={{fontSize:"40px", marginLeft:"-15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
-                {settings.latestNews.map((news, index) => { 
-                      console.log("news", news);         
-                      return (
-                        <div>                     
-                          <div className="t">
+                { settings && settings.latestNews && settings.latestNews.map((news, index) => { 
+                  console.log("news", news); 
+                  let publishTime = formateData(news.publicationDate);   
+                    return (
+                      <div>                     
+                        <div className="t">
                           <h5 style={{color:"#909090"}}><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;&nbsp;&nbsp;
-                            {news.publicationDate}
+                            {publishTime}
                           </h5> 
                         
                            <h2 className="ti1">{news.title}</h2>  
@@ -164,10 +166,12 @@ const Home = () => {
                             align="center"
                             color="lightgrey"
                           ></hr>                           
-                         </div>
-                        </div>                  
+                        </div>
+                      </div>                  
                       );
-                    })}     
+                  })
+                
+                }     
                 </div>
                
                   <div id="three" className="box">

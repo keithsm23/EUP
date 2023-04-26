@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import "../styles/News.css";
-import useFullPageLoader from '../hooks/useFullPageLoader';
+import "../../styles/News.css";
+import useFullPageLoader from '../../hooks/useFullPageLoader';
 import ReactPaginate from 'react-paginate';
 import { FaCalendar, FaUser } from "react-icons/fa";
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
+import swal from 'sweetalert';
 
 export default function News() {
   let PageSize = 10;
+  const navigate = useNavigate();
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const[blogs, setBlogs] = useState([]);
   const[totalCount, setTotalCount]=useState(null);
@@ -56,6 +58,8 @@ const getAllData = async (offset=0,limit=3)=>{
     console.log(res);
     })
     .catch((err) =>{
+      swal('Page not found');
+      navigate("/");
     } );      
   };
 
@@ -74,55 +78,62 @@ const getAllData = async (offset=0,limit=3)=>{
     getAllData();
   },[]);
 
+  //time format
+  const formateData = (blog) =>{
+    var d = blog;
+    let Date = d.split(' ')[0];
+    let year = Date.split('-')[0];   
+    let month = Date.split('-')[1]; 
+    let day = Date.split('-')[2];
+    let month_names_short =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    let getMonth = month_names_short.filter((mon, i) => {
+    if(month == i+1){ 
+      return mon;
+    } 
+   });
+    let convertedData = day+" "+getMonth[0]+" "+year;
+    return convertedData; 
+  };
+
   return(
     <>
-    
-  {/* <section className="bg-img1">
-         <p className='md'>NEWS</p>
-         <p className='md-1'>Home/Blog</p>
-         </section>   */}
     <div className='wrappermain' >
       <div className='bg-img1'>
       {
         blogs && blogs.map((blog,i)=>{
         return( 
         <div style={{
-                   backgroundImage: `url(${blog && blog.featuredImage})`,
-                   height: "200px",
-                   width: "100%",
-                   backgroundRepeat:"no-repeat",
+                  backgroundImage:  `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${blog && blog.featuredImage})`, 
+                  backgroundRepeat:"no-repeat",
                   }} className='bg-img1' 
-                  >
-                  <p className="mdd">NEWS</p>{" "}
-                  <p className="mdd-1">Home/News</p>
+                  >      
+                  <p className="mdd11">NEWS</p>{" "}
+                  <p className="mdd-11">Home/News</p>
+                          
         </div>
         );
         })
       }  
       </div>
     {
-        blogs && blogs.map((blog,i)=>{
+      blogs.length > 0 ? ( blogs && blogs.map((blog,i)=>{
+        let publishTime = formateData(blog.publicationDate);
         let data=JSON.parse(blog.content)
         console.log(blog);
         const htmlPuri = draftToHtmlPuri(data);
         console.log(htmlPuri);
 
-       
-
         return(       
           <tr key={i}>
           {/* <td>{user.id}</td> */}   
-          
-   
             <div><img  className='featuredImage' src={blog.featuredImage} /> </div>  
-        
 
-
-            <div className='title11'><h2><td><Link onClick={()=>getSlug(blog.id, blog.slug)} style={{"text-decoration":"none"}} to="/SingleNews">{blog.title}</Link></td></h2> </div>  
+            <div className='title11'><h2><td><Link onClick={()=>getSlug(blog.id, blog.slug)} style={{"text-decoration":"none", color:"black"}} to="/News/SingleNews">{blog.title}</Link></td></h2> 
+            </div>  
     
-             <div className='author11'><h5> <td> <FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp; 
-            {blog.authorName} &nbsp;<FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;
-            {blog.publicationDate}</td> </h5>
+            <div className='author11'><h5> <td> <FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;
+            {publishTime} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FaUser style={{color:" rgb(247, 205, 18)"}}></FaUser>&nbsp;
+            {blog.authorName}</td> </h5>
             </div>       
             <br></br>
             <div className='newscontent'><tr><div dangerouslySetInnerHTML={{ __html: htmlPuri }}/></tr></div>
@@ -131,7 +142,8 @@ const getAllData = async (offset=0,limit=3)=>{
           </tr>         
           );
         })
-   }
+      ) :null  
+    }
    
   
     <div style={{display: 'flex', marginTop:"96px"}}>

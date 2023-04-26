@@ -15,46 +15,7 @@
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   }
    */
-  /* .headerContainer {
-    width: auto;
-    margin-left: 50px;
-  }
   
-  .headerContainer h1 {
-    justify-content: center;
-    align-items: center;
-    font-size: 90px;
-    height: 60px;
-    font-weight: 50;
-    color: black;
-  }
-  
-  .headerContainer p {
-    padding: 0;
-    font-size: 40px;
-    font-weight: lighter;
-    color: black;
-  }
-  
-  .headerContainer button {
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    justify-content: center;
-    background-color: #121619;
-    height: 50px;
-    width: 180px;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  
-  .headerContainer button:hover {
-    background-color: #07090a;
-    cursor: pointer;
-    transition: 0.3s ease-in;
-  } */
   .body{
     display: flex;
     position: relative;
@@ -137,6 +98,7 @@
   }
   .ti1{
     margin-top: -10px;
+    overflow: hidden;
   }
   .ti2{
     font-size: 40px;
@@ -235,7 +197,7 @@
   color: rgba(7, 41, 77, 1);
   height:48px;
   width:140px;
-  margin-top: 1080px;
+  margin-top: 1060px;
   border-radius: 4px;
   background-color: rgb(247, 205, 18);
 }
@@ -289,5 +251,6 @@ max-width: 70px;
  float: left;
 }
 .abouttitle{
-  font-size: 40px;
+  font-size: 55px;
+  text-align: left;
 }
