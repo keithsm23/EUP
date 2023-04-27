@@ -9,7 +9,7 @@ const Page=React.lazy(() => import('./components/Page'))
 
 const routes = [
     { path: '/', exact: true, name: 'home' },
-    { path: '/about', name: 'About Us', element: AboutUs },
+    { path: '/AboutUs', name: 'About Us', element: AboutUs },
     { path: '/services', name: 'Services', element: Services },
     { path: '/news', name: 'News', element: News },
     { path: '/News/SingleNews', name: 'Single News', element: SingleNews },

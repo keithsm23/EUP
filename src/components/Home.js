@@ -60,12 +60,16 @@ const Home = () => {
 
  
 
-  const AboutUs = async (e) => {
+  const AboutUs = async (id, slug) => {
     window.scrollTo({
       top: 0
     })
-    e.preventDefault();
-    navigate("/about");
+    localStorage.setItem('AboutID', JSON.stringify(id))
+    showLoader();
+    localStorage.setItem('AboutSLUG', slug)
+    hideLoader();
+    
+    navigate("/AboutUs");
     // localStorage.setItem('PageID', JSON.stringify(id))
     // showLoader();
     // localStorage.setItem('PAGESLUG', slug)
@@ -135,7 +139,7 @@ const Home = () => {
                 <div className="btn3">
                     <CButton
                       type="button"
-                      onClick={AboutUs}
+                      onClick={()=>AboutUs(home.id, home.slug)}
                       className="button1"
                     >
                       Learn More

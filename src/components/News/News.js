@@ -32,13 +32,7 @@ export default function News() {
     featuredImage:""
   });
 
-  const getSlug = (id, slug) => {
-    
-    localStorage.setItem('ID', JSON.stringify(id))
-    showLoader();
-    localStorage.setItem('SLUG', slug)
-    hideLoader();
-  }
+
   
 //fetch data
 const getAllData = async (offset=0,limit=3)=>{
@@ -94,6 +88,14 @@ const getAllData = async (offset=0,limit=3)=>{
     let convertedData = day+" "+getMonth[0]+" "+year;
     return convertedData; 
   };
+
+  //single news page 
+  const getSlug = (id, slug) => {   
+    localStorage.setItem('ID', JSON.stringify(id))
+    showLoader();
+    localStorage.setItem('SLUG', slug)
+    hideLoader();
+  }
 
   return(
     <>

@@ -47,10 +47,10 @@ const AboutUs = () => {
       });
 
   const getAllData = async ()=>{
-    // let getId = localStorage.getItem('PAGESLUG');
-    // let id = getId;
-    // console.log("slug id",id);
-     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=page2`)
+     let getId = localStorage.getItem('AboutSLUG');
+     let id = getId;
+    console.log("slug id",id);
+     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=${id}`)
     .then((res) => { 
       console.log(res.data.data);
     setPages([res.data.data]);
