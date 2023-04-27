@@ -14,32 +14,8 @@ function Footer() {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const[settings, setSettings] = useState([]);
   const [primarylinkgroups, setPrimaryLinkGroups] = useState([]);
-  //fetch data
-  const getAllData = async ()=>{
-    let getId = localStorage.getItem('PAGESLUG');
-    let id = getId;
-    console.log("slug id",id);
-    const res=await axios
-    .get(
-       `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=${id}`
-    )
-    .then((res) => { 
-      console.log(res)
-    setFooter(res.data.data.reverse());
-   
-    })
-    .catch((err) =>{
-    } );      
-    };
-
-  //display user list
-  useEffect(()=>{
-    getAllData();
-  },[]);
   
-
-
-
+  
    //fetch footer link
    const getLinkGroups = async () => {
     const res = await axios
@@ -60,14 +36,40 @@ function Footer() {
   }, []);
 
 
-  const ScrollUp=()=>{
+  //fetch data
+  const getAllData = async ()=>{
+    // let getId = localStorage.getItem('PAGESLUG');
+    // let id = getId;
+    // console.log("slug id",id);
+    const res=await axios
+    .get(
+       `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
+    )
+    .then((res) => { 
+      console.log(res)
+    setFooter(res.data.data.reverse());
+   
+    })
+    .catch((err) =>{
+    } );      
+    };
+
+  //display user list
+  useEffect(()=>{
+    getAllData();
+  },[]);
+
+
+  // const ScrollUp=()=>{
+  //   window.scrollTo({
+  //     top: 0
+  //   })
+  // }
+
+  const NewPage=async(pageSelect)=>{
     window.scrollTo({
       top: 0
     })
-  }
-
-  const NewPage=async(pageSelect)=>{
-    
     // primarylinkgroups &&
     // primarylinkgroups.data &&
     // primarylinkgroups.data.map((data, index) => { 
@@ -111,11 +113,11 @@ function Footer() {
         {/* <Link to="/" onClick={ScrollUp} > HOME </Link> */}
         {linkgroups &&
       linkgroups.data &&
-      linkgroups.data.map((data, index) => { 
+      linkgroups.data.slice(0,9).map((data, index) => { 
         console.log("data", data);         
         return (                                   
           <div className="apifooter">
-            <Link className="aaa" to={data.pageSelect===null ? data.urlSelected: '/page'}  onClick={()=>{NewPage(data.pageSelect)}}>
+            <Link className="aaa" to={data.urlSelected===null ? '/page' :data.urlSelected}  onClick={()=>{NewPage(data.pageSelect)}}>
             {data.menuTitle}</Link>      
           </div>        
         );

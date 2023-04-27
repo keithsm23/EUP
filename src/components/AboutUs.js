@@ -47,15 +47,15 @@ const AboutUs = () => {
       });
 
   const getAllData = async ()=>{
-    let getId = localStorage.getItem('PAGESLUG');
-    let id = getId;
-    console.log("slug id",id);
-     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=${id}`)
+    // let getId = localStorage.getItem('PAGESLUG');
+    // let id = getId;
+    // console.log("slug id",id);
+     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=page2`)
     .then((res) => { 
       console.log(res.data.data);
     setPages([res.data.data]);
     hideLoader();
-})
+    })
     .catch((err) =>{
     } );      
   };
@@ -65,16 +65,14 @@ const AboutUs = () => {
    getAllData();
   },[]);
 
-    return ( 
+  return ( 
       <div >
-  
         { ( pages && pages.map((page,i)=>
            {
           let data=JSON.parse(page.description)
            const htmlPuri = draftToHtmlPuri(data);
             console.log(htmlPuri); 
             console.log(page);
-
             return(
               <tr key={i} >       
               
@@ -113,10 +111,8 @@ const AboutUs = () => {
          )}
   
         {loader}
-      </div>
-      
-    );
-    
+      </div>    
+    ); 
   };
 
   export default AboutUs;

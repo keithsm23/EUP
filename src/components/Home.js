@@ -32,12 +32,12 @@ const Home = () => {
 
   //fetch data
   const getAllData = async () => {
-    let getId = localStorage.getItem('PAGESLUG');
-    let id = getId;
-    console.log("slug id",id);
+    // let getId = localStorage.getItem('PAGESLUG');
+    // let id = getId;
+    // console.log("slug id",id);
     const res = await axios  
       .get(
-         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=${id}`
+         `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
       )
       .then((res) => {     
         console.log(res.data);
@@ -45,8 +45,7 @@ const Home = () => {
         hideLoader();
       })
       .catch((err) => {
-        swal('Page not found');
-        navigate("/");
+       swal('Page Not found')
       });
   };
 
@@ -89,8 +88,6 @@ const Home = () => {
     let convertedData = day+" "+getMonth[0]+" "+year;
     return convertedData; 
   };
-
-
 
 
   return (

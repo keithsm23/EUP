@@ -9,7 +9,11 @@ import draftToHtmlPuri from "draftjs-to-html";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 import { useSyncExternalStore } from "react";
 import swal from 'sweetalert';
-
+import {
+  CDropdown,
+  CDropdownItem,
+  CDropdownMenu
+} from '@coreui/react';
 function Header() {
   const navigate = useNavigate();
   const[page, setPage] = useState([]);
@@ -73,13 +77,13 @@ function Header() {
 
 
 
-  //fetch data
+  //fetch page data
   const getAllData = async ()=>{
-    let getId = localStorage.getItem('PAGESLUG');
-    let id = getId;
-    console.log("slug id",id);
+    // let getId = localStorage.getItem('PAGESLUG');
+    // let id = getId;
+    // console.log("slug id",id);
      const res=await axios
-    .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=${id}`
+    .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
     )
       .then((res) => { 
         console.log(res)
@@ -94,48 +98,28 @@ function Header() {
   useEffect(()=>{
     getAllData();
   },[]);
-
-
   
- 
-  const NewPage=async(pageSelect)=>{
-    
-    // primarylinkgroups &&
-    // primarylinkgroups.data &&
-    // primarylinkgroups.data.map((data, index) => { 
-    //             console.log("data", data);         
-    //             return (  
-    //               <div>  if(data.urlSelected===null){
-    //                 navigate('/page')
-    //               }  <Link to={data.urlSelected}></Link> </div>                                  
-
-                        
-    // );
-    // })
+  //go to new page
+  const NewPage=async(pageSelect)=>{  
     navigate('/page');
-    showLoader();
-    localStorage.setItem('Page', pageSelect)
+
+    showLoader(); 
+    localStorage.setItem('Page', pageSelect);
     hideLoader();
   }
 
     
-  // const urlSelected=async()=>{
+  // const urlSelected=async(urlSelected)=>{
+  //   <Link to={urlSelected}></Link>
   //   primarylinkgroups &&
   //   primarylinkgroups.data &&
   //   primarylinkgroups.data.map((data, index) => { 
   //   console.log("data", data);         
   //     return (  
-  //       <div> navigate({data.urlSelected}) </div>                                                  
+  //       <div></div>                                                  
   //   );
   //   })
   // }
-  // const buttonClick=()=>{
-   
-  //     navigate('/page')
-   
-  // }
-
-
 
   return ( <div>
      {
@@ -169,12 +153,13 @@ function Header() {
            
           {linkgroups &&
             linkgroups.data &&
-            linkgroups.data.map((data, index) => { 
+            linkgroups.data.slice(0,5).map((data, index) => { 
               console.log("data", data);         
               return ( 
                                      
               <div className="menutitlee">
-                  <h4><Link style={{color:"rgb(221, 182, 10)" }} to={data.urlSelected}>{data.menuTitle}</Link> </h4>
+                  <h4><Link style={{color:"rgb(221, 182, 10)" }} to={data.pageSelect===null ? data.urlSelected : data.pageSelect} onClick={()=>{NewPage(data.pageSelect)}}>
+                  {data.menuTitle}</Link> </h4>
                </div>  
          
             );
@@ -194,14 +179,14 @@ function Header() {
             {
             primarylinkgroups &&
             primarylinkgroups.data &&
-            primarylinkgroups.data.map((data, index) => { 
+            primarylinkgroups.data.slice(0,9).map((data, index) => { 
             console.log("data", data);         
             return (                                       
               <div className="toplinkc1"> 
-        
-             <Link  className="lin"  to={data.urlSelected===null ? '/page' :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}} >
-                {data.menuTitle} </Link>  
-              </div>   
+
+              <Link  className="lin"  to={data.urlSelected===null ? data.pageSelect :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}}>
+              {data.menuTitle} </Link>
+              </div>
                            
           );
           })

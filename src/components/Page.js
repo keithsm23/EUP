@@ -52,27 +52,25 @@ const Page = () => {
   
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/editData/${id}`)
     .then((res) => { 
-     console.log(res);
-    setPage([res.data.message]);
-    hideLoader();
+      console.log(res); 
+      setPage([res.data.message]); 
+      hideLoader();
 })
     .catch((err) =>{
-      swal('Page not found');
       navigate("/");
     } );      
   };
 
   useEffect(()=>{
-
-   showLoader();
-   getAllData();
+  showLoader();
+  getAllData();
   },[]);
   
 
 
     return (
       <div>  
-       <section >     
+       <section>     
         { ( page   && 
             page.map((page,i)=>
            {

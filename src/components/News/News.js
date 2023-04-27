@@ -58,10 +58,16 @@ const getAllData = async (offset=0,limit=3)=>{
     console.log(res);
     })
     .catch((err) =>{
-      swal('Page not found');
+      swal('Blogs not found');
       navigate("/");
     } );      
   };
+
+   //display user list
+   useEffect(()=>{
+    showLoader();
+    getAllData();
+  },[]);
 
    //pagination
    const handlePageClick = (event) => {
@@ -71,12 +77,6 @@ const getAllData = async (offset=0,limit=3)=>{
     getAllData(count);   
   };
 
-
-  //display user list
-  useEffect(()=>{
-    showLoader();
-    getAllData();
-  },[]);
 
   //time format
   const formateData = (blog) =>{
@@ -108,8 +108,7 @@ const getAllData = async (offset=0,limit=3)=>{
                   }} className='bg-img1' 
                   >      
                   <p className="mdd11">NEWS</p>{" "}
-                  <p className="mdd-11">Home/News</p>
-                          
+                  <p className="mdd-11">Home/News</p>                      
         </div>
         );
         })
@@ -145,9 +144,7 @@ const getAllData = async (offset=0,limit=3)=>{
       ) :null  
     }
    
-  
-    <div style={{display: 'flex', marginTop:"96px"}}>
-    
+    <div style={{display: 'flex', marginTop:"96px"}}>  
       <ReactPaginate
         breakLabel="..."
         nextLabel=">"    
@@ -163,10 +160,9 @@ const getAllData = async (offset=0,limit=3)=>{
         activeClassName={"activeClassName"}
         forcePage={page}
        /> 
-      </div>
-    
-      </div>
-      {loader}
+      </div>  
+    </div>
+    {loader}
    </>       
   );
 }
