@@ -277,20 +277,21 @@ input[type=text1], select {
 }
 #image2{
   border-radius: 25px;
-  margin-left: 20px;
+  margin-left: 12px;
   width: 130px;
   height: 130px;
-  padding: 10px;
+  padding: 20px;
 }
 .posts{
   width: 400px;
    border: thin;
-   height:850px; 
+   /* height:850px;  */
    background-color:  rgb(250, 245, 245);
    margin-left: 850px;
 }
 .heading{
   padding-top: 0px;
+  padding-bottom: 30px;
   margin: 8px 0;
   font-weight: bold;
   font-size: 35px;
@@ -300,9 +301,9 @@ input[type=text1], select {
 }
 .title1{
   font-size: 22px;
-  margin-top: -140px;
+  margin-top: -150px;
   font-weight: bolder;
-  margin-left: 180px;
+  margin-left: 190px;
   /* margin-bottom: 10px; */
 }
 .image3{
@@ -321,11 +322,11 @@ input[type=text1], select {
 .pdate{
   margin-top: -10px;
   color: grey;
-  margin-left: 180px;
+  margin-left: 190px;
 }
 .blogs{
   width:770px;
-  margin-top: -850px;
+  margin-top: -930px;
 }
 .author1{
   font-weight: bold;

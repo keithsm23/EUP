@@ -248,16 +248,18 @@ const getAllData = async ()=>{
                 <div style={{
                   backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${newss && newss.featuredImage})`,
                   height: "200px",
-                  width: "100%",
+                  width: "1359px",
                   backgroundRepeat:"no-repeat",
                  }} className='bg-img2' 
                  >
-                 <p className='heading1'>News</p>{" "}
-                 <p className="heading2">Home/News</p>
+ {blogs.length > 0 ? <p className='heading1'>{blogs[0].title}</p>:null}
+                 <p className="heading2">Home/News/{blogs[0].title}</p>
        </div>
               )
             }))}
-{/* 
+
+         
+{/*          
       {(
           blogs && blogs.map((blog,i)=>
         {
