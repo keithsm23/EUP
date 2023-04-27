@@ -102,24 +102,12 @@ function Header() {
   //go to new page
   const NewPage=async(pageSelect)=>{  
     navigate('/page');
-
     showLoader(); 
     localStorage.setItem('Page', pageSelect);
     hideLoader();
   }
 
     
-  // const urlSelected=async(urlSelected)=>{
-  //   <Link to={urlSelected}></Link>
-  //   primarylinkgroups &&
-  //   primarylinkgroups.data &&
-  //   primarylinkgroups.data.map((data, index) => { 
-  //   console.log("data", data);         
-  //     return (  
-  //       <div></div>                                                  
-  //   );
-  //   })
-  // }
 
   return ( <div>
      {

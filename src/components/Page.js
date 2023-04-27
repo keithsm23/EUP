@@ -49,7 +49,6 @@ const Page = () => {
     let getId = localStorage.getItem('Page');
     let id = getId;
     console.log("Page", id);
-  
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/editData/${id}`)
     .then((res) => { 
       console.log(res); 
