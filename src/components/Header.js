@@ -110,6 +110,8 @@ function Header() {
       hideLoader();
   }
 
+  
+
     
 
   return ( <div>
@@ -175,7 +177,7 @@ function Header() {
             return (                                       
               <div className="toplinkc1"> 
 
-              <Link  className="lin"  to={data.urlSelected===null ? "/page" :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}}>
+              <Link  className="lin"  to={data.urlSelected===null ? data.pageSelect :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}}>
               {data.menuTitle} </Link>
               </div>
                            

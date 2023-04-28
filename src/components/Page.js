@@ -85,7 +85,6 @@ const [isVisible, setVisible] = useState(false)
                <br></br>
               <div className='aboutcontent13'>
               <tr>  
-              <Link to={page.slug}>hello</Link>    
                <div dangerouslySetInnerHTML={{ __html: htmlPuri }}/>  
               </tr>
               </div>
