@@ -17,6 +17,9 @@ import {
 function Header() {
   const navigate = useNavigate();
   const[page, setPage] = useState([]);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [isVisible, setVisible] = useState(false);
+  const [shouldReload, setShouldReload] = useState(false);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [menus, setMenus] = useState([]);
   const [selectedButton, setSelectedButton] = useState("");
@@ -101,10 +104,10 @@ function Header() {
   
   //go to new page
   const NewPage=async(pageSelect)=>{  
-    navigate('/page');
-    showLoader(); 
-    localStorage.setItem('Page', pageSelect);
-    hideLoader();
+      navigate('/page');
+      showLoader(); 
+      localStorage.setItem('Page', pageSelect);
+      hideLoader();
   }
 
     
@@ -172,7 +175,7 @@ function Header() {
             return (                                       
               <div className="toplinkc1"> 
 
-              <Link  className="lin"  to={data.urlSelected===null ? data.pageSelect :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}}>
+              <Link  className="lin"  to={data.urlSelected===null ? "/page" :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}}>
               {data.menuTitle} </Link>
               </div>
                            
