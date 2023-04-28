@@ -4,26 +4,8 @@ import axios from 'axios';
 import useFullPageLoader from '../hooks/useFullPageLoader';
 import '../styles/AboutUs.css';
 // import useFullPageLoader from "src/hooks/useFullPageLoader";
-
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
-
-import Footer from './Footer';
-
-import {
-  CButton,
-  CCard,
-  CCardHeader,
-  CCol,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-  CFormSelect,
-} from '@coreui/react'
 
   
 const AboutUs = () => {

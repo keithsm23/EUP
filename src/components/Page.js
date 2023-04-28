@@ -6,27 +6,14 @@ import '../styles/Page.css';
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import swal from 'sweetalert';
-import Footer from './Footer';
 
-import {
-  CButton,
-  CCard,
-  CCardHeader,
-  CCol,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-  CFormSelect,
-} from '@coreui/react'
 
   
 const Page = () => {
     // console.log("props", props);
     const navigate = useNavigate();
+    const [isFirstLoad, setIsFirstLoad] = useState(true)
+const [isVisible, setVisible] = useState(false)
     const [loader, showLoader, hideLoader] = useFullPageLoader();
     const[settings, setSettings]=useState([]);
     const[page, setPage] = useState([]);
@@ -61,9 +48,14 @@ const Page = () => {
   };
 
   useEffect(()=>{
-  showLoader();
-  getAllData();
-  },[]);
+    if (!isFirstLoad) {
+      window.location.reload();
+  } else {
+      setIsFirstLoad(true)
+      showLoader();
+      getAllData();
+  }
+},[isVisible]);
   
 
 
