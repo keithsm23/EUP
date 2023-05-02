@@ -113,7 +113,7 @@ const Home = () => {
                       return (     
                         document.title = data.siteTitle,                          
            <img
-                alt="" style={{ width: "1359px", height: "550px", position:"absolute"}}
+                alt="" style={{ width: "1349px", height: "550px", position:"absolute"}}
                 src={data.heroBanner}
               />             
             );

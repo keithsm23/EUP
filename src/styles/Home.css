@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap');
 /* .home {
-    width: 1359px;
+    width: 1349px;
     margin-top: 325px;
     height: 580px;
     display: flex;
@@ -19,7 +19,7 @@
   .body{
     display: flex;
     position: relative;
-    width:1359px;
+    width:1349px;
     height: 1194px;
     margin-top:10px;
     margin-bottom: -320px;
@@ -72,7 +72,7 @@
   #three{
     width: 400px;
    position: absolute;
-   margin-left: 959px;
+   margin-left: 899px;
    height: 409px;
    margin-top: 685px; 
    z-index: 0;

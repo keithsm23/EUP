@@ -113,7 +113,7 @@ function Footer() {
         {/* <Link to="/" onClick={ScrollUp} > HOME </Link> */}
         {linkgroups &&
       linkgroups.data &&
-      linkgroups.data.slice(0,9).map((data, index) => { 
+      linkgroups.data.slice(0,8).map((data, index) => { 
         console.log("data", data);         
         return (                                   
           <div className="apifooter">

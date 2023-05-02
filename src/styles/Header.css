@@ -1,5 +1,5 @@
 .navbar1 {
-    width: 1359px;
+    width: 1349px;
     height: 81px;
     background: inherit;
     background-color: rgba(7, 41, 77, 1);
@@ -41,7 +41,6 @@
     width: 830px; 
     height: 60px;
     overflow: hidden;
-   
   }
   .menutitlee{
  padding:10px;
@@ -123,7 +122,7 @@
     }
   }
   .navbar {
-    width: 1359px;
+    width: 1349px;
     height: 90px;
     background-color: #fdfeff;
     display: flex;

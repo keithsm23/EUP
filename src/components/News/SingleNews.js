@@ -248,7 +248,7 @@ const getAllData = async ()=>{
                 <div style={{
                   backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${newss && newss.featuredImage})`,
                   height: "200px",
-                  width: "1359px",
+                  width: "1349px",
                   backgroundRepeat:"no-repeat",
                  }} className='bg-img2' 
                  >

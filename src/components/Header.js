@@ -14,6 +14,8 @@ import {
   CDropdownItem,
   CDropdownMenu
 } from '@coreui/react';
+
+
 function Header() {
   const navigate = useNavigate();
   const[page, setPage] = useState([]);
@@ -39,6 +41,7 @@ function Header() {
     email:"",
     logo:""
   });
+
 
     //fetch top link
     const getLinkGroups = async () => {
@@ -146,7 +149,7 @@ function Header() {
            
           {linkgroups &&
             linkgroups.data &&
-            linkgroups.data.slice(0,5).map((data, index) => { 
+            linkgroups.data.slice(0,4).map((data, index) => { 
               console.log("data", data);         
               return ( 
                                      
@@ -172,7 +175,7 @@ function Header() {
             {
             primarylinkgroups &&
             primarylinkgroups.data &&
-            primarylinkgroups.data.slice(0,9).map((data, index) => { 
+            primarylinkgroups.data.slice(0,8).map((data, index) => { 
             console.log("data", data);         
             return (                                       
               <div className="toplinkc1"> 
