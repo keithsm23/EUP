@@ -253,7 +253,7 @@ const getAllData = async ()=>{
                  }} className='bg-img2' 
                  >
  {blogs.length > 0 ? <p className='heading1'>{blogs[0].title}</p>:null}
-                 <p className="heading2">Home/ News/ {blogs[0].title}</p>
+                 <p className="heading2">Home/News/{blogs[0].title}</p>
        </div>
               )
             }))}
