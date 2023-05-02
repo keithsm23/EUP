@@ -61,7 +61,7 @@ const AboutUs = () => {
                 <div style={{
                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${page && page.image})`,
                    height: "200px",
-                   width: "1359px",
+                   width: "1349px",
                    marginTop:"-20px"
                   }}
                   >

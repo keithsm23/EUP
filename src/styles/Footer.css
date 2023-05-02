@@ -1,5 +1,5 @@
 .footer {
-    width: 1359px;
+    width: 1349px;
     margin-top: 320px;
     height: 170px;
     background-color: rgba(7, 41, 77, 1);
@@ -79,7 +79,7 @@ position: absolute;
    */
 .footer2 {
     display: block;
-   width: 1359px;
+   width: 1349px;
    height: 75px;
    position: absolute;
    background: inherit;
