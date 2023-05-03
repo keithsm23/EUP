@@ -19,6 +19,7 @@
     font-weight: bold;
     padding-left: 50px;
     color: white;
+    font-family: "Roboto", sans-serif;
 }
 .md-1{
     font-size: 15px;
@@ -26,5 +27,6 @@
     padding-left: 50px;
     margin-top: -20px;
     color: white;
+    font-family: "Roboto", sans-serif;
 }
   

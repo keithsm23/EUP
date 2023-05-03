@@ -9,6 +9,7 @@ import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar } from "react-icons/fa";
 import swal from 'sweetalert';
+import { fontFamily } from "@mui/system";
 
 const Home = () => {
   const [menus, setMenus] = useState([]);
@@ -121,7 +122,7 @@ const Home = () => {
                
               
              <div id="one" className="box">
-                  <h3 style={{color:"rgba(7, 41, 77, 1)"}}>About Us</h3>
+                  <h3 style={{color:"rgba(7, 41, 77, 1)", fontFamily:"Roboto"}}>About Us</h3>
                   <h1 className="abouttitle">{home.title}</h1>
                   <tr>
                   

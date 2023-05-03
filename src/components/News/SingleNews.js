@@ -213,7 +213,7 @@ const getAllData = async ()=>{
         
         };
 
-        const formatInfo = (blog) =>{ 
+        const formatInfo = (blog) =>{
           var d = blog;
           let Date = d.split(' ')[0];
           let year = Date.split('-')[0];
@@ -226,7 +226,7 @@ const getAllData = async ()=>{
           }
           });
           
-          let convertedData = getMonth[0]+""+day+", "+year;
+          let convertedData = getMonth[0]+" "+day+", "+year;
           return convertedData;
           
           };
@@ -485,6 +485,7 @@ const getAllData = async ()=>{
     &nbsp;
     &nbsp;
     <input
+    className='email1'
     name='commentAuthorEmail' 
     onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
     value={input.commentAuthorEmail}
@@ -502,7 +503,7 @@ const getAllData = async ()=>{
     <CFormTextarea  
     width="200px"  
     className='commentfield' 
-    placeholder='comment'
+    placeholder='Comment'
     name='comments'
     value={input.comments}
     onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}

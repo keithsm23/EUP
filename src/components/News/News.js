@@ -91,6 +91,9 @@ const getAllData = async (offset=0,limit=3)=>{
 
   //single news page 
   const getSlug = (id, slug) => {   
+    window.scrollTo({
+      top: 0
+    })
     localStorage.setItem('ID', JSON.stringify(id))
     showLoader();
     localStorage.setItem('SLUG', slug)

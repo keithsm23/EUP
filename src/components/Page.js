@@ -13,7 +13,7 @@ const Page = () => {
     // console.log("props", props);
     const navigate = useNavigate();
     const [isFirstLoad, setIsFirstLoad] = useState(true)
-const [isVisible, setVisible] = useState(false)
+    const [isVisible, setVisible] = useState(false)
     const [loader, showLoader, hideLoader] = useFullPageLoader();
     const[settings, setSettings]=useState([]);
     const[page, setPage] = useState([]);

@@ -30,8 +30,8 @@
   border:0.5px solid grey;
   border-radius: 0.4rem;
   font-size: large;
-  font-family: "Arial", sans-serif;
   cursor: pointer; 
+  font-family: "Roboto", sans-serif;
 }
 .pageClassName a {
   margin-left: 10px;
@@ -43,7 +43,7 @@
   border:0.5px solid grey;
   border-radius: 0.4rem;
   font-size: large;
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   cursor: pointer;
 }
 
@@ -53,7 +53,7 @@
   padding-top:6px;
   padding-bottom: 6px;
   font-size: large;
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   cursor: pointer; 
   border: 0.5px solid grey;
   margin-left: 10px; 
@@ -62,6 +62,7 @@
 .activeClassName a {
   background-color: rgb(247, 205, 18);
   color: black; 
+ 
 }
 
 .image{
@@ -80,6 +81,7 @@
   overflow: hidden;
 }
 .mdd11{
+  font-family: "Roboto", sans-serif;
   font-size: 30px;
   padding-top: 20px;
   font-weight: bold;
@@ -87,6 +89,7 @@
   color:white;
 }
 .mdd-11{
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   font-weight: bold;
   padding-left: 50px;
@@ -96,16 +99,16 @@
 .title11{
   margin-top: 55px;
  margin-left: 500px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-style: normal;   
 }
 .author11{
-  color: #b3abab;
+  color: #888787;
   margin-left: 500px;
   margin-top: -5px;
-  font-family: "Roboto";
-  font-style: normal;  
+  font-family: "Roboto", sans-serif;
+
 }
 .newscontent{
   margin-top: -42px;
@@ -113,8 +116,6 @@
   margin-right: 140px;
   text-align: justify;
   justify-content: justify;
-  font-family: "Roboto";
-  font-weight: 400;
   font-style: normal;
   font-size: 14px;
   height: 72px;
