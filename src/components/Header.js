@@ -18,7 +18,7 @@ import { style } from "@mui/system";
 const routes=["Home", "AboutUs", ""];
 
 function Header(props) {
-  let location= useLocation();
+  var location= useLocation();
   const navigate = useNavigate();
   const[page, setPage] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -26,11 +26,12 @@ function Header(props) {
   const [shouldReload, setShouldReload] = useState(false);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [menus, setMenus] = useState([]);
-  const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedButton, setSelectedButton] = useState(0);
   const [linkgroups, setLinkGroups] = useState([]);
   const [primarylinkgroups, setPrimaryLinkGroups] = useState([]);
   const [openLinks, setOpenLinks] = useState(false);
   const[settings, setSettings] = useState([]);
+  const[headermenu, setHeaderMenu]=useState([]);
   const[input,setInput] = useState({
     slug:"",
     siteTitle:"",
@@ -71,12 +72,28 @@ function Header(props) {
         .get(
            `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=PRIMARY LINK`
         )
-        .then((res) => {           
+        .then(async(res)  => {           
             console.log(res.data);
             setPrimaryLinkGroups(res.data); 
+            let arr = [];
+            res.data.data.map((menu)=>{
+              console.log("menu",menu)
+              if(menu.urlSelected ==='/')
+              {
+                 arr.push('Home');
+              }
+              else if(menu.urlSelected!==null){
+                arr.push(menu.urlSelected);
+              }
+              else if(menu.pageSelect!==null){
+                arr.push(menu.menuTitle);
+              }
+              
+             })
+             setHeaderMenu(arr);
             // setSelectedButton(res.data[0]);
             // if(res.data.menuTitle===0){ 
-            
+          
             // }            
         })
         .catch((err) => {});
@@ -185,12 +202,14 @@ function Header(props) {
             primarylinkgroups &&
             primarylinkgroups.data &&
             primarylinkgroups.data.slice(0,8).map((data, index) => { 
-             {/* console.log("index", index);  
-             console.log("data.pageSelect", data)     
-             console.log("pathname", location.pathname)    */}
+            console.log("index", index);  
+             {/* console.log("data.pageSelect", data.pageSelect)
+             console.log("data.urlSelected", data.urlSelected)      */}
+             console.log("pathname", location.pathname)   
+             {/* console.log("headermenu",headermenu) */}
             return (                                          
               <div className="toplinkc1"> 
-              <Link  className="lin" style={{ color: index === selectedButton || data.urlSelected===location.pathname || data.pageSelect ===location.pathname ? " #FFAC00 " : "black" }}
+              <Link  className="lin" style={{ color:  '/'+ data.urlSelected===location.pathname || headermenu[0]===location.pathname  ? " #FFAC00 " : "black" }}
                 to={data.urlSelected===null ? data.pageSelect :data.urlSelected} 
                 onClick={()=>{NewPage(data.pageSelect);handleItemClick(index)}}>
                 {data.menuTitle} 
