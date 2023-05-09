@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useMemo} from 'react';
-import { Link,  Navigate,  useNavigate } from "react-router-dom";
+import { Link,  Navigate,  useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import useFullPageLoader from '../hooks/useFullPageLoader';
 import '../styles/Page.css';
@@ -11,6 +11,8 @@ import swal from 'sweetalert';
   
 const Page = () => {
     // console.log("props", props);
+    const { slugId } = useParams();
+    const [content, setContent] = useState(null);
     const navigate = useNavigate();
     const [isFirstLoad, setIsFirstLoad] = useState(true)
     const [isVisible, setVisible] = useState(false)
@@ -39,7 +41,7 @@ const Page = () => {
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/editData/${id}`)
      
     .then((res) => { 
-      // console.log(res); 
+      console.log(res); 
       setPage([res.data.message]); 
       // const {slug}=res.data;
       // navigate(`/${res.data.message.slug}`);
@@ -61,10 +63,9 @@ const Page = () => {
 },[isVisible]);
   
 
-
     return (
       <div>  
-       <section>     
+       <section>   
         { ( page   && 
             page.map((page,i)=>
            {

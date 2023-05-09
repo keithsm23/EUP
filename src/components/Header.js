@@ -73,28 +73,19 @@ function Header(props) {
            `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=PRIMARY LINK`
         )
         .then(async(res)  => {           
-            console.log(res.data);
             setPrimaryLinkGroups(res.data); 
-            let arr = [];
-            res.data.data.map((menu)=>{
-              console.log("menu",menu)
-              if(menu.urlSelected ==='/')
-              {
-                 arr.push('Home');
+             let getIndex = localStorage.getItem('currentIndex');
+             if(getIndex !== null){
+              let value = JSON.parse(getIndex);
+              if(location.pathname === '/'){
+                setSelectedButton(0)
+                localStorage.setItem('currentIndex', JSON.stringify(0))
+              }else{
+                setSelectedButton(value)
               }
-              else if(menu.urlSelected!==null){
-                arr.push(menu.urlSelected);
-              }
-              else if(menu.pageSelect!==null){
-                arr.push(menu.menuTitle);
-              }
-              
-             })
-             setHeaderMenu(arr);
-            // setSelectedButton(res.data[0]);
-            // if(res.data.menuTitle===0){ 
-          
-            // }            
+             }else{
+               selectedButton(0)
+             }    
         })
         .catch((err) => {});
     };
@@ -130,15 +121,15 @@ function Header(props) {
   
   //go to new page
   const NewPage=async(pageSelect)=>{  
-      navigate('/page');
+      navigate(`/page`);
       showLoader(); 
       localStorage.setItem('Page', pageSelect);
       hideLoader();
   }
 
   const handleItemClick = (data) => {
-  
     setSelectedButton(data);
+    localStorage.setItem('currentIndex', JSON.stringify(data))
   };
 
     
@@ -202,14 +193,10 @@ function Header(props) {
             primarylinkgroups &&
             primarylinkgroups.data &&
             primarylinkgroups.data.slice(0,8).map((data, index) => { 
-            console.log("index", index);  
-             {/* console.log("data.pageSelect", data.pageSelect)
-             console.log("data.urlSelected", data.urlSelected)      */}
-             console.log("pathname", location.pathname)   
-             {/* console.log("headermenu",headermenu) */}
+             console.log("index === selectedButton", index, selectedButton)   
             return (                                          
               <div className="toplinkc1"> 
-              <Link  className="lin" style={{ color:  '/'+ data.urlSelected===location.pathname || headermenu[0]===location.pathname  ? " #FFAC00 " : "black" }}
+              <Link  className="lin" style={{ color: index === selectedButton ? " #FFAC00 " : "black" }}
                 to={data.urlSelected===null ? data.pageSelect :data.urlSelected} 
                 onClick={()=>{NewPage(data.pageSelect);handleItemClick(index)}}>
                 {data.menuTitle} 

@@ -24,11 +24,21 @@ function Footer(props) {
       .get(
          `http://api-cms-poc.iplatformsolutions.com/api/cmsMenu/fetchLinkGroups?menuGroupName=FOOTER LINK`
       )
-      .then((res) => {
-        
-        // console.log(res.data);
-        setLinkGroups(res.data);
-      })
+      .then(async(res)  => {           
+        setLinkGroups(res.data); 
+         let getIndex = localStorage.getItem('currentIndex');
+         if(getIndex !== null){
+          let value = JSON.parse(getIndex);
+          if(location.pathname === '/'){
+            setSelectedButton(0)
+            localStorage.setItem('currentIndex', JSON.stringify(0))
+          }else{
+            setSelectedButton(value)
+          }
+         }else{
+           selectedButton(0)
+         }    
+    })
       .catch((err) => {});
   };
 
@@ -91,8 +101,8 @@ function Footer(props) {
   }
 
   const handleItemClick = (data) => {
-  
     setSelectedButton(data);
+    localStorage.setItem('currentIndex', JSON.stringify(data))
   };
 
   return (   
@@ -121,17 +131,15 @@ function Footer(props) {
         {linkgroups &&
       linkgroups.data &&
       linkgroups.data.slice(0,8).map((data, index) => { 
-        {/* console.log("data", data);          */}
-        {/* console.log("index", index);  
-        console.log("data.pageSelect", data)     
-        console.log("pathname", location.pathname)   */}
+        console.log("index === selectedButton", index, selectedButton)   
         return (                                   
           <div className="apifooter">
             <Link className="aaa" 
-            style={{ color: index === selectedButton || data.urlSelected===location.pathname || data.pageSelect ===location.pathname ? " #FFAC00 " : "white" }}
+            style={{ color: index === selectedButton ? " #FFAC00 " : "white" }}
             to={data.urlSelected===null ? data.pageSelect :data.urlSelected}   
             onClick={()=>{NewPage(data.pageSelect);handleItemClick(index)}}>
-            {data.menuTitle}</Link>      
+            {data.menuTitle}
+            </Link>      
           </div>        
         );
       })}   
