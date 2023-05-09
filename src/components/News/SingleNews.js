@@ -63,14 +63,14 @@ export default function SingleNews() {
   const getCommentData = async ()=>{
     let getId = localStorage.getItem('ID');
     let id = getId;
-    console.log("slug id", id);
+    
   
     const res=await axios
     .get(
       `http://api-cms-poc.iplatformsolutions.com/api/blog/getCommentData?contentId=${id} `
       )
     .then((res) => {
-      console.log(res.data.data); 
+      // console.log(res.data.data); 
     setComment(res.data.data);
     hideLoader();
     })
@@ -85,7 +85,7 @@ export default function SingleNews() {
       `http://api-cms-poc.iplatformsolutions.com/api/blog/allBlog?offset=${offset}&limit=${limit} `
       )
     .then((res) => {
-      console.log(res.data.data); 
+      // console.log(res.data.data); 
     setNews(res.data.data);
     hideLoader();
     })
@@ -96,13 +96,13 @@ export default function SingleNews() {
 const getAllData = async ()=>{
     let getId = localStorage.getItem('SLUG');
     let id = getId;
-    console.log("slug id", id);
+    // console.log("slug id", id);
     const res=await axios
     .get(
       `http://api-cms-poc.iplatformsolutions.com/api/blog/getData?slug=${id}`
       )
     .then((res) => {
-      console.log(res.data.data); 
+      // console.log(res.data.data); 
     setBlogs([res.data.data]);
     setPosts(res.data.popularNews);
     hideLoader();
@@ -116,8 +116,8 @@ const getAllData = async ()=>{
       `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
     )
     .then((res) => {
-      console.log(res);
-      setSettings(res.data.data.reverse());
+      // console.log(res);
+      setSettings(res.data.data);
     })
     .catch((err) => {});
    };
@@ -156,7 +156,7 @@ const getAllData = async ()=>{
       .then((res ) =>{
         // navigate("/SingleNews"); 
         hideLoader();
-        console.log('res', res)
+        // console.log('res', res)
         setInput({ ...input,
           commentAuthorName: "",
           commentAuthorEmail: "",
@@ -243,7 +243,8 @@ const getAllData = async ()=>{
          </section>  */}
          {( news && news.map((newss, i) => 
             {
-              console.log("newss", newss);
+              // console.log("newss", newss);
+              
               return(
                 <div style={{
                   backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${newss && newss.featuredImage})`,
@@ -253,7 +254,7 @@ const getAllData = async ()=>{
                  }} className='bg-img2' 
                  >
  {blogs.length > 0 ? <p className='heading1'>{blogs[0].title}</p>:null}
-                 <p className="heading2">Home/News/{blogs[0].title}</p>
+ {blogs.length > 0 ? <p className="heading2">Home/News/{blogs[0].title}</p>:null}
        </div>
               )
             }))}
@@ -309,7 +310,7 @@ const getAllData = async ()=>{
     <h2 className='heading'>Popular Posts</h2>
    { ( posts && posts.map((post,i) =>
       {
-        console.log("popular",post); 
+        // console.log("popular",post); 
         let publishTime = formateData(post.publicationDate);
        return(
           <div>
@@ -373,17 +374,18 @@ const getAllData = async ()=>{
      </p>  */}
      {blogs.length > 0 ?( blogs && blogs.map((blog,i) =>
    {
-    console.log(blog);
+    // console.log(blog);
     let publishTime = formateData(blog.publicationDate);
     let data=JSON.parse(blog.content)
     const htmlPuri = draftToHtmlPuri(data);
-     console.log(htmlPuri);
+    //  console.log(htmlPuri);
      
      return(
        <div>
       <img className='image1' src={blog.featuredImage} /> 
       <br></br>
       <div>
+      <tr key={blog.id}></tr>
         <p className='title'>{blog.title}</p>
         <div>
           <p className='author'><FaCalendar style={{color:" rgb(247, 205, 18)"}}></FaCalendar>&nbsp;{publishTime}
@@ -406,7 +408,7 @@ const getAllData = async ()=>{
   <br></br>
   {( settings && settings.map((icon,i) =>
    {
-    console.log(icon);
+    // console.log(icon);
     
     return(
   <p className='share'>Share: &nbsp;
@@ -443,7 +445,7 @@ const getAllData = async ()=>{
           //   let data=JSON.parse(page.comments)
           //  const htmlPuri = draftToHtmlPuri(data);
           //   console.log(htmlPuri);
-            console.log(page); 
+            // console.log(page); 
             let publishTime = formatInfo(page.commentDate);
             return(
             page.status === 2?
