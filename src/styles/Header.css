@@ -43,10 +43,8 @@
     overflow: hidden;
     font-family: "Roboto", sans-serif;
   }
-  .menutitlee{
- padding:10px;
-   
-   
+.menutitlee{
+  padding:10px; 
   }
   .navbar1 a {
     color: white;
@@ -163,10 +161,11 @@
     text-decoration: none;
     margin: 20px;
   }
-  .navbar a:focus,
+   /* .navbar a:active,
   .navbar a.toplinkc1{
     color: #FFAC00 !important;
-  }
+  }   */
+
   .toplinkc1{
     padding: 5px;
   }
@@ -176,12 +175,4 @@
   .colorlink{
     color: grey;
   }
-
-
-/* .lin:focus{
-  color: #FFAC00 !important;
-}
-  
-.lin:active{
-  color: #FFAC00;
-}  */
+ 

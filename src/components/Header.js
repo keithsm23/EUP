@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../styles/Header.css";
 import axios from 'axios';
 import { SocialIcon } from 'react-social-icons';
@@ -14,9 +14,11 @@ import {
   CDropdownItem,
   CDropdownMenu
 } from '@coreui/react';
+import { style } from "@mui/system";
+const routes=["Home", "AboutUs", ""];
 
-
-function Header() {
+function Header(props) {
+  let location= useLocation();
   const navigate = useNavigate();
   const[page, setPage] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -24,7 +26,7 @@ function Header() {
   const [shouldReload, setShouldReload] = useState(false);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [menus, setMenus] = useState([]);
-  const [selectedButton, setSelectedButton] = useState("");
+  const [selectedButton, setSelectedButton] = useState(null);
   const [linkgroups, setLinkGroups] = useState([]);
   const [primarylinkgroups, setPrimaryLinkGroups] = useState([]);
   const [openLinks, setOpenLinks] = useState(false);
@@ -51,7 +53,7 @@ function Header() {
         )
         .then((res) => {
           
-          console.log(res.data);
+          // console.log(res.data);
           setLinkGroups(res.data);
         })
         .catch((err) => {});
@@ -71,7 +73,11 @@ function Header() {
         )
         .then((res) => {           
             console.log(res.data);
-            setPrimaryLinkGroups(res.data);                
+            setPrimaryLinkGroups(res.data); 
+            // setSelectedButton(res.data[0]);
+            // if(res.data.menuTitle===0){ 
+            
+            // }            
         })
         .catch((err) => {});
     };
@@ -92,8 +98,8 @@ function Header() {
     .get(`http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
     )
       .then((res) => { 
-        console.log(res)
-      setSettings(res.data.data.reverse());
+        // console.log(res)
+      setSettings(res.data.data);
      
       })
       .catch((err) =>{
@@ -113,7 +119,10 @@ function Header() {
       hideLoader();
   }
 
+  const handleItemClick = (data) => {
   
+    setSelectedButton(data);
+  };
 
     
 
@@ -121,9 +130,9 @@ function Header() {
      {
         settings && 
         settings.map((home,i)=>{
-        console.log(home);
+        {/* console.log(home); */}
         const htmlPuri = draftToHtmlPuri(home);
-        console.log(htmlPuri);
+        {/* console.log(htmlPuri); */}
 
         return(
             
@@ -150,7 +159,7 @@ function Header() {
           {linkgroups &&
             linkgroups.data &&
             linkgroups.data.slice(0,4).map((data, index) => { 
-              console.log("data", data);         
+              {/* console.log("data", data);          */}
               return ( 
                                      
               <div className="menutitlee">
@@ -176,12 +185,16 @@ function Header() {
             primarylinkgroups &&
             primarylinkgroups.data &&
             primarylinkgroups.data.slice(0,8).map((data, index) => { 
-            console.log("data", data);         
-            return (                                       
+             {/* console.log("index", index);  
+             console.log("data.pageSelect", data)     
+             console.log("pathname", location.pathname)    */}
+            return (                                          
               <div className="toplinkc1"> 
-
-              <Link  className="lin"  to={data.urlSelected===null ? data.pageSelect :data.urlSelected} onClick={()=>{NewPage(data.pageSelect)}}>
-              {data.menuTitle} </Link>
+              <Link  className="lin" style={{ color: index === selectedButton || data.urlSelected===location.pathname || data.pageSelect ===location.pathname ? " #FFAC00 " : "black" }}
+                to={data.urlSelected===null ? data.pageSelect :data.urlSelected} 
+                onClick={()=>{NewPage(data.pageSelect);handleItemClick(index)}}>
+                {data.menuTitle} 
+              </Link>
               </div>
                            
           );

@@ -49,7 +49,7 @@ const getAllData = async (offset=0,limit=3)=>{
     {
       setTotalCount(Math.ceil(res.data.totalCount/3));
     }
-    console.log(res);
+    // console.log(res);
     })
     .catch((err) =>{
       swal('Blogs not found');
@@ -123,9 +123,9 @@ const getAllData = async (offset=0,limit=3)=>{
       blogs.length > 0 ? ( blogs && blogs.map((blog,i)=>{
         let publishTime = formateData(blog.publicationDate);
         let data=JSON.parse(blog.content)
-        console.log(blog);
+        {/* console.log(blog); */}
         const htmlPuri = draftToHtmlPuri(data);
-        console.log(htmlPuri);
+        {/* console.log(htmlPuri); */}
 
         return(       
           <tr key={i}>

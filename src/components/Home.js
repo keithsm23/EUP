@@ -41,7 +41,7 @@ const Home = () => {
          `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
       )
       .then((res) => {     
-        console.log(res.data);
+        // console.log(res.data);
         setSettings(res.data);
         hideLoader();
       })
@@ -101,7 +101,7 @@ const Home = () => {
         settings.pageData &&
         settings.pageData.map((home, i) => {
           let data = JSON.parse(home.description);
-          console.log("home", home, data);
+          {/* console.log("home", home, data); */}
           const htmlPuri = draftToHtmlPuri(data);
           return (
             <tr key={i}>
@@ -110,7 +110,7 @@ const Home = () => {
               <div className="body">
               
               {settings.data.map((data, index) => { 
-                      console.log("data", data);         
+                      {/* console.log("data", data);          */}
                       return (     
                         document.title = data.siteTitle,                          
            <img
@@ -151,7 +151,7 @@ const Home = () => {
                 <br></br>
                 <h1 style={{fontSize:"40px", marginLeft:"-15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
                 { settings && settings.latestNews && settings.latestNews.map((news, index) => { 
-                  console.log("news", news); 
+                  {/* console.log("news", news);  */}
                   let publishTime = formateData(news.publicationDate);   
                     return (
                       <div>                     

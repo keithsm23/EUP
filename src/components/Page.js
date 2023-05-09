@@ -35,11 +35,14 @@ const Page = () => {
   const getAllData = async ()=>{
     let getId = localStorage.getItem('Page');
     let id = getId;
-    console.log("Page", id);
+    // console.log("Page", id);
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/editData/${id}`)
+     
     .then((res) => { 
-      console.log(res); 
+      // console.log(res); 
       setPage([res.data.message]); 
+      // const {slug}=res.data;
+      // navigate(`/${res.data.message.slug}`);
       hideLoader();
 })
     .catch((err) =>{
@@ -67,8 +70,8 @@ const Page = () => {
            {
            let data=JSON.parse(page.description);
            const htmlPuri = draftToHtmlPuri(data);
-            console.log(htmlPuri);  
-            console.log(page);
+            {/* console.log(htmlPuri);  
+            console.log(page); */}
             return(      
               <div className='about12'>
             

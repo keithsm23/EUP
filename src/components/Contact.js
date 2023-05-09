@@ -36,7 +36,7 @@ const getAllData = async ()=>{
 
 const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=contacts`)
 .then((res) => {
-console.log(res.data.data);
+// console.log(res.data.data);
 setContacts([res.data.data]);
 hideLoader();
 })
@@ -61,7 +61,7 @@ return (
   let data = JSON.parse(contact.description);
   const htmlPuri = draftToHtmlPuri(data);
   // console.log(htmlPuri);
-  console.log('contact', contact);
+  {/* console.log('contact', contact); */}
   return (
   <div>
   <p>
