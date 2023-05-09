@@ -6,7 +6,7 @@ import '../styles/AboutUs.css';
 // import useFullPageLoader from "src/hooks/useFullPageLoader";
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
-
+import swal from 'sweetalert';
   
 const AboutUs = () => {
     // console.log("props", props);
@@ -31,14 +31,15 @@ const AboutUs = () => {
   const getAllData = async ()=>{
      let getId = localStorage.getItem('AboutSLUG');
      let id = getId;
-    console.log("slug id",id);
+    // console.log("slug id",id);
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=${id}`)
     .then((res) => { 
-      console.log(res.data.data);
+      // console.log(res.data.data);
     setPages([res.data.data]);
     hideLoader();
     })
     .catch((err) =>{
+      swal('Page Not found')
     } );      
   };
 
@@ -53,8 +54,8 @@ const AboutUs = () => {
            {
           let data=JSON.parse(page.description)
            const htmlPuri = draftToHtmlPuri(data);
-            console.log(htmlPuri); 
-            console.log(page);
+            {/* console.log(htmlPuri); 
+            console.log(page); */}
             return(
               <tr key={i} >       
               
@@ -77,8 +78,8 @@ const AboutUs = () => {
            {
           let data=JSON.parse(page.description)
            const htmlPuri = draftToHtmlPuri(data);
-            console.log(htmlPuri); 
-            console.log(page);
+            {/* console.log(htmlPuri); 
+            console.log(page); */}
 
             return(
               <div className='aboutcontent'>

@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { SocialIcon } from 'react-social-icons';
 import "../styles/Footer.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import draftToHtmlPuri from "draftjs-to-html";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
 
-function Footer() {
+function Footer(props) {
+  let location= useLocation();
   const navigate = useNavigate();
   const[footer, setFooter] = useState([]);
   const[linkgroups, setLinkGroups] = useState([]);
+  const [selectedButton, setSelectedButton] = useState(0);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const[settings, setSettings] = useState([]);
   const [primarylinkgroups, setPrimaryLinkGroups] = useState([]);
@@ -24,7 +26,7 @@ function Footer() {
       )
       .then((res) => {
         
-        console.log(res.data);
+        // console.log(res.data);
         setLinkGroups(res.data);
       })
       .catch((err) => {});
@@ -46,7 +48,7 @@ function Footer() {
        `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
     )
     .then((res) => { 
-      console.log(res)
+      // console.log(res)
     setFooter(res.data.data.reverse());
    
     })
@@ -88,14 +90,19 @@ function Footer() {
     hideLoader();
   }
 
+  const handleItemClick = (data) => {
+  
+    setSelectedButton(data);
+  };
+
   return (   
    
   <div>
   {
     footer && footer.map((footer,i)=>{
-    console.log(footer);
+    {/* console.log(footer); */}
     const htmlPuri = draftToHtmlPuri(footer);
-    console.log(htmlPuri);
+    {/* console.log(htmlPuri); */}
 
      
 
@@ -114,10 +121,16 @@ function Footer() {
         {linkgroups &&
       linkgroups.data &&
       linkgroups.data.slice(0,8).map((data, index) => { 
-        console.log("data", data);         
+        {/* console.log("data", data);          */}
+        {/* console.log("index", index);  
+        console.log("data.pageSelect", data)     
+        console.log("pathname", location.pathname)   */}
         return (                                   
           <div className="apifooter">
-            <Link className="aaa" to={data.urlSelected===null ? '/page' :data.urlSelected}  onClick={()=>{NewPage(data.pageSelect)}}>
+            <Link className="aaa" 
+            style={{ color: index === selectedButton || data.urlSelected===location.pathname || data.pageSelect ===location.pathname ? " #FFAC00 " : "white" }}
+            to={data.urlSelected===null ? data.pageSelect :data.urlSelected}   
+            onClick={()=>{NewPage(data.pageSelect);handleItemClick(index)}}>
             {data.menuTitle}</Link>      
           </div>        
         );
@@ -127,8 +140,6 @@ function Footer() {
     <div className="footer2">
       <h4 style={{color:"white", justifyContent:"center"}}>{footer.copyrightText}</h4>
     </div>
-
- 
     </tr>         
     );
   })

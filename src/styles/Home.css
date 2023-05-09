@@ -37,7 +37,6 @@
     margin-top: 480px; 
     display:inline-block;
     margin-left: 10px;
-    
   }
  
   #one{
@@ -88,7 +87,7 @@
     margin-top: 640px;
     overflow: hidden;
     margin-bottom: -320px;
-    font-family: 'Roboto';
+    font-family: "Roboto", sans-serif;
   }
   .t{
     margin-left: 75px;
@@ -213,6 +212,7 @@
   width:140px;
   height: 50px;
   border-style: hidden;
+  font-family: "Roboto", sans-serif;
 } 
 h5{
   text-align: left;
@@ -253,4 +253,5 @@ max-width: 70px;
 .abouttitle{
   font-size: 55px;
   text-align: left;
+  font-family: "Roboto", sans-serif;
 }

@@ -9,6 +9,7 @@ import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar } from "react-icons/fa";
 import swal from 'sweetalert';
+import { fontFamily } from "@mui/system";
 
 const Home = () => {
   const [menus, setMenus] = useState([]);
@@ -40,7 +41,7 @@ const Home = () => {
          `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
       )
       .then((res) => {     
-        console.log(res.data);
+        // console.log(res.data);
         setSettings(res.data);
         hideLoader();
       })
@@ -100,7 +101,7 @@ const Home = () => {
         settings.pageData &&
         settings.pageData.map((home, i) => {
           let data = JSON.parse(home.description);
-          console.log("home", home, data);
+          {/* console.log("home", home, data); */}
           const htmlPuri = draftToHtmlPuri(data);
           return (
             <tr key={i}>
@@ -109,7 +110,7 @@ const Home = () => {
               <div className="body">
               
               {settings.data.map((data, index) => { 
-                      console.log("data", data);         
+                      {/* console.log("data", data);          */}
                       return (     
                         document.title = data.siteTitle,                          
            <img
@@ -121,7 +122,7 @@ const Home = () => {
                
               
              <div id="one" className="box">
-                  <h3 style={{color:"rgba(7, 41, 77, 1)"}}>About Us</h3>
+                  <h3 style={{color:"rgba(7, 41, 77, 1)", fontFamily:"Roboto"}}>About Us</h3>
                   <h1 className="abouttitle">{home.title}</h1>
                   <tr>
                   
@@ -150,7 +151,7 @@ const Home = () => {
                 <br></br>
                 <h1 style={{fontSize:"40px", marginLeft:"-15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
                 { settings && settings.latestNews && settings.latestNews.map((news, index) => { 
-                  console.log("news", news); 
+                  {/* console.log("news", news);  */}
                   let publishTime = formateData(news.publicationDate);   
                     return (
                       <div>                     
