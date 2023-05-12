@@ -16,8 +16,9 @@ const SingleNews = React.lazy(() => import('./components/News/SingleNews'))
 const Contact = React.lazy(() => import('./components/Contact'))
 const Page = React.lazy(() => import('./components/Page'))
 function App() {
+  const [slug, setSlug] = useState("");
 
-  
+
   return (  
     <div className='app'>
      
@@ -27,10 +28,10 @@ function App() {
     <Routes>
         <Route path="/" element={<Home />}  />               
         <Route path="/news" element={<News />} />
-        <Route path="/News/singlenews" element={<SingleNews />} />   
+        <Route path="/News/SingleNews" element={<SingleNews />} />   
         <Route path="/AboutUs" element={<AboutUs />} />
-        {/* <Route path="/page" element={<Page />} />  */}
-        <Route path="/page" element={<Page />} />
+        <Route path="/:slug" element={<Page />} />
+         {/* <Route path="/page" element={<Page />} />  */}
         {/* <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} /> */}
       </Routes>  

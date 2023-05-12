@@ -7,11 +7,10 @@ import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import swal from 'sweetalert';
 
-
   
-const Page = () => {
+const Page = (props) => {
     // console.log("props", props);
-    const { slugId } = useParams();
+    const { slug } = useParams();
     const [content, setContent] = useState(null);
     const navigate = useNavigate();
     const [isFirstLoad, setIsFirstLoad] = useState(true)
@@ -43,8 +42,9 @@ const Page = () => {
     .then((res) => { 
       console.log(res); 
       setPage([res.data.message]); 
-      // const {slug}=res.data;
-      // navigate(`/${res.data.message.slug}`);
+      const {slug}=res.data;
+      navigate(`/${res.data.message.slug}`);
+      
       hideLoader();
 })
     .catch((err) =>{
@@ -53,14 +53,10 @@ const Page = () => {
   };
 
   useEffect(()=>{
-    if (!isFirstLoad) {
-      window.location.reload();
-  } else {
-      setIsFirstLoad(true)
       showLoader();
       getAllData();
-  }
-},[isVisible]);
+  
+},[slug]);
   
 
     return (

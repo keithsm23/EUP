@@ -14,7 +14,7 @@ const routes = [
     { path: '/news', name: 'News', element: News },
     { path: '/News/SingleNews', name: 'Single News', element: SingleNews },
     { path: '/contact', name: 'Contact', element: Contact },
-    { path: '/page', name: 'Page', element: Page },
+    { path: '/:slug', name: 'Page', element: Page },
   ]
 
 export default routes

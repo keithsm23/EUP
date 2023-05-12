@@ -59,7 +59,7 @@ function Footer(props) {
     )
     .then((res) => { 
       // console.log(res)
-    setFooter(res.data.data.reverse());
+    setFooter(res.data.data);
    
     })
     .catch((err) =>{
@@ -82,18 +82,7 @@ function Footer(props) {
     window.scrollTo({
       top: 0
     })
-    // primarylinkgroups &&
-    // primarylinkgroups.data &&
-    // primarylinkgroups.data.map((data, index) => { 
-    //             console.log("data", data);         
-    //             return (  
-    //               <div>  if(data.urlSelected===null){
-    //                 navigate('/page')
-    //               }  <Link to={data.urlSelected}></Link> </div>                                  
-
-                        
-    // );
-    // })
+  
     navigate('/page');
     showLoader();
     localStorage.setItem('Page', pageSelect)
