@@ -29,17 +29,17 @@ const AboutUs = () => {
       });
 
   const getAllData = async ()=>{
-     let getId = localStorage.getItem('AboutSLUG');
-     let id = getId;
+    //  let getId = localStorage.getItem('AboutSLUG');
+    //  let id = getId;
     // console.log("slug id",id);
-     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=${id}`)
+     const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/get?slug=page2`)
     .then((res) => { 
       // console.log(res.data.data);
     setPages([res.data.data]);
     hideLoader();
     })
     .catch((err) =>{
-      swal('Page Not found')
+  
     } );      
   };
 

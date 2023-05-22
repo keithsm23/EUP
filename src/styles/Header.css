@@ -5,11 +5,15 @@
     background-color: rgba(7, 41, 77, 1);
     display: flex;  
     position: absolute;
-    box-shadow: none;
+    box-shadow: none;margin-bottom: 700px;
     overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
   }
   
+  
   .navbar1 .leftSide2 {
+    position: absolute;
     height: 80px;
     text-align: center;
     display: flex;
@@ -19,9 +23,9 @@
     background: inherit;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 18px; 
     box-shadow: none;
-    position: absolute;
+    
   }
   
   .navbar1 .leftSide img {
@@ -31,7 +35,6 @@
   .navbar1 .rightSide1 {
     position: absolute;
     display: flex;
-    float: right;
    flex-direction: row;
     margin-top: 6px;
     justify-content: right;
@@ -52,14 +55,14 @@
     margin: 8px;
   }
   
-  .navbar1 .rightSide button {
+  /* .navbar1 .rightSide button {
     background-color: transparent;
     border: none;
     color: white;
     cursor: pointer;
-  }
+  } */
   
-  .navbar1 .rightSide svg {
+  /* .navbar1 .rightSide svg {
     font-size: 40px;
   }
   
@@ -86,8 +89,17 @@
   .navbar1 #open a {
     width: 70px;
     margin: 5px;
-  }
-  @media only screen and (max-width: 900px) {
+  } */
+   /* @media (max-width: 900px) {
+     .navbar1 {
+     max-width: 2000px;
+    
+    } 
+    .navbar1 .rightSide1 {
+
+    }
+  }  */
+  /* @media only screen and (max-width: 900px) {
     .navbar1 .rightSide a {
       width: 70px;
     }
@@ -119,16 +131,15 @@
     .hiddenLinks {
       display: none;
     }
-  }
+  } */
   .navbar {
     width: 1349px;
     height: 90px;
     background-color: #fdfeff;
     display: flex;
     margin-top: 80px;
-    
+  overflow: hidden;
   }
-  
   .navbar .leftSide3 {
     display: flex;
     margin-left: -30px;
@@ -161,11 +172,6 @@
     text-decoration: none;
     margin: 20px;
   }
-   /* .navbar a:active,
-  .navbar a.toplinkc1{
-    color: #FFAC00 !important;
-  }   */
-
   .toplinkc1{
     padding: 5px;
   }
@@ -175,4 +181,37 @@
   .colorlink{
     color: grey;
   }
- 
+  /* @media only screen and (min-width: 300px) and (max-width: 700px) {
+    .navbar1{
+      max-width: 900px;
+      --navbar1: 0!important;
+    }
+    .navbar1 .leftSide2{
+    
+     margin-left: 20px;
+    }
+    .navbar1 .rightSide1{
+     margin-left: 60px;
+     max-width: 700px;
+     font-size: x-small;
+     
+    }
+    .rightSide1 a{
+      
+    }
+   .menutitlee{
+    
+   }
+    
+    .navbar{
+      max-width: 100%;
+    }
+    .leftSide3{
+      max-width: 760px;
+    }
+    .navbar .rightSide3{
+     
+      margin-left: -160px;
+     
+    }
+  } */

@@ -40,7 +40,7 @@ const Page = (props) => {
      const res=await axios.get(`http://api-cms-poc.iplatformsolutions.com/api/page/editData/${id}`)
      
     .then((res) => { 
-      console.log(res); 
+      // console.log(res); 
       setPage([res.data.message]); 
       const {slug}=res.data;
       navigate(`/${res.data.message.slug}`);

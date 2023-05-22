@@ -5,7 +5,7 @@ import "../styles/Footer.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import draftToHtmlPuri from "draftjs-to-html";
 import useFullPageLoader from "../hooks/useFullPageLoader";
-
+const routes=["Home", "AboutUs", ""];
 
 function Footer(props) {
   let location= useLocation();
@@ -32,7 +32,13 @@ function Footer(props) {
           if(location.pathname === '/'){
             setSelectedButton(0)
             localStorage.setItem('currentIndex', JSON.stringify(0))
-          }else{
+          }
+          else if(location.pathname === '/AboutUs'){
+                
+            setSelectedButton(2);
+            localStorage.setItem('currentIndex', JSON.stringify(2))
+          }
+          else{
             setSelectedButton(value)
           }
          }else{
@@ -45,7 +51,7 @@ function Footer(props) {
   //display user list
   useEffect(() => {
     getLinkGroups();
-  }, []);
+  }, [location.key]);
 
 
   //fetch data
@@ -120,7 +126,7 @@ function Footer(props) {
         {linkgroups &&
       linkgroups.data &&
       linkgroups.data.slice(0,8).map((data, index) => { 
-        console.log("index === selectedButton", index, selectedButton)   
+        {/* console.log("index === selectedButton", index, selectedButton)    */}
         return (                                   
           <div className="apifooter">
             <Link className="aaa" 

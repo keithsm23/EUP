@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, redirect } from "react-router-dom";
 import "../styles/Header.css";
 import axios from 'axios';
 import { SocialIcon } from 'react-social-icons';
@@ -14,11 +14,10 @@ import {
   CDropdownItem,
   CDropdownMenu
 } from '@coreui/react';
-import { style } from "@mui/system";
 const routes=["Home", "AboutUs", ""];
 
 function Header(props) {
-  var location= useLocation();
+  const location= useLocation();
   const navigate = useNavigate();
   const[page, setPage] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -80,7 +79,14 @@ function Header(props) {
               if(location.pathname === '/'){
                 setSelectedButton(0)
                 localStorage.setItem('currentIndex', JSON.stringify(0))
-              }else{
+              }
+              else if(location.pathname === '/AboutUs'){
+                
+                setSelectedButton(2);
+                localStorage.setItem('currentIndex', JSON.stringify(2))
+              }
+              
+              else{
                 setSelectedButton(value)
               }
              }else{
@@ -93,7 +99,7 @@ function Header(props) {
     //display user list
     useEffect(() => {
       getPrimaryLinkGroups();
-    }, []);
+    }, [location.key]);
 
 
 
@@ -132,7 +138,7 @@ function Header(props) {
     localStorage.setItem('currentIndex', JSON.stringify(data))
   };
 
-    
+ 
 
   return ( <div>
      {
@@ -193,7 +199,7 @@ function Header(props) {
             primarylinkgroups &&
             primarylinkgroups.data &&
             primarylinkgroups.data.slice(0,8).map((data, index) => { 
-             console.log("index === selectedButton", index, selectedButton)   
+             {/* console.log("index === selectedButton", index, selectedButton)    */}
             return (                                          
               <div className="toplinkc1"> 
               <Link  className="lin" style={{ color: index === selectedButton ? " #FFAC00 " : "black" }}
@@ -202,7 +208,7 @@ function Header(props) {
                 {data.menuTitle} 
               </Link>
               </div>
-                           
+                       
           );
           })
         }          

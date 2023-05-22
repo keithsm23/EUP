@@ -20,7 +20,8 @@
     display: flex;
     position: relative;
     width:1349px;
-    height: 1194px;
+    height: 1194px;overflow: hidden;overflow-x: hidden;
+    overflow-y: hidden;
     margin-top:10px;
     margin-bottom: -320px;
     justify-content: center;
@@ -34,7 +35,8 @@
     margin-left: 30px;
     height:390px;
     position: absolute;
-    margin-top: 480px; 
+    margin-top: 480px; overflow-x: hidden;
+    overflow-y: hidden;
     display:inline-block;
     margin-left: 10px;
   }
@@ -52,7 +54,6 @@
   #two{
     width: 540px;
     display: flex;
-  border: solid;
     flex-direction: column;
     margin-top: 618px;
    position: absolute; 
@@ -106,14 +107,14 @@
     margin-right: 140px;
   
   }
-  .container{
+  /* .container{
     display : inline-block;
     flex-direction : row;
     justify-content: left;
     width: 70%;
     margin: 0 auto;
 
-  }
+  } */
   .content{
     padding: 40px;
     width: 200px;
@@ -255,3 +256,30 @@ max-width: 70px;
   text-align: left;
   font-family: "Roboto", sans-serif;
 }
+
+/* @media only screen and (max-width: 760px) {
+  .body{
+    max-width: 760px;
+  }
+  .banner{
+    max-width: 100%;
+  }
+  #one{ max-width: 400px;
+    margin-right: 440px;
+    height: 560px;
+    margin-top: 550px;
+    font-size: x-small;
+  }
+  .latestnews{
+    max-width: 400px;
+    margin-right: -490px;
+    margin-left: -190px;
+  }
+  #three{
+    margin-right: 550px;
+  }
+  .btn3{
+    margin-left: 505px;
+    margin-top: 1120px;
+  }
+} */

@@ -52,7 +52,7 @@ const getAllData = async (offset=0,limit=3)=>{
     // console.log(res);
     })
     .catch((err) =>{
-      swal('Blogs not found');
+      
       navigate("/");
     } );      
   };

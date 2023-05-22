@@ -3,15 +3,18 @@ import "../styles/Home.css";
 import axios from "axios";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 import student from "../assets/student.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { CButton } from "@coreui/react";
 import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar } from "react-icons/fa";
 import swal from 'sweetalert';
 import { fontFamily } from "@mui/system";
+const routes=["Home", "AboutUs", ""]; 
 
-const Home = () => {
+const Home = (props) => {
+  // var location= useLocation();
+  const [selectedButton, setSelectedButton] = useState(0);
   const [menus, setMenus] = useState([]);
   const [settings, setSettings] = useState([]);
   const [pageData, setpageData] = useState([]);
@@ -40,13 +43,13 @@ const Home = () => {
       .get(
          `http://api-cms-poc.iplatformsolutions.com/api/generalSettings/getData?slug=page2`
       )
-      .then((res) => {     
+      .then(async(res) => {     
         // console.log(res.data);
         setSettings(res.data);
-        hideLoader();
+         hideLoader();
       })
       .catch((err) => {
-       swal('Page Not found')
+      //  swal('Page Not found')
       });
   };
 
@@ -59,17 +62,15 @@ const Home = () => {
 
 
 
- 
-
-  const AboutUs = async (id, slug) => {
+  const AboutUs = async (id, slug, data) => {
     window.scrollTo({
       top: 0
-    })
+    })  
+
     localStorage.setItem('AboutID', JSON.stringify(id))
     showLoader();
     localStorage.setItem('AboutSLUG', slug)
-    hideLoader();
-    
+    hideLoader();  
     navigate("/AboutUs");
     // localStorage.setItem('PageID', JSON.stringify(id))
     // showLoader();
@@ -95,6 +96,7 @@ const Home = () => {
   };
 
 
+
   return (
     <div>
       { settings &&
@@ -103,6 +105,7 @@ const Home = () => {
           let data = JSON.parse(home.description);
           {/* console.log("home", home, data); */}
           const htmlPuri = draftToHtmlPuri(data);
+         
           return (
             <tr key={i}>
             
@@ -111,9 +114,10 @@ const Home = () => {
               
               {settings.data.map((data, index) => { 
                       {/* console.log("data", data);          */}
+                     
                       return (     
                         document.title = data.siteTitle,                          
-           <img
+           <img className="banner"
                 alt="" style={{ width: "1349px", height: "550px", position:"absolute"}}
                 src={data.heroBanner}
               />             
@@ -137,11 +141,12 @@ const Home = () => {
                  
                 </div> 
                
-                <div className="btn3">
+                <div className="btn3"> 
                     <CButton
                       type="button"
-                      onClick={()=>AboutUs(home.id, home.slug)}
+                      onClick={()=>{AboutUs(home.id, home.slug);}}
                       className="button1"
+                      
                     >
                       Learn More
                     </CButton>

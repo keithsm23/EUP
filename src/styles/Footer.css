@@ -7,7 +7,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    position: absolute;
+    position: absolute;overflow:hidden;overflow-x: hidden;
+    overflow-y: hidden;
   }
   
   .socialMedia svg {
@@ -78,13 +79,11 @@ position: absolute;
   }
    */
 .footer2 {
-    display: block;
    width: 1349px;
+   border-color: green;
    height: 75px;
    position: absolute;
-   background: inherit;
    background-color: rgba(2, 29, 58, 1); 
-   border: none;
    border-radius: 0px;
    display: flex;
    justify-content: center;
@@ -97,4 +96,29 @@ position: absolute;
    font-style: normal;
    font-size: 18px;
    margin-top: 490px;
+   overflow: hidden;
+   overflow-x: hidden;
+   overflow-y: hidden;
+   
  }
+ /* @media (max-width: 760px) {
+  .footer {
+    max-width: 760px;
+  }
+  .icons{
+    max-width: 760px;
+    margin-left: 120px;
+    font-size: x-small;
+  }
+
+  .rightSide a{
+  margin: -180px;
+    margin-left: 190px;
+    font-size: x-small;
+  }
+  .footer2 {
+  max-width: 760px;
+ 
+ } 
+ 
+}   */
