@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap');
 .about12{
   margin-top:-20px;
-  width:1349px;
-  margin-bottom: -320px;
+  width:100%;
+  margin-bottom: -1200px;
   font-size: 13px; 
+ 
 }
 
 .aboutcontent13{
-  width: 1200px;
-  margin-left: 50px;
+  justify-content: left;
+  display: flex;
   margin-bottom: 30px;
+  overflow: hidden; 
+  width: 90%;
+  margin-left: 40px;
 }
 
 
@@ -17,7 +21,7 @@
     /* background-image: 
     url("https://i.pinimg.com/originals/f0/da/44/f0da44dc8397004b068f49242b24ee74.jpg"); */
     /* url:{`data:image/png;base64,${page.image}`}; */
-    width: 100%;
+   
     height: 300px;
   }
   .mda{
@@ -36,4 +40,10 @@
     color: white;
     font-family: "Roboto", sans-serif;
   }
-  
+  @media screen and  (max-width:810px){
+    .aboutcontent13{
+      margin-left: 25px;
+      overflow: hidden;
+      margin-bottom: -1720px;
+    }
+    }

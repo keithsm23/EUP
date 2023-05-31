@@ -21,6 +21,9 @@ function Header(props) {
   const navigate = useNavigate();
   const[page, setPage] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [selectedOption, setSelectedOption] = useState('');
+  const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+const [isNavbarOpen, setNavbarOpen] = useState(false);
   const [isVisible, setVisible] = useState(false);
   const [shouldReload, setShouldReload] = useState(false);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
@@ -138,8 +141,10 @@ function Header(props) {
     localStorage.setItem('currentIndex', JSON.stringify(data))
   };
 
- 
 
+  
+
+ 
   return ( <div>
      {
         settings && 
@@ -178,12 +183,13 @@ function Header(props) {
                                      
               <div className="menutitlee">
                   <h4><Link style={{color:"rgb(221, 182, 10)" }} to={data.pageSelect===null ? data.urlSelected : data.pageSelect} onClick={()=>{NewPage(data.pageSelect)}}>
-                  {data.menuTitle}</Link> </h4>
+                  {data.menuTitle}</Link> </h4>            
                </div>  
+              
          
             );
-            })}       
-          </div>  
+            })}
+          </div> 
         </div>
 
 
@@ -191,22 +197,29 @@ function Header(props) {
         <div className="navbar">
         <div className="leftSide3">
         <a href="/"  rel="stylesheet">
-        <img src={home.logo} alt=""  style={{ width: 170 , height: 50 }} ></img>
+        <img src={home.logo} alt=""  style={{  width: "100%", height: 50 }} ></img>
         </a>
         </div>  
-        <div className="rightSide3">  
+        <div className="rightSide3"  >  
             {
             primarylinkgroups &&
             primarylinkgroups.data &&
             primarylinkgroups.data.slice(0,8).map((data, index) => { 
              {/* console.log("index === selectedButton", index, selectedButton)    */}
-            return (                                          
-              <div className="toplinkc1"> 
-              <Link  className="lin" style={{ color: index === selectedButton ? " #FFAC00 " : "black" }}
+            return (       
+                                         
+              <div className="toplinkc1" data-toggle="collapse" data-target="#myNavbar">
+          
+              
+                <Link  className="lin" style={{ color: index === selectedButton ? " #FFAC00 " : "black" }}
                 to={data.urlSelected===null ? data.pageSelect :data.urlSelected} 
                 onClick={()=>{NewPage(data.pageSelect);handleItemClick(index)}}>
                 {data.menuTitle} 
-              </Link>
+    
+              </Link> 
+      
+             
+          
               </div>
                        
           );

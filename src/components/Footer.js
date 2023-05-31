@@ -134,7 +134,7 @@ function Footer(props) {
             to={data.urlSelected===null ? data.pageSelect :data.urlSelected}   
             onClick={()=>{NewPage(data.pageSelect);handleItemClick(index)}}>
             {data.menuTitle}
-            </Link>      
+            </Link>     
           </div>        
         );
       })}   

@@ -50,6 +50,7 @@ const AboutUs = () => {
 
   return ( 
       <div >
+       <div className='bg-img122'>
         { ( pages && pages.map((page,i)=>
            {
           let data=JSON.parse(page.description)
@@ -57,23 +58,22 @@ const AboutUs = () => {
             {/* console.log(htmlPuri); 
             console.log(page); */}
             return(
-              <tr key={i} >       
-              
+                      
                 <div style={{
                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${page && page.image})`,
                    height: "200px",
-                   width: "1349px",
-                   marginTop:"-20px"
-                  }}
+                   marginTop:"-20px",
+                 
+                  }} 
                   >
                   <p className="md">About Us</p>{" "}
                   <p className="md-1">Home/About Us</p>
                </div>
-               </tr>
+             
                );
         })
       )}    
-      
+      </div>
       { ( pages && pages.map((page,i)=>
            {
           let data=JSON.parse(page.description)

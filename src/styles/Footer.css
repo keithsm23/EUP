@@ -1,6 +1,6 @@
 .footer {
-    width: 1349px;
-    margin-top: 320px;
+    width: 100%;
+    margin-top: 1200px;
     height: 170px;
     background-color: rgba(7, 41, 77, 1);
     display: flex;
@@ -36,29 +36,28 @@
     margin: 21px;  
   }
 .icons{
-    margin-left: 10px; 
+
     display: flex;
     align-items: center;
     padding-right: 590px;
     color: azure;
     position: absolute;
     background-color: transparent;
-    margin-left: -380px;
+    margin-left: 610px;width: 100%;
   }
 .footer .rightSide {
-  color:#B8B8B8;
-  background-color: transparent;
-position: absolute;
+  color:#B8B8B8; 
+  position: absolute;
   align-items: center;
-  width: 900px;
-  display: flex;
-  justify-content: left;
+  width:100%;
+  justify-content: center;
+  display: flex;  
   flex-direction: row;
   font-size: 14px;
-  margin-left: 370px;
   font-family: "Roboto", sans-serif;
   font-weight: 430;
   font-style: normal;
+  margin-left: -50px;
 }
 
 .apifooter{
@@ -79,7 +78,7 @@ position: absolute;
   }
    */
 .footer2 {
-   width: 1349px;
+   width: 100%;
    border-color: green;
    height: 75px;
    position: absolute;
@@ -88,19 +87,50 @@ position: absolute;
    display: flex;
    justify-content: center;
    align-items: center;
-   border-width: 0px;
    flex-direction: row;
    padding-top:-13px; 
    font-family: "Roboto", sans-serif;
    font-weight: 400;
    font-style: normal;
    font-size: 18px;
-   margin-top: 490px;
+   margin-top: 1370px;
    overflow: hidden;
    overflow-x: hidden;
    overflow-y: hidden;
    
  }
+
+ @media screen and  (max-width:810px){
+  .footer{
+    margin-top: 1750px;
+  }
+  .footer2{
+  
+    margin-top: 1920px;
+  }
+  
+}
+@media screen and  (max-width:997px){
+  .icons{
+    margin-top: -59px;
+    margin-left: 660px;
+  }
+  .footer .rightSide{
+    margin-top: 55px;
+   
+    width: 60%;
+ margin-left: 0px; display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: row;
+ position: absolute; flex-wrap: wrap;
+  }
+  .apifooter{
+    padding: 1px;
+  }
+}
+
+
  /* @media (max-width: 760px) {
   .footer {
     max-width: 760px;

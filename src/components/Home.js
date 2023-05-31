@@ -85,7 +85,7 @@ const Home = (props) => {
     let year = Date.split('-')[0];   
     let month = Date.split('-')[1]; 
     let day = Date.split('-')[2];
-    let month_names_short =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    let month_names_short =['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     let getMonth = month_names_short.filter((mon, i) => {
     if(month == i+1){ 
       return mon;
@@ -117,21 +117,21 @@ const Home = (props) => {
                      
                       return (     
                         document.title = data.siteTitle,                          
-           <img className="banner"
-                alt="" style={{ width: "1349px", height: "550px", position:"absolute"}}
+           <img 
+                alt="" style={{ width: "100%", height: "550px", position:"absolute"}}
                 src={data.heroBanner}
               />             
             );
             })}   
                
               
-             <div id="one" className="box">
+             <div  className="boxss">
                   <h3 style={{color:"rgba(7, 41, 77, 1)", fontFamily:"Roboto"}}>About Us</h3>
                   <h1 className="abouttitle">{home.title}</h1>
                   <tr>
                   
                     <div
-                    
+                    className="aboutinfos"
                       style={{ maxHeight: "400px", marginTop:"-14px"}}
                       dangerouslySetInnerHTML={{ __html: htmlPuri }}
                     />
@@ -152,9 +152,10 @@ const Home = (props) => {
                     </CButton>
                   </div>
 
-                <div className="latestnews">
+                <div className="latestnew">
                 <br></br>
-                <h1 style={{fontSize:"40px", marginLeft:"-15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1>
+                <div className="la"><h1  style={{fontSize:"40px", marginLeft:"-15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Latest News</h1></div>
+                
                 { settings && settings.latestNews && settings.latestNews.map((news, index) => { 
                   {/* console.log("news", news);  */}
                   let publishTime = formateData(news.publicationDate);   
@@ -168,7 +169,7 @@ const Home = (props) => {
                            <h2 className="ti1">{news.title}</h2>  
                           <hr
                             className="line11"
-                            width="80%"
+                            width="90%"
                             size="1"
                             align="center"
                             color="lightgrey"
@@ -176,12 +177,11 @@ const Home = (props) => {
                         </div>
                       </div>                  
                       );
-                  })
-                
+                  })         
                 }     
                 </div>
                
-                  <div id="three" className="box">
+                  <div  className="boxss1">
                         <img
                         src={student}
                         width="400px"

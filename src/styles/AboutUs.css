@@ -2,17 +2,20 @@
 
 .wholecontent{
   margin-top:-20px;
-  width: 1349px;
+  width: 100%;
   margin-bottom: 230px;
 }
  .aboutcontent{
 
-  margin-bottom: -310px;
-  width: 1200px;
+  margin-bottom: -1190px;
+  width: 90%;
   margin-top: 20px;
   margin-left: 50px;
 } 
+.bg-img122{
 
+  width: 100%;
+}
 .md{
     font-size: 30px;
     padding-top: 50px;
@@ -29,4 +32,10 @@
     color: white;
     font-family: "Roboto", sans-serif;
 }
-  
+@media screen and  (max-width:810px){
+.aboutcontent{
+  margin-left: 25px;
+  overflow: hidden;
+  margin-bottom: -1730px;
+}
+}

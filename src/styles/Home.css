@@ -1,74 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap');
-/* .home {
-    width: 1349px;
-    margin-top: 325px;
-    height: 580px;
-    display: flex;
-    margin-bottom: 100px;
-    justify-content: center;
-    border: solid;
-    align-items: left;
-    flex-direction: column;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  }
-   */
-  
+
   .body{
     display: flex;
-    position: relative;
-    width:1349px;
-    height: 1194px;overflow: hidden;overflow-x: hidden;
-    overflow-y: hidden;
+    position: absolute;
+    width:100%;
+    height: 1194px;
+    flex-wrap: wrap; 
+    will-change: auto;
     margin-top:10px;
-    margin-bottom: -320px;
-    justify-content: center;
+    margin-bottom: 20px;  
+    overflow: hidden;
     text-align: justify;
     background:white;
     background-color: rgb(250, 245, 245);
   }
-  .box{
-    width:350px;
-    display: flex;  
-    margin-left: 30px;
-    height:390px;
-    position: absolute;
-    margin-top: 480px; overflow-x: hidden;
-    overflow-y: hidden;
-    display:inline-block;
-    margin-left: 10px;
-  }
- 
-  #one{
-    width:40%;
-    justify-content: left; 
-    margin-top: 640px;
-    margin-right: 700px;
-    position: absolute;
-    overflow: hidden;
-    height: 390px;
-     font-family: "Roboto";
-  }
-  #two{
-    width: 540px;
+
+.body .boxss{
+    justify-content: center;
     display: flex;
     flex-direction: column;
-    margin-top: 618px;
-   position: absolute; 
-  height:510px;
-   background-color: white;
-   margin-left: 670px; 
-    /* opacity:0.1;
-   z-index:1; */
+     position: absolute; 
+    margin-top: 560px; 
+    width:39%;
+    height:490px;
+   margin-left: 70px;
+    overflow: hidden;
   }
-  .textt{
-    width:350px;
-    margin-left:30px;
-    width: 170px; 
-    height: 100px;
-    }
+.abouttitle{
+    margin-top: 10px;
+    font-size: 55px;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+}
+.aboutinfos{
+    margin-bottom: -265px;
+}
+.body .boxss1{ 
+ 
+  display: flex;  align-items: center;
+  box-shadow: none;
+  justify-content: right;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 100%;   
+  margin-left: -25px;
+  height: 409px;
+  margin-top: 685px; 
+  z-index: 0;
+  opacity: 0.7;  
+}
+.body .latestnew{
+  display: flex;
+  flex-direction: column;
+    position:absolute;
+    justify-content: justify;
+    margin-left:740px;  
+    width:40%;
+    height: 529px; 
+    background-color: white;
+    opacity:0.8;
+    z-index:1;
+    margin-top: 640px;
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+}
+
   #three{
     width: 400px;
    position: absolute;
@@ -78,25 +75,16 @@
    z-index: 0;
    opacity: 0.7;  
   } 
-  .latestnews{
-    margin-left: 690px;
-    width:540px;
-    height: 516px;
-    background-color: white;
-    opacity:0.8;
-    z-index:1;
-    margin-top: 640px;
-    overflow: hidden;
-    margin-bottom: -320px;
-    font-family: "Roboto", sans-serif;
-  }
-  .t{
+.t{
     margin-left: 75px;
     height: 120px;
-    margin-top: 32px;
-    margin-bottom: -20px;
+    margin-top: 20px;
+    margin-bottom: -9px;
+   
+    
   }
   .ti1{
+   
     margin-top: -10px;
     overflow: hidden;
   }
@@ -107,6 +95,92 @@
     margin-right: 140px;
   
   }
+
+  h3:before{
+    content: "";
+    position: absolute;
+    width: 7%;
+    height: 1px;
+    margin-top: 29px;
+    left: 0%;
+    border-bottom: 1px solid  rgb(255, 187, 0);
+    border-width: 3px;
+}
+
+.btn3{
+  position:absolute;
+  height:48px;
+  width:140px;margin-left: 70px;
+  margin-top: 1090px;
+  border-radius: 4px;
+  background-color: rgb(247, 205, 18);cursor: pointer;
+}
+.button1{
+  border-radius: 4px;
+  border-style: hidden;
+  font-family: "Roboto", sans-serif;
+  color: #230466;
+  background-color: rgb(247, 205, 18);
+  cursor: pointer;
+  height: 50px;
+  width: 140px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 130px;
+} 
+h5{
+  text-align: left;
+  font-size: small;
+}
+
+.titlenews{
+min-width: 10px;
+max-width: 70px;
+ width:69px;
+ height: 190px;
+}
+@media screen and  (max-width:1290px){
+  .body .latestnew{
+    margin-left:610px;
+    position: absolute;
+  }
+}
+@media screen and  (max-width:1000px){
+  .body .latestnew{
+    margin-left: 490px;
+    position: absolute;
+  }
+}
+
+@media screen and  (max-width:810px){
+  .body .boxss{
+    margin-left: 50px;
+    width:70%;
+  }
+  .body{
+    height: 1990px;
+  }
+  .body .latestnew{
+    margin-left: 20px;
+    margin-top: 1180px;
+    position: absolute;
+    width:80%;
+  }
+  .body .boxss1{
+    margin-left: 0px; 
+    margin-top: 1235px;
+    position: absolute;
+  }
+  .la{
+    margin-left: -45px; 
+  }
+  .t{
+    margin-left: 30px; 
+  }
+  
+}
+
+
   /* .container{
     display : inline-block;
     flex-direction : row;
@@ -115,7 +189,7 @@
     margin: 0 auto;
 
   } */
-  .content{
+  /* .content{
     padding: 40px;
     width: 200px;
     float: left;
@@ -124,17 +198,17 @@
     margin-bottom: 70px;
     text-align: justify;
     background-color: red;
-  }
-  .content2{
+  } */
+  /* .content2{
     padding: 40px;
     background-color: blue;
     width: 200px; 
     float: left;
     margin-left: 30px;
     text-align: justify;
-  }
+  } */
   
-  @media only screen and (max-width: 650px) {
+  /* @media only screen and (max-width: 650px) {
     .home {
       justify-content: center;
       align-items: center;
@@ -177,85 +251,9 @@
       background-color: rgb(225, 225, 225);
       color: #121619;
     }
-  }
-  h3:before{
-    content: "";
-    position: absolute;
-    width: 7%;
-    height: 1px;
-    margin-top: 29px;
-    left: 0%;
-    border-bottom: 1px solid  rgb(255, 187, 0);
-    border-width: 3px;
-}
+  } */
+ 
 
-.btn3{
-  margin-right: 1100px;
-  position:absolute;
-  font-size: 18px;
-  font-weight: bold;
-  color: rgba(7, 41, 77, 1);
-  height:48px;
-  width:140px;
-  margin-top: 1060px;
-  border-radius: 4px;
-  background-color: rgb(247, 205, 18);
-}
-.button1{
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  border: solid;
-  margin-left: 0px;
-  color: rgba(7, 41, 77, 1);
-  background-color: transparent;
-  border-radius: 4px;
-  width:140px;
-  height: 50px;
-  border-style: hidden;
-  font-family: "Roboto", sans-serif;
-} 
-h5{
-  text-align: left;
-  font-size: small;
-}
-.text4{
-
-margin-right: 90px;
-}
-.titlenews{
-min-width: 10px;
-max-width: 70px;
- width:69px;
- height: 190px;
-}
-.boxx{
-  margin-top: 800px; 
-  width:60px;
-  flex-direction: row;
-  display: flex;
-  border: solid;
-  height:100px;
-}
-
-
-.newshead{
-  margin-left: 80px;
-}
-.neww{
- border: solid;
- margin-block-end: 1100px ;
- display: flex;
- flex-direction: column;
- width: auto;
- height:auto;
- float: left;
-}
-.abouttitle{
-  font-size: 55px;
-  text-align: left;
-  font-family: "Roboto", sans-serif;
-}
 
 /* @media only screen and (max-width: 760px) {
   .body{
@@ -283,3 +281,61 @@ max-width: 70px;
     margin-top: 1120px;
   }
 } */
+
+
+
+
+
+
+
+/*  
+  #one{
+    width:530px;
+    justify-content: left; 
+    margin-top: 640px;
+    margin-right: 700px;
+    position: absolute;
+    overflow: hidden;
+    height: 390px;
+     font-family: "Roboto";
+  }
+  #two{
+    width: 540px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 618px;
+   position: absolute; 
+  height:510px;
+   background-color: white;
+   margin-left: 670px; 
+    opacity:0.1;
+   z-index:1;
+  } */
+
+
+  /* .home {
+    width: 1349px;
+    margin-top: 325px;
+    height: 580px;
+    display: flex;
+    margin-bottom: 100px;
+    justify-content: center;
+    border: solid;
+    align-items: left;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+   */
+    /* .box{
+    width:350px;
+    display: flex;  
+    margin-left: 30px;
+    height:390px;
+    position: fixed;
+    margin-top: 480px; 
+    display:inline-block;
+    margin-left: 10px;
+  } */
