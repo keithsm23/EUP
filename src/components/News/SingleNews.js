@@ -249,7 +249,7 @@ const getAllData = async ()=>{
                 <div style={{
                   backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${newss && newss.featuredImage})`,
                   height: "200px",
-                  width: "1349px",
+                  width: "100%",
                   backgroundRepeat:"no-repeat",
                  }} className='bg-img2' 
                  >
@@ -306,7 +306,7 @@ const getAllData = async ()=>{
 )} */}
 
    <div className='wrapper12'>
-    <section className='posts'>
+    <div className='posts'>
     <h2 className='heading'>Popular Posts</h2>
    { ( posts && posts.map((post,i) =>
       {
@@ -314,8 +314,8 @@ const getAllData = async ()=>{
         let publishTime = formateData(post.publicationDate);
        return(
           <div>
-            <section className='image3' >
-          <img id='image2' src={post.featuredImage} />
+          <section className='image3'>
+            <img id='image2' src={post.featuredImage} />
            
           </section>
           <section className='title2'>
@@ -329,7 +329,7 @@ const getAllData = async ()=>{
        )
       )
    } 
-      </section>
+      </div>
 
    {/* <div id="onesn"  className="boxsn">
    <img id="u86_img1" alt="" className="img1" src={u86}></img> 
@@ -492,7 +492,7 @@ const getAllData = async ()=>{
     onChange={(e)=> setInput({...input, [e.target.name] : e.target.value})}
     value={input.commentAuthorEmail}
       type="text" 
-      placeholder='email'>
+      placeholder='Email'>
       </input>
       {/* <input
     name='contentId' 

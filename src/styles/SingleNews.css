@@ -26,7 +26,7 @@
   margin-top: -5px;
     /* display:inline-block; */
   }
-  #onesn{
+  /* #onesn{
     width:810px;
     justify-content: left; 
     margin-right: 480px;
@@ -50,7 +50,7 @@
     height:422px;
     position: absolute;
     margin-top: 400px;
-  }
+  } */
   #comment{
     width:675px;
     justify-content: left; 
@@ -245,13 +245,14 @@ input[type=text1], select {
 }
 
 .image1{
-  width: 700px;
+  width: 76%;
   height: 330px;
   margin-right: 400px;
   margin-left: 80px;
 }
 .title{
-  font-size: 20px;
+  font-size: 20px; 
+  width: 71%;
   font-weight: 700;
   margin-top: 30px;
   margin-left: 80px;
@@ -260,6 +261,7 @@ input[type=text1], select {
 .author{
   margin-left: 80px;
   color: #888787;
+   width: 71%;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
 }
@@ -271,7 +273,7 @@ input[type=text1], select {
   font-size: 18px;
 }
 .comments{
-  overflow: hidden;
+  overflow: hidden; width: 76%;
   margin-left: 80px;
   font-family: "Roboto", sans-serif;
   color: black;
@@ -280,17 +282,17 @@ input[type=text1], select {
 #image2{
   border-radius: 25px;
   margin-left: 12px;
-  width: 130px;
+  width: 33%;
   height: 130px;
   padding: 20px;
 }
 .posts{
-  width: 400px;
+  width: 29%;
    border: thin;
    /* height:850px;  */
    background-color:  rgb(250, 245, 245);
    margin-left: 850px;
-   
+  
 }
 .heading{
   padding-top: 0px;
@@ -329,7 +331,7 @@ input[type=text1], select {
   font-family: "Roboto", sans-serif;
 }
 .blogs{
-  width:770px;
+  width:70%;
   margin-top: -930px;
 }
 .author1{
@@ -358,7 +360,8 @@ input[type=text1], select {
   margin-top: 40px;
   background:white;
   background-color: white;
-  margin-bottom: 240px;
+  margin-bottom: -590px;
+  width: 100%;
 }
 .heading1{
   font-size: 30px;
