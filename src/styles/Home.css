@@ -48,7 +48,7 @@
   height: 409px;
   margin-top: 685px; 
   z-index: 0;
-  opacity: 0.7;  
+  opacity: 1.0;  
 }
 .body .latestnew{
   display: flex;
@@ -59,7 +59,7 @@
     width:40%;
     height: 529px; 
     background-color: white;
-    opacity:0.8;
+    opacity:0.93;
     z-index:1;
     margin-top: 640px;
     overflow: hidden;

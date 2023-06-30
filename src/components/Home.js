@@ -9,7 +9,6 @@ import { convertToRaw, EditorState } from "draft-js";
 import draftToHtmlPuri from "draftjs-to-html";
 import { FaCalendar } from "react-icons/fa";
 import swal from 'sweetalert';
-import { fontFamily } from "@mui/system";
 const routes=["Home", "AboutUs", ""]; 
 
 const Home = (props) => {

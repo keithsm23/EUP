@@ -22,10 +22,7 @@ function Header(props) {
   const[page, setPage] = useState([]);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [selectedOption, setSelectedOption] = useState('');
-  const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-const [isNavbarOpen, setNavbarOpen] = useState(false);
   const [isVisible, setVisible] = useState(false);
-  const [shouldReload, setShouldReload] = useState(false);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [menus, setMenus] = useState([]);
   const [selectedButton, setSelectedButton] = useState(0);
