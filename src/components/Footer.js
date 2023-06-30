@@ -125,7 +125,7 @@ function Footer(props) {
         {/* <Link to="/" onClick={ScrollUp} > HOME </Link> */}
         {linkgroups &&
       linkgroups.data &&
-      linkgroups.data.slice(0,8).map((data, index) => { 
+      linkgroups.data.slice(0,7).map((data, index) => { 
         {/* console.log("index === selectedButton", index, selectedButton)    */}
         return (                                   
           <div className="apifooter">
